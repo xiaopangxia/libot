@@ -1,0 +1,553 @@
+<aiml version="1.0.1" encoding="UTF-8">
+<!-- basic_chat.aiml -->
+
+    <category>
+        <pattern>#ROOM#时间#</pattern>
+        <template>
+            task_room_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#ROOM#什么时候#</pattern>
+        <template>
+            task_room_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#什么时候#ROOM#</pattern>
+        <template>
+           task_room_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#今天#可以#ROOM#吗</pattern>
+        <template>
+           task_room_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#明天#可以#ROOM#吗</pattern>
+        <template>
+           task_room_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#周末#可以#ROOM#吗</pattern>
+        <template>
+           task_room_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#星期#可以#ROOM#吗</pattern>
+        <template>
+           task_room_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#ROOM#今天#吗</pattern>
+        <template>
+           task_room_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#现在可以#ROOM#吗</pattern>
+        <template>
+           task_room_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#ROOM#明天#吗</pattern>
+        <template>
+           task_room_time
+        </template>
+    </category>
+
+        <category>
+        <pattern>#ROOM#上午#吗</pattern>
+        <template>
+           task_room_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#ROOM#下午#吗</pattern>
+        <template>
+           task_room_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#ROOM#周末#吗</pattern>
+        <template>
+           task_room_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#ROOM#白天#</pattern>
+        <template>
+           task_room_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#ROOM#几点#</pattern>
+        <template>
+           task_room_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#ROOM#晚上#</pattern>
+        <template>
+           task_room_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#ROOM#开门#</pattern>
+        <template>
+           task_room_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#ROOM#开馆#</pattern>
+        <template>
+           task_room_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#ROOM#闭馆#</pattern>
+        <template>
+           task_room_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#ROOM#关门#</pattern>
+        <template>
+           task_room_time
+        </template>
+    </category>
+
+
+
+    <category>
+        <pattern>#ROOM#联系方式#</pattern>
+        <template>
+           task_room_contact
+        </template>
+    </category>
+
+    <category>
+        <pattern>#ROOM#电话#</pattern>
+        <template>
+           task_room_contact
+        </template>
+    </category>
+
+    <category>
+        <pattern>#ROOM#打给谁#</pattern>
+        <template>
+           task_room_contact
+        </template>
+    </category>
+
+    <category>
+        <pattern>#ROOM#的号码#</pattern>
+        <template>
+           task_room_contact
+        </template>
+    </category>
+
+    <category>
+        <pattern>#怎么联系#ROOM#</pattern>
+        <template>
+           task_room_contact
+        </template>
+    </category>
+
+
+
+
+    <category>
+        <pattern>#ROOM#在哪#</pattern>
+        <template>
+           task_room_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#ROOM#哪里#</pattern>
+        <template>
+           task_room_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#ROOM#怎么走#</pattern>
+        <template>
+           task_room_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#哪里#ROOM#</pattern>
+        <template>
+           task_room_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#哪有#ROOM#</pattern>
+        <template>
+           task_room_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#ROOM#什么地方#</pattern>
+        <template>
+           task_room_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#ROOM#什么位置#</pattern>
+        <template>
+           task_room_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#ROOM#位置#</pattern>
+        <template>
+           task_room_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#ROOM#这里吗#</pattern>
+        <template>
+           task_room_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#这里#ROOM#吗#</pattern>
+        <template>
+           task_room_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#楼上#ROOM#吗#</pattern>
+        <template>
+           task_room_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#楼下#ROOM#吗#</pattern>
+        <template>
+           task_room_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#我找#ROOM#</pattern>
+        <template>
+           task_room_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#找不到#ROOM#</pattern>
+        <template>
+           task_room_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#附近#ROOM#吗</pattern>
+        <template>
+           task_room_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#楼#ROOM#吗</pattern>
+        <template>
+           task_room_pos
+        </template>
+    </category>
+
+
+
+    <category>
+        <pattern>#RES#时间#</pattern>
+        <template>
+            task_res_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#RES#什么时候#</pattern>
+        <template>
+            task_res_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#什么时候#RES#</pattern>
+        <template>
+           task_res_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#今天#可以#RES#吗</pattern>
+        <template>
+           task_res_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#明天#可以#RES#吗</pattern>
+        <template>
+           task_res_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#周末#可以#RES#吗</pattern>
+        <template>
+           task_res_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#星期#可以#RES#吗</pattern>
+        <template>
+           task_res_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#RES#今天#吗</pattern>
+        <template>
+           task_res_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#现在可以#RES#吗</pattern>
+        <template>
+           task_res_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#RES#明天#吗</pattern>
+        <template>
+           task_res_time
+        </template>
+    </category>
+
+        <category>
+        <pattern>#RES#上午#吗</pattern>
+        <template>
+           task_res_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#RES#下午#吗</pattern>
+        <template>
+           task_res_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#RES#周末#吗</pattern>
+        <template>
+           task_res_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#RES#白天#</pattern>
+        <template>
+           task_res_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#RES#几点#</pattern>
+        <template>
+           task_res_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#RES#晚上#</pattern>
+        <template>
+           task_res_time
+        </template>
+    </category>
+
+
+
+
+
+    <category>
+        <pattern>#RES#在哪#</pattern>
+        <template>
+           task_res_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#RES#哪里#</pattern>
+        <template>
+           task_res_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#RES#怎么走#</pattern>
+        <template>
+           task_res_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#哪里#RES#</pattern>
+        <template>
+           task_res_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#哪有#RES#</pattern>
+        <template>
+           task_res_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#RES#什么地方#</pattern>
+        <template>
+           task_res_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#RES#什么位置#</pattern>
+        <template>
+           task_res_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#RES#位置#</pattern>
+        <template>
+           task_res_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#RES#这里吗#</pattern>
+        <template>
+           task_res_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#这里#RES#吗#</pattern>
+        <template>
+           task_res_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#楼上#RES#吗#</pattern>
+        <template>
+           task_res_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#楼下#RES#吗#</pattern>
+        <template>
+           task_res_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#我找#RES#</pattern>
+        <template>
+           task_res_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#找不到#RES#</pattern>
+        <template>
+           task_res_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#附近#RES#吗</pattern>
+        <template>
+           task_res_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#楼#RES#吗</pattern>
+        <template>
+           task_res_pos
+        </template>
+    </category>
+
+
+
+
+
+
+    <category>
+        <pattern>#你好</pattern>
+        <template>
+           您好，您有什么问题
+        </template>
+    </category>
+    <category>
+        <pattern>#我有一个问题</pattern>
+        <template>
+           您好，您有什么问题
+        </template>
+    </category>
+    <category>
+        <pattern>早上好#</pattern>
+        <template>
+           您好，您有什么问题
+        </template>
+    </category>
+
+
+
+
+</aiml>

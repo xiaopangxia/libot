@@ -1,12 +1,12 @@
-# libot
-A robot for library QA.
+# libot，A robot for library QA.
+# 图书馆智能咨询机器人
 
 
 **Libot后端接口说明**
 
 1.  请求方式POST
 
-2.  请求地址：39.108.80.74：8888
+2.  请求地址：xxx.xxx.xxx.xxx:8888
 
 3.  url参数说明：
 
@@ -47,10 +47,10 @@ A robot for library QA.
 
 6.  截图
 
-![](media/41a6b4136d4debc3127a7cd079873a87.png)
+![](https://raw.githubusercontent.com/xiaopangxia/libot/master/image/request_graph.png)
 
-![](media/0a91c15fbea28dc98ed93d68421b261c.png)
+![](https://raw.githubusercontent.com/xiaopangxia/libot/master/image/request_search.png)
 
-![](media/c123ee8387432412dead036b0d0fcc5e.png)
+![](https://raw.githubusercontent.com/xiaopangxia/libot/master/image/request_all.png)
 
 

@@ -44,6 +44,7 @@
 				&emsp;&emsp;&emsp;“graph_answer”:”回答字符串”<br>
 &emsp;&emsp;}<br>
 6.  截图
+
 ![](https://raw.githubusercontent.com/xiaopangxia/libot/master/image/request_graph.png)
 ![](https://raw.githubusercontent.com/xiaopangxia/libot/master/image/request_search.png)
 ![](https://raw.githubusercontent.com/xiaopangxia/libot/master/image/request_all.png)

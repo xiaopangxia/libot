@@ -1,4 +1,4 @@
-# libot，A robot for library QA.
+# Libot，A robot for library QA.
 # 图书馆智能咨询机器人
 
 
@@ -43,14 +43,9 @@
 &emsp;&emsp;&emsp;]，<br>
 				&emsp;&emsp;&emsp;“graph_answer”:”回答字符串”<br>
 &emsp;&emsp;}<br>
-
-
 6.  截图
-
 ![](https://raw.githubusercontent.com/xiaopangxia/libot/master/image/request_graph.png)
-
 ![](https://raw.githubusercontent.com/xiaopangxia/libot/master/image/request_search.png)
-
 ![](https://raw.githubusercontent.com/xiaopangxia/libot/master/image/request_all.png)
 
 

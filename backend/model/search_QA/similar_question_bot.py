@@ -61,7 +61,7 @@ class similarQuestionBot():
         answer_list = []
         for item in most_sim_questions:
             answer = self.qa_pair_dict[item[0]]
-            answer_list.append([item[0], answer, str(item[1])])
+            answer_list.append({"question": item[0], "answer": answer, "score": str(item[1])})
         return answer_list
 
 

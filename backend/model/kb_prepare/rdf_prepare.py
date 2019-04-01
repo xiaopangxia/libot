@@ -1,25 +1,203 @@
-# -*- coding: utf-8 -*-
-# File: rdf_prepare.py
-# Author: Hualong Zhang <nankaizhl@gmail.com>
-# CreateDate: 19-03-10
-import os
-import sys
-# 模块路径引用统一回退到Libbot目录下
-project_path = os.path.abspath(os.path.join(os.getcwd(), "../.."))
-sys.path.append(project_path)
+#coding:utf-8
+#Author: Liu liting <nkliuliting826@mail.nankai.edu.cn>
+# CreateDate: 19-03-29
 
-from rdflib import URIRef, Literal
+import rdflib
+import xlrd
+from rdflib import Literal
+from rdflib.namespace import RDF
+RDF.type = rdflib.term.URIRef(u'http://www.w3.org/1999/02/22-rdf-syntax-ns#type')
+
 
 class rdfPrepare():
+
     @classmethod
-    def create_rdf_from_triples(cls, triple_file, graph_file):
+    def excel_to_RDF(cls, triple_file, graph_file):
+
         """
-        从三元组文件构建图，存成RDF
+        从三元组表格文件构建数据对象，存成rdf
         :param triple_file:
         :param graph_file:
         :return:
         """
-        pass
+
+        # 打开文件
+        entities = xlrd.open_workbook(triple_file)
+        g = rdflib.Graph()
+
+        key = dict()
+        col_names = dict()
+        num_properties = dict()
+        num_relations = dict()
+
+        sheetnames = entities.sheet_names()
+
+        # 获取所有给定名字的sheet
+        entity = dict()
+        for num, sheetname in enumerate(sheetnames):
+            entity[sheetname] = entities.sheet_by_name(sheetname)
+            # namespace[sheetname] = Namespace('http://www.libot.org/'+sheetname+'/')
+            sheet_name = rdflib.URIRef('http://www.libot.org/' + sheetname)
+            print(sheet_name)
+            col_names[sheetname] = entity[sheetname].row_values(0)
+            num_properties[num] = 0
+            num_relations[num] = 0
+
+            for col_name in col_names[sheetname]:
+                if col_name.startswith("pro"):
+                    num_properties[num] += 1
+                elif col_name.startswith("rel"):
+                    num_relations[num] += 1
+            print(sheetname + " " + str(num_properties[num]) + " " + str(num_relations[num]))
+
+            colvalue = dict()
+            property = dict()
+
+            # 定义关系和属性名
+            for i in range(1, num_properties[num] + 1):
+                # 获取属性
+                property[col_names[sheetname][i]] = rdflib.URIRef(
+                    'http://www.libot.org/' + str(col_names[sheetname][i]))
+                colvalue[col_names[sheetname][i]] = entity[sheetname].col_values(i)
+            # print(property.keys())
+            # 主键名字
+            # keyname = col_names[0]
+
+            keyvalues = entity[sheetname].col_values(0)
+            # print(len(entity.col_values(0)))
+            for j in range(1, len(entity[sheetname].col_values(0))):
+                # 定义实体URI
+                key[keyvalues[j]] = rdflib.URIRef(
+                    'http://www.libot.org/' + keyvalues[j].replace(' ', '').replace('\n', ''))
+                g.add((key[keyvalues[j]], RDF.type, sheet_name))
+                # 构建实体-属性值三元组
+                for m in range(1, num_properties[num] + 1):
+                    if (colvalue[col_names[sheetname][m]][j]):
+                        g.add((key[keyvalues[j]], property[col_names[sheetname][m]],
+                               Literal(str(colvalue[col_names[sheetname][m]][j]).replace(' ', '').replace('\n', ''))))
+
+        # 构建实体-实体三元组
+        relation = dict()
+        for num, sheetname in enumerate(sheetnames):
+            for k in range(num_properties[num] + 1, num_properties[num] + num_relations[num] + 1):
+                # 获取关系
+                print(k)
+                print(col_names[sheetname][k])
+                relation[col_names[sheetname][k]] = rdflib.URIRef(
+                    'http://www.libot.org/' + str(col_names[sheetname][k]))
+            for j in range(1, len(entity[sheetname].col_values(0))):
+                for r in range(num_properties[num] + 1, num_relations[num] + num_properties[num] + 1):
+                    second_entity_list = entity[sheetname].col_values(r)[j].strip().split('，')
+                    for sec_entity in second_entity_list:
+                        if sec_entity in key.keys():
+                            g.add((key[entity[sheetname].col_values(0)[j]], relation[col_names[sheetname][r]],
+                                   key[sec_entity]))
+
+        g.serialize(graph_file)
+
+    @classmethod
+    def load_graph(cls):
+        g = rdflib.Graph()
+        g.parse("../../resource/libot.rdf", format="xml")
+        return g
+
+    @classmethod
+    def rdf_query_propertiy(cls,entity, intension, g):
+
+        q = "select?part where {<http://www.libot.org/" + entity + "> <http://www.libot.org/" + intension + "> ?part}"
+        # print(q)
+        x = g.query(q)
+        t = list(x)
+        part_list = []
+        for i in range(len(t)):
+            part_list.append(t[i][0])
+            # print(t[i][0])
+        return part_list
+
+    @classmethod
+    def rdf_query_relation(cls, entity, intension, g):
+
+        q = "select?part where {<http://www.libot.org/" + entity + "> <http://www.libot.org/" + intension + "> ?part}"
+        # print(q)
+        x = g.query(q)
+        t = list(x)
+        part_list = []
+        for i in range(len(t)):
+            part_list.append(t[i][0].split('/')[3])
+        # print(part_list)
+        return part_list
+
+    @classmethod
+    def rdf_query_entity_list(cls, type, g):
+
+        q = "select?part where {?part <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.libot.org/" + type + ">}"
+        # print(q)
+        x = g.query(q)
+        t = list(x)
+        entity_list = []
+        for i in range(len(t)):
+            # print(t[i][0])
+            entity_list.append(t[i][0])
+        # print(entity_list[5])
+        return entity_list
+
+    @classmethod
+    def rdf_query_varientnames(cls, type, g):
+        entity_list = rdfPrepare.rdf_query_entity_list(type,g)
+        varient_list = dict()
+        for enity in entity_list:
+            q = "select?part where {<"+str(enity)+"> <http://www.libot.org/pro_variant_name> ?part}"
+            x = g.query(q)
+            t = list(x)
+            vlist = t[0][0].strip().split('，')
+            enity_name = str(enity).split('/')[3]
+            varient_list[enity_name] = []
+            varient_list[enity_name].extend(vlist)
+        return varient_list
+
+    @classmethod
+    def rdf_query_allvarient(cls, g):
+        """
+        目前三个表
+        :param g:
+        :return:
+        """
+        q = "select?part?var where {?part <http://www.libot.org/pro_variant_name> ?var}"
+        x = g.query(q)
+        t = list(x)
+        var_list = []
+        for i in range(len(t)):
+            # print(t[i][1])
+            var_list += t[i][1].split('，')
+            # print(var_list)
+        return var_list
+
+
+    @classmethod
+    def rdf_query_name(cls, varname, type, g):
+        name_list = []
+        varname_dict_list = cls.rdf_query_varientnames(type, g)
+        varnames = list(varname_dict_list.keys())
+        varvalue = list(varname_dict_list.values())
+        for num, var_list in enumerate(varvalue):
+            # print(var_list)
+            if varname in var_list:
+                name_list.append(varnames[num])
+        return name_list
+
+
+
+
+
+
+
+
+if __name__ == '__main__':
+    rdfPrepare.excel_to_RDF(r'D:\国图项目\libot.xlsx',"../../resource/libot.rdf")
+    # g = rdfPrepare.load_graph()
+    # rdfPrepare.rdf_query_relation('少年儿童馆主题活动区','rel_part_of_room',g)
+    # var = ["亲子区"]
+    # rdfPrepare.rdf_query_name("小儿馆","room",g)
 
 
 

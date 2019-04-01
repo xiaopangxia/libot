@@ -57,6 +57,13 @@
         </template>
     </category>
 
+     <category>
+        <pattern>我想#ROOM#</pattern>
+        <template>
+           task_room_pos
+        </template>
+    </category>
+
     <category>
         <pattern>#现在可以#ROOM#吗</pattern>
         <template>
@@ -348,6 +355,13 @@
         <pattern>#RES#今天#吗</pattern>
         <template>
            task_res_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>我想#RES#</pattern>
+        <template>
+           task_res_pos
         </template>
     </category>
 

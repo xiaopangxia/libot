@@ -41,7 +41,7 @@ class rdfBot():
 
     @classmethod
     def answer_room_contact(cls, entity_dict, graph):
-        room_in_question = entity_dict['room']
+        room_in_question = entity_dict['room'][0]
         respons_str = ''
         if room_in_question:
             for target_room in room_in_question:
@@ -58,7 +58,7 @@ class rdfBot():
 
     @classmethod
     def answer_room_pos(cls, entity_dict, graph):
-        room_in_question = entity_dict['room']
+        room_in_question = entity_dict['room'][0]
         respons_str = '您当前位置是' + GraphBaseConfig['now_floor'] + '。'
         if room_in_question:
             for target_room in room_in_question:
@@ -76,7 +76,7 @@ class rdfBot():
 
     @classmethod
     def answer_res_pos(cls, entity_dict, graph):
-        res_in_question = entity_dict['res']
+        res_in_question = entity_dict['res'][0]
         respons_str = ''
         if res_in_question:
             for target_res in res_in_question:
@@ -86,7 +86,7 @@ class rdfBot():
                 if (len(rdfPrepare.rdf_query_relation(target_res, "rel_part_of_room", graph)) != 0):
                     res_part_room = rdfPrepare.rdf_query_relation(target_res, "rel_part_of_room", graph)[0]
                     respons_str += '存于' + res_part_room+'。\n'
-                    dict_list = {'room': [res_part_room]}
+                    dict_list = {'room': [[res_part_room]]}
                     new_answer = cls.answer_room_pos(dict_list,graph)
                     if new_answer is not None:
                         respons_str += new_answer
@@ -97,7 +97,7 @@ class rdfBot():
 
     @classmethod
     def answer_res_room(cls, entity_dict, graph):
-        res_in_question = entity_dict['res']
+        res_in_question = entity_dict['res'][0]
         respons_str = ''
         if res_in_question:
             for target_res in res_in_question:

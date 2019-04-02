@@ -31,33 +31,30 @@ class entityMatch2():
     def room_dict_match(cls, question_str, var_list, graph):
         dict_list = rdfPrepare.rdf_query_varientnames('room', graph)
         entities = DictMatch2.room_dict_match(question_str, var_list, graph)
-        if (len(entities) != 0):
-            entities = entities[0]
-        for entity in entities:
-            for varname in dict_list[entity]:
-                question_str = question_str.replace(varname, replace_entity_mark['room'])
+        for i in range(len(entities)):
+            for entity in entities[i]:
+                for varname in dict_list[entity]:
+                    question_str = question_str.replace(varname, replace_entity_mark['room'])
         return question_str, entities
 
     @classmethod
     def resource_dict_match(cls, question_str, var_list, graph):
         dict_list = rdfPrepare.rdf_query_varientnames('resource', graph)
         entities = DictMatch2.resource_dict_match(question_str,var_list, graph)
-        if (len(entities) != 0):
-            entities = entities[0]
-        for entity in entities:
-            for varname in dict_list[entity]:
-                question_str = question_str.replace(varname, replace_entity_mark['resource'])
+        for i in range(len(entities)):
+            for entity in entities[i]:
+                for varname in dict_list[entity]:
+                    question_str = question_str.replace(varname, replace_entity_mark['resource'])
         return question_str, entities
 
     @classmethod
     def floor_dict_match(cls, question_str,var_list, graph):
         dict_list = rdfPrepare.rdf_query_varientnames('floor', graph)
         entities = DictMatch2.floor_dict_match(question_str,var_list, graph)
-        if (len(entities) != 0):
-            entities = entities[0]
-        for entity in entities:
-            for varname in dict_list[entity]:
-                question_str = question_str.replace(varname, replace_entity_mark['floor'])
+        for i in range(len(entities)):
+            for entity in entities[i]:
+                for varname in dict_list[entity]:
+                    question_str = question_str.replace(varname, replace_entity_mark['floor'])
         return question_str, entities
 
     @classmethod
@@ -77,8 +74,8 @@ class entityMatch2():
         entity_dict['floor'] = entity_list
         return question_str,entity_dict
 
-# if __name__=="__main__":
-#     g = rdfPrepare.load_graph()
-#     question_str, entity_list = entityMatch2.match_and_replace_all("少年儿童馆数字资源体验区的电话是啥？",g)
-#     print(question_str)
-#     print(entity_list)
+if __name__=="__main__":
+    g = rdfPrepare.load_graph()
+    question_str, entity_list = entityMatch2.match_and_replace_all("北区总馆在北区总馆么？",g)
+    print(question_str)
+    print(entity_list)

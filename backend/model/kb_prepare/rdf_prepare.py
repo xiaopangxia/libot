@@ -186,18 +186,30 @@ class rdfPrepare():
         return name_list
 
 
-
+    @classmethod
+    def rdf_queryreverse_relation(cls, relation, intension, g):
+        q = "select?entity where {?entity <http://www.libot.org/" + intension + "> <http://www.libot.org/"+ relation +">}"
+        # print(q)
+        x = g.query(q)
+        t = list(x)
+        entity_list = []
+        for i in range(len(t)):
+            entity_list.append(t[i][0].split('/')[3])
+        return entity_list
 
 
 
 
 
 if __name__ == '__main__':
-    rdfPrepare.excel_to_RDF(r'D:\国图项目\libot.xlsx',"../../resource/libot.rdf")
-    # g = rdfPrepare.load_graph()
+    # rdfPrepare.excel_to_RDF(r'../../resource/libot.xlsx',"../../resource/libot.rdf")
+    g = rdfPrepare.load_graph()
     # rdfPrepare.rdf_query_relation('少年儿童馆主题活动区','rel_part_of_room',g)
     # var = ["亲子区"]
     # rdfPrepare.rdf_query_name("小儿馆","room",g)
+    # rdfPrepare.rdf_queryreverse_relation('台港澳文献阅览室','rel_part_of_room',g)
+    print(rdfPrepare.rdf_query_propertiy("企业信息服务中心",'pro_open_day',g))
+    rdfPrepare.rdf_queryreverse_propertiy('周一至周五（周六、周日不开放）','pro_open_day',g)
 
 
 

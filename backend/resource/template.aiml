@@ -359,13 +359,6 @@
     </category>
 
     <category>
-        <pattern>我想#RES#</pattern>
-        <template>
-           task_res_pos
-        </template>
-    </category>
-
-    <category>
         <pattern>#现在可以#RES#吗</pattern>
         <template>
            task_res_time
@@ -420,8 +413,6 @@
            task_res_time
         </template>
     </category>
-
-
 
 
 
@@ -532,6 +523,13 @@
 
     <category>
         <pattern>#楼#RES#吗</pattern>
+        <template>
+           task_res_pos
+        </template>
+    </category>
+
+    <category>
+        <pattern>#附近有#RES#</pattern>
         <template>
            task_res_pos
         </template>

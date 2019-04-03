@@ -14,7 +14,12 @@
             task_room_time
         </template>
     </category>
-
+    <category>
+        <pattern>#ROOM#几点#</pattern>
+        <template>
+            task_room_time
+        </template>
+    </category>
     <category>
         <pattern>#什么时候#ROOM#</pattern>
         <template>
@@ -30,33 +35,224 @@
     </category>
 
     <category>
+        <pattern>#明天#几点#ROOM#</pattern>
+        <template>
+           task_room_time_tomorrow
+        </template>
+    </category>
+
+    <category>
+        <pattern>#周末#几点#ROOM#</pattern>
+        <template>
+           task_room_time_Sunday
+        </template>
+    </category>
+    <category>
+        <pattern>#星期天#几点#ROOM#</pattern>
+        <template>
+           task_room_time_Sunday
+        </template>
+    </category>
+    <category>
+        <pattern>#星期一#几点#ROOM#</pattern>
+        <template>
+           task_room_time_Monday
+        </template>
+    </category>
+    <category>
+        <pattern>#周一#几点#ROOM#</pattern>
+        <template>
+           task_room_time_Monday
+        </template>
+    </category>
+        <category>
+        <pattern>#星期二#几点#ROOM#</pattern>
+        <template>
+           task_room_time_Tuesday
+        </template>
+    </category>
+    <category>
+        <pattern>#周二#几点#ROOM#</pattern>
+        <template>
+           task_room_time_Tuesday
+        </template>
+    </category>
+        <category>
+        <pattern>#星期三#几点#ROOM#</pattern>
+        <template>
+           task_room_time_Wednesday
+        </template>
+    </category>
+    <category>
+        <pattern>#周三#几点#ROOM#</pattern>
+        <template>
+           task_room_time_Wednesday
+        </template>
+    </category>
+        <category>
+        <pattern>#星期四#几点#ROOM#</pattern>
+        <template>
+           task_room_time_Thursday
+        </template>
+    </category>
+    <category>
+        <pattern>#周四#几点#ROOM#</pattern>
+        <template>
+           task_room_time_Thursday
+        </template>
+    </category>
+        <category>
+        <pattern>#星期五#几点#ROOM#</pattern>
+        <template>
+           task_room_time_Friday
+        </template>
+    </category>
+    <category>
+        <pattern>#周五#几点#ROOM#</pattern>
+        <template>
+           task_room_time_Friday
+        </template>
+    </category>
+        <category>
+        <pattern>#星期六#几点#ROOM#</pattern>
+        <template>
+           task_room_time_Saturday
+        </template>
+    </category>
+    <category>
+        <pattern>#周六#几点#ROOM#</pattern>
+        <template>
+           task_room_time_Saturday
+        </template>
+    </category>
+        <category>
         <pattern>#明天#可以#ROOM#吗</pattern>
         <template>
-           task_room_time
+           task_room_time_tomorrow
         </template>
     </category>
 
     <category>
         <pattern>#周末#可以#ROOM#吗</pattern>
         <template>
-           task_room_time
+           task_room_time_Sunday
         </template>
     </category>
-
     <category>
-        <pattern>#星期#可以#ROOM#吗</pattern>
+        <pattern>#星期天#可以#ROOM#吗</pattern>
         <template>
-           task_room_time
+           task_room_time_Sunday
         </template>
     </category>
-
+    <category>
+        <pattern>#星期一#可以#ROOM#吗</pattern>
+        <template>
+           task_room_time_Monday
+        </template>
+    </category>
+    <category>
+        <pattern>#周一#可以#ROOM#吗</pattern>
+        <template>
+           task_room_time_Monday
+        </template>
+    </category>
+        <category>
+        <pattern>#星期二#可以#ROOM#吗</pattern>
+        <template>
+           task_room_time_Tuesday
+        </template>
+    </category>
+    <category>
+        <pattern>#周二#可以#ROOM#吗</pattern>
+        <template>
+           task_room_time_Tuesday
+        </template>
+    </category>
+        <category>
+        <pattern>#星期三#可以#ROOM#吗</pattern>
+        <template>
+           task_room_time_Wednesday
+        </template>
+    </category>
+    <category>
+        <pattern>#周三#可以#ROOM#吗</pattern>
+        <template>
+           task_room_time_Wednesday
+        </template>
+    </category>
+        <category>
+        <pattern>#星期四#可以#ROOM#吗</pattern>
+        <template>
+           task_room_time_Thursday
+        </template>
+    </category>
+    <category>
+        <pattern>#周四#可以#ROOM#吗</pattern>
+        <template>
+           task_room_time_Thursday
+        </template>
+    </category>
+        <category>
+        <pattern>#星期五#可以#ROOM#吗</pattern>
+        <template>
+           task_room_time_Friday
+        </template>
+    </category>
+    <category>
+        <pattern>#周五#可以#ROOM#吗</pattern>
+        <template>
+           task_room_time_Friday
+        </template>
+    </category>
+        <category>
+        <pattern>#星期六#可以#ROOM#吗</pattern>
+        <template>
+           task_room_time_Saturday
+        </template>
+    </category>
+    <category>
+        <pattern>#周六#可以#ROOM#吗</pattern>
+        <template>
+           task_room_time_Saturday
+        </template>
+    </category>
     <category>
         <pattern>#ROOM#今天#吗</pattern>
         <template>
            task_room_time
         </template>
     </category>
+    <category>
+        <pattern>#ROOM#开放日#</pattern>
+        <template>
+            task_room_time_openday
+        </template>
+    </category>
+    <category>
+        <pattern>#ROOM#借阅#</pattern>
+        <template>
+            task_room_time_openday
+        </template>
+    </category>
 
+    <category>
+        <pattern>#ROOM#哪天#开放#</pattern>
+        <template>
+            task_room_time_openday
+        </template>
+    </category>
+    <category>
+        <pattern>#ROOM#可以去#</pattern>
+        <template>
+            task_room_time_openday
+        </template>
+    </category>
+        <category>
+        <pattern>#ROOM#可以进#</pattern>
+        <template>
+            task_room_time_openday
+        </template>
+    </category>
      <category>
         <pattern>我想#ROOM#</pattern>
         <template>
@@ -147,9 +343,115 @@
            task_room_time
         </template>
     </category>
+    <category>
+        <pattern>#ROOM#借阅时间#</pattern>
+        <template>
+           task_room_time_borrow
+        </template>
+    </category>
+    <category>
+        <pattern>#ROOM#什么时候#借书#</pattern>
+        <template>
+           task_room_time_borrow
+        </template>
+    </category>
+    <category>
+        <pattern>#ROOM#什么时候#借阅#</pattern>
+        <template>
+           task_room_time_borrow
+        </template>
+    </category>
+    <category>
+        <pattern>#明天#ROOM#什么时候#借阅#</pattern>
+        <template>
+           task_room_time_borrow_tomorrow
+        </template>
+    </category>
 
-
-
+    <category>
+        <pattern>#周末#ROOM#什么时候#借阅#</pattern>
+        <template>
+           task_room_time_borrow_Sunday
+        </template>
+    </category>
+    <category>
+        <pattern>#星期天#ROOM#什么时候#借阅#</pattern>
+        <template>
+           task_room_time_borrow_Sunday
+        </template>
+    </category>
+    <category>
+        <pattern>#星期一#ROOM#什么时候#借阅#</pattern>
+        <template>
+           task_room_time_borrow_Monday
+        </template>
+    </category>
+    <category>
+        <pattern>#周一#ROOM#什么时候#借阅#</pattern>
+        <template>
+           task_room_time_borrow_Monday
+        </template>
+    </category>
+        <category>
+        <pattern>#星期二#ROOM#什么时候#借阅#</pattern>
+        <template>
+           task_room_time_borrow_Tuesday
+        </template>
+    </category>
+    <category>
+        <pattern>#周二#ROOM#什么时候#借阅#</pattern>
+        <template>
+           task_room_time_borrow_Tuesday
+        </template>
+    </category>
+        <category>
+        <pattern>#星期三#ROOM#什么时候#借阅#</pattern>
+        <template>
+           task_room_time_borrow_Wednesday
+        </template>
+    </category>
+    <category>
+        <pattern>#周三#ROOM#什么时候#借阅#</pattern>
+        <template>
+           task_room_time_borrow_Wednesday
+        </template>
+    </category>
+        <category>
+        <pattern>#星期四#ROOM#什么时候#借阅#</pattern>
+        <template>
+           task_room_time_borrow_Thursday
+        </template>
+    </category>
+    <category>
+        <pattern>#周四#ROOM#什么时候#借阅#</pattern>
+        <template>
+           task_room_time_borrow_Thursday
+        </template>
+    </category>
+        <category>
+        <pattern>#星期五#ROOM#什么时候#借阅#</pattern>
+        <template>
+           task_room_time_borrow_Friday
+        </template>
+    </category>
+    <category>
+        <pattern>#周五#ROOM#什么时候#借阅#</pattern>
+        <template>
+           task_room_time_borrow_Friday
+        </template>
+    </category>
+        <category>
+        <pattern>#星期六#ROOM#什么时候#借阅#</pattern>
+        <template>
+           task_room_time_borrow_Saturday
+        </template>
+    </category>
+    <category>
+        <pattern>#周六#ROOM#什么时候#借阅#</pattern>
+        <template>
+           task_room_time_borrow_Saturday
+        </template>
+    </category>
     <category>
         <pattern>#ROOM#联系方式#</pattern>
         <template>
@@ -301,7 +603,18 @@
     </category>
 
 
-
+    <category>
+        <pattern>#RES#开放#</pattern>
+        <template>
+            task_res_time_openday
+        </template>
+    </category>
+    <category>
+        <pattern>#RES#借阅#</pattern>
+        <template>
+            task_res_time_openday
+        </template>
+    </category>
     <category>
         <pattern>#RES#时间#</pattern>
         <template>
@@ -320,6 +633,118 @@
         <pattern>#什么时候#RES#</pattern>
         <template>
            task_res_time
+        </template>
+    </category>
+
+    <category>
+        <pattern>#明天#RES#什么时候#</pattern>
+        <template>
+            task_res_time_tomorrow
+        </template>
+    </category>
+
+    <category>
+        <pattern>#明天#什么时候#RES#</pattern>
+        <template>
+           task_res_time_tomorrow
+        </template>
+    </category>
+
+    <category>
+        <pattern>#星期一#RES#什么时候#</pattern>
+        <template>
+            task_res_time_Monday
+        </template>
+    </category>
+
+    <category>
+        <pattern>#周一#什么时候#RES#</pattern>
+        <template>
+           task_res_time_Monday
+        </template>
+    </category>
+
+    <category>
+        <pattern>#星期二#RES#什么时候#</pattern>
+        <template>
+            task_res_time_Tuesday
+        </template>
+    </category>
+
+    <category>
+        <pattern>#周二#什么时候#RES#</pattern>
+        <template>
+           task_res_time_Tuesday
+        </template>
+    </category>
+
+    <category>
+        <pattern>#星期三#RES#什么时候#</pattern>
+        <template>
+            task_res_time_Wednesday
+        </template>
+    </category>
+
+    <category>
+        <pattern>#周三#什么时候#RES#</pattern>
+        <template>
+           task_res_time_Wednesday
+        </template>
+    </category>
+
+    <category>
+        <pattern>#星期四#RES#什么时候#</pattern>
+        <template>
+            task_res_time_Thursday
+        </template>
+    </category>
+
+    <category>
+        <pattern>#周四#什么时候#RES#</pattern>
+        <template>
+           task_res_time_Thursday
+        </template>
+    </category>
+
+    <category>
+        <pattern>#星期五#RES#什么时候#</pattern>
+        <template>
+            task_res_time_Friday
+        </template>
+    </category>
+
+    <category>
+        <pattern>#周五#什么时候#RES#</pattern>
+        <template>
+           task_res_time_Friday
+        </template>
+    </category>
+
+    <category>
+        <pattern>#星期六#RES#什么时候#</pattern>
+        <template>
+            task_res_time_Saturday
+        </template>
+    </category>
+
+    <category>
+        <pattern>#周六#什么时候#RES#</pattern>
+        <template>
+           task_res_time_Saturday
+        </template>
+    </category>
+
+        <category>
+        <pattern>#星期日#RES#什么时候#</pattern>
+        <template>
+            task_res_time_Sunday
+        </template>
+    </category>
+
+    <category>
+        <pattern>#周日#什么时候#RES#</pattern>
+        <template>
+           task_res_time_Sunday
         </template>
     </category>
 

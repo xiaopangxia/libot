@@ -489,7 +489,7 @@ class rdfBot():
                 room=rdfPrepare.rdf_query_relation(target_res, "rel_part_of_room", graph)
                 if(len(room)!=0):
                     if(len(rdfPrepare.rdf_query_propertiy(room[0], week_str, graph))!=0):
-                        print(rdfPrepare.rdf_query_propertiy(room[0], week_str, graph))
+                        # print(rdfPrepare.rdf_query_propertiy(room[0], week_str, graph))
                         respons_str += target_res +"开放时间是："+rdfPrepare.rdf_query_propertiy(room[0], week_str, graph)[0]+"。\n"
                 elif(len(rdfPrepare.rdf_query_relation(room[0], "rel_part_of_room", graph))!=0):
                     parent_room = rdfPrepare.rdf_query_relation(room[0], "rel_part_of_room", graph)

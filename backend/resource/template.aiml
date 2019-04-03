@@ -14,7 +14,12 @@
             task_room_time
         </template>
     </category>
-
+    <category>
+        <pattern>#ROOM#几点#</pattern>
+        <template>
+            task_room_time
+        </template>
+    </category>
     <category>
         <pattern>#什么时候#ROOM#</pattern>
         <template>
@@ -56,7 +61,30 @@
            task_room_time
         </template>
     </category>
-
+    <category>
+        <pattern>#ROOM#开放日#</pattern>
+        <template>
+            task_room_time_openday
+        </template>
+    </category>
+    <category>
+        <pattern>#ROOM#哪天#开放#</pattern>
+        <template>
+            task_room_time_openday
+        </template>
+    </category>
+    <category>
+        <pattern>#ROOM#可以去#</pattern>
+        <template>
+            task_room_time_openday
+        </template>
+    </category>
+        <category>
+        <pattern>#ROOM#可以进#</pattern>
+        <template>
+            task_room_time_openday
+        </template>
+    </category>
      <category>
         <pattern>我想#ROOM#</pattern>
         <template>
@@ -147,9 +175,24 @@
            task_room_time
         </template>
     </category>
-
-
-
+    <category>
+        <pattern>#ROOM#借阅时间#</pattern>
+        <template>
+           task_room_time_borrow
+        </template>
+    </category>
+    <category>
+        <pattern>#ROOM#什么时候#借书#</pattern>
+        <template>
+           task_room_time_borrow
+        </template>
+    </category>
+    <category>
+        <pattern>#ROOM#什么时候#借阅#</pattern>
+        <template>
+           task_room_time_borrow
+        </template>
+    </category>
     <category>
         <pattern>#ROOM#联系方式#</pattern>
         <template>
@@ -301,7 +344,12 @@
     </category>
 
 
-
+    <category>
+        <pattern>#RES#开放#</pattern>
+        <template>
+            task_res_time_openday
+        </template>
+    </category>
     <category>
         <pattern>#RES#时间#</pattern>
         <template>

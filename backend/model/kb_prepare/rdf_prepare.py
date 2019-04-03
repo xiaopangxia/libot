@@ -197,7 +197,7 @@ class rdfPrepare():
         entity_list = []
         for i in range(len(t)):
             entity_list.append(t[i][0].split('/')[3])
-        print(entity_list)
+        # print(entity_list)
         return entity_list
 
 

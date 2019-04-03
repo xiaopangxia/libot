@@ -33,6 +33,7 @@ class entityMatch2():
         entities = DictMatch2.room_dict_match(question_str, var_list, graph)
         for i in range(len(entities)):
             for entity in entities[i]:
+                dict_list[entity].sort(key=lambda s: len(s), reverse=True)
                 for varname in dict_list[entity]:
                     question_str = question_str.replace(varname, replace_entity_mark['room'])
         return question_str, entities
@@ -43,6 +44,7 @@ class entityMatch2():
         entities = DictMatch2.resource_dict_match(question_str,var_list, graph)
         for i in range(len(entities)):
             for entity in entities[i]:
+                dict_list[entity].sort(key=lambda s: len(s), reverse=True)
                 for varname in dict_list[entity]:
                     question_str = question_str.replace(varname, replace_entity_mark['resource'])
         return question_str, entities
@@ -53,6 +55,7 @@ class entityMatch2():
         entities = DictMatch2.floor_dict_match(question_str,var_list, graph)
         for i in range(len(entities)):
             for entity in entities[i]:
+                dict_list[entity].sort(key=lambda s: len(s), reverse=True)
                 for varname in dict_list[entity]:
                     question_str = question_str.replace(varname, replace_entity_mark['floor'])
         return question_str, entities
@@ -76,6 +79,6 @@ class entityMatch2():
 
 if __name__=="__main__":
     g = rdfPrepare.load_graph()
-    question_str, entity_list = entityMatch2.match_and_replace_all("北区总馆在北区总馆么？",g)
+    question_str, entity_list = entityMatch2.match_and_replace_all("日本出版物文库阅览室在总馆南区四层吗",g)
     print(question_str)
     print(entity_list)

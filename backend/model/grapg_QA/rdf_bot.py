@@ -10,7 +10,8 @@ sys.path.append(project_path)
 
 from model.config.base_config import GraphBaseConfig
 from model.kb_prepare.rdf_prepare import rdfPrepare
-
+import time
+import datetime
 class rdfBot():
     """
     对应问题模式在知识图谱中查找答案
@@ -26,12 +27,18 @@ class rdfBot():
         answer = "GraphQA 什么也没说！"
         if task == 'task_room_time':
             answer = cls.answer_room_time(entity_dict, graph)
+        elif task == 'task_room_time_borrow':
+            answer = cls.answer_room_time_borrow(entity_dict, graph=graph)
+        elif task == 'task_room_time_openday':
+            answer = cls.answer_room_time_openday(entity_dict, graph=graph)
         elif task == 'task_room_contact':
             answer = cls.answer_room_contact(entity_dict, graph=graph)
         elif task == 'task_room_pos':
             answer = cls.answer_room_pos(entity_dict, graph)
         elif task == 'task_res_time':
             answer = cls.answer_res_time(entity_dict, graph)
+        elif task == 'task_res_time_openday':
+            answer = cls.answer_res_time_openday(entity_dict, graph)
         elif task == 'task_res_pos':
             answer = cls.answer_res_pos(entity_dict, graph)
         elif task == 'task_res_room':
@@ -112,9 +119,184 @@ class rdfBot():
         else:
             return None
 
+    @classmethod
+    def answer_res_time_openday(cls, entity_dict, graph):
+        '''
+        资源开放日
+        :param entity_dict:
+        :param graph:
+        :return:
+        '''
+        res_in_question = entity_dict['res']
+        respons_str = ''
+        if res_in_question:
+            for target_res in res_in_question:
+                room=rdfPrepare.rdf_query_relation(target_res, "rel_part_of_room", graph)
+                if(len(room)!=0):
+                    if(rdfPrepare.rdf_query_propertiy(room[0], "pro_open_day", graph)!=0):
+                        respons_str += target_res +"开放日是："+rdfPrepare.rdf_query_propertiy(room[0], "pro_open_day", graph)[0]+"。\n"
+                elif(len(rdfPrepare.rdf_query_relation(room[0], "rel_part_of_room", graph))!=0):
+                    parent_room = rdfPrepare.rdf_query_relation(room[0], "rel_part_of_room", graph)
+                    for p_room in parent_room:
+                        if(rdfPrepare.rdf_query_propertiy(p_room, "pro_open_day", graph)):
+                            respons_str += target_res + '位于' + p_room.split('_')[2] + '，开放日是：' + rdfPrepare.rdf_query_propertiy(p_room, "pro_open_day", graph)[0] + '。\n'
+            return respons_str
+        else:
+            return None
+    @classmethod
+    def answer_room_time_openday(cls, entity_dict, graph):
+        '''
+        馆室开放日
+        :param entity_dict:
+        :param graph:
+        :return:
+        '''
+        room_in_question = entity_dict['room']
+        respons_str =''
+        if room_in_question:
+            for target_room in room_in_question:
+                if (len(rdfPrepare.rdf_query_propertiy(target_room, "pro_open_day", graph)) != 0):
+                    respons_str += "_".join(target_room.split('_')[0:3]) + "开放日是：" + \
+                                   rdfPrepare.rdf_query_propertiy(target_room, "pro_open_day", graph)[0] + "。\n"
+                elif (len(rdfPrepare.rdf_query_relation(target_room, "rel_part_of_room", graph)) != 0):
+                    parent_room = rdfPrepare.rdf_query_relation(target_room, "rel_part_of_room", graph)
+                    for p_room in parent_room:
+                        if (rdfPrepare.rdf_query_propertiy(p_room, "pro_open_day", graph)):
+                            respons_str += target_room + '位于' + p_room.split('_')[2] + '，开放日是：' + \
+                                           rdfPrepare.rdf_query_propertiy(p_room, "pro_open_day", graph)[0] + '。\n'
+            return respons_str
+        else:
+            return None
 
+    @classmethod
+    def answer_room_time(cls, entity_dict, graph):
+        '''
+        当日馆室开放时间
+        :param entity_dict:
+        :param graph:
+        :return:
+        '''
+        room_in_question = entity_dict['room']
+        respons_str = '今天是' + GraphBaseConfig['now_day'] + '，'
+        week_str=time.strftime("%w", time.localtime())
+        if str(week_str)=='1':
+            week_str="pro_Monday_opentime"
+            respons_str =respons_str.replace('星期1', '星期一')
+        elif str(week_str)=='2':
+            week_str="pro_Tuesday_opentime"
+            respons_str = respons_str.replace('星期2', '星期二')
+        elif str(week_str)=='3':
+            week_str="pro_Wednesday_opentime"
+            respons_str = respons_str.replace('星期3', '星期三')
+        elif str(week_str)=='4':
+            week_str="pro_Thursday_opentime"
+            respons_str = respons_str.replace('星期4', '星期四')
+        elif str(week_str)=='5':
+            week_str="pro_Friday_opentime"
+            respons_str = respons_str.replace('星期5', '星期五')
+        elif str(week_str)=='6':
+            week_str="pro_Saturday_opentime"
+            respons_str = respons_str.replace('星期6', '星期六')
+        elif str(week_str)=='日':
+            week_str="pro_Sunday_opentime"
+        if room_in_question:
+            for target_room in room_in_question:
+                if(len(rdfPrepare.rdf_query_propertiy(target_room, week_str, graph))!=0):
+                    respons_str += "_".join(target_room.split('_')[0:3]) +"开放时间是："+rdfPrepare.rdf_query_propertiy(target_room, week_str, graph)[0]+"。\n"
+                elif(len(rdfPrepare.rdf_query_relation(target_room, "rel_part_of_room", graph))!=0):
+                    parent_room = rdfPrepare.rdf_query_relation(target_room, "rel_part_of_room", graph)
+                    for p_room in parent_room:
+                        if(rdfPrepare.rdf_query_propertiy(p_room, week_str, graph)):
+                            respons_str += target_room + '位于' + p_room.split('_')[2] + '，开放时间是：' + rdfPrepare.rdf_query_propertiy(p_room, week_str, graph)[0] + '。\n'
+            return respons_str
+        else:
+            return None
 
-
-
-
-
+    @classmethod
+    def answer_room_time_borrow(cls, entity_dict, graph):
+        '''
+        当日馆室借阅时间
+        :param entity_dict:
+        :param graph:
+        :return:
+        '''
+        room_in_question = entity_dict['room']
+        respons_str = '今天是' + GraphBaseConfig['now_day'] + '，'
+        week_str=time.strftime("%w", time.localtime())
+        if str(week_str)=='1':
+            week_str="pro_Monday_borrowtime"
+            respons_str =respons_str.replace('星期1', '星期一')
+        elif str(week_str)=='2':
+            week_str="pro_Tuesday_borrowtime"
+            respons_str = respons_str.replace('星期2', '星期二')
+        elif str(week_str)=='3':
+            week_str="pro_Wednesday_borrowtime"
+            respons_str = respons_str.replace('星期3', '星期三')
+        elif str(week_str)=='4':
+            week_str="pro_Thursday_borrowtime"
+            respons_str = respons_str.replace('星期4', '星期四')
+        elif str(week_str)=='5':
+            week_str="pro_Friday_borrowtime"
+            respons_str = respons_str.replace('星期5', '星期五')
+        elif str(week_str)=='6':
+            week_str="pro_Saturday_borrowtime"
+            respons_str = respons_str.replace('星期6', '星期六')
+        elif str(week_str)=='日':
+            week_str="pro_Sunday_borrowtime"
+        if room_in_question:
+            for target_room in room_in_question:
+                if(len(rdfPrepare.rdf_query_propertiy(target_room, week_str, graph))!=0):
+                    respons_str += "_".join(target_room.split('_')[0:3]) +"借阅时间是："+rdfPrepare.rdf_query_propertiy(target_room, week_str, graph)[0]+"。\n"
+                elif(len(rdfPrepare.rdf_query_relation(target_room, "rel_part_of_room", graph))!=0):
+                    parent_room = rdfPrepare.rdf_query_relation(target_room, "rel_part_of_room", graph)
+                    for p_room in parent_room:
+                        if(rdfPrepare.rdf_query_propertiy(p_room, week_str, graph)):
+                            respons_str += target_room + '位于' + p_room.split('_')[2] + '，借阅时间是：' + rdfPrepare.rdf_query_propertiy(p_room, week_str, graph)[0] + '。\n'
+            return respons_str
+        else:
+            return None
+    @classmethod
+    def answer_res_time(cls, entity_dict, graph):
+        '''
+        当日资源开放时间
+        :param entity_dict:
+        :param graph:
+        :return:
+        '''
+        res_in_question = entity_dict['res']
+        respons_str = '今天是' + GraphBaseConfig['now_day'] + '，'
+        week_str=time.strftime("%w", time.localtime())
+        if str(week_str)=='1':
+            week_str="pro_Monday_borrowtime"
+            respons_str =respons_str.replace('星期1', '星期一')
+        elif str(week_str)=='2':
+            week_str="pro_Tuesday_borrowtime"
+            respons_str = respons_str.replace('星期2', '星期二')
+        elif str(week_str)=='3':
+            week_str="pro_Wednesday_borrowtime"
+            respons_str = respons_str.replace('星期3', '星期三')
+        elif str(week_str)=='4':
+            week_str="pro_Thursday_borrowtime"
+            respons_str = respons_str.replace('星期4', '星期四')
+        elif str(week_str)=='5':
+            week_str="pro_Friday_borrowtime"
+            respons_str = respons_str.replace('星期5', '星期五')
+        elif str(week_str)=='6':
+            week_str="pro_Saturday_borrowtime"
+            respons_str = respons_str.replace('星期6', '星期六')
+        elif str(week_str)=='日':
+            week_str="pro_Sunday_borrowtime"
+        if res_in_question:
+            for target_res in res_in_question:
+                room=rdfPrepare.rdf_query_relation(target_res, "rel_part_of_room", graph)
+                if(len(room)!=0):
+                    if(rdfPrepare.rdf_query_propertiy(room[0], week_str, graph)!=0):
+                        respons_str += target_res +"开放时间是："+rdfPrepare.rdf_query_propertiy(room[0], week_str, graph)[0]+"。\n"
+                elif(len(rdfPrepare.rdf_query_relation(room[0], "rel_part_of_room", graph))!=0):
+                    parent_room = rdfPrepare.rdf_query_relation(room[0], "rel_part_of_room", graph)
+                    for p_room in parent_room:
+                        if(rdfPrepare.rdf_query_propertiy(p_room, week_str, graph)):
+                            respons_str += target_res + '位于' + p_room.split('_')[2] + '，开放时间是：' + rdfPrepare.rdf_query_propertiy(p_room, week_str, graph)[0] + '。\n'
+            return respons_str
+        else:
+            return None

@@ -8,7 +8,7 @@ import time
 
 class DictMatch2():
     @classmethod
-    def dict_match(cls, question_str, dict_list,type,graph):
+    def dict_match(cls, question_str, dict_list, type, graph):
         """
         字典匹配法抽取实体, 遵循最大匹配优先策略,匹配rdf返回的异名表
         :param question_str:
@@ -23,7 +23,8 @@ class DictMatch2():
                 question_str = question_str.replace(dict_item, '####')
                 var_list.append(dict_item)
         for var in var_list:
-            entity_list.append(rdfPrepare.rdf_query_name(var,type,graph))
+            if(len(rdfPrepare.rdf_query_name(var,type,graph))!=0):
+                entity_list.append(rdfPrepare.rdf_query_name(var,type,graph))
         return entity_list
 
     @classmethod
@@ -58,7 +59,7 @@ class DictMatch2():
 
 
     @classmethod
-    def floor_dict_match(cls, question_str,var_list, graph):
+    def floor_dict_match(cls, question_str, var_list, graph):
         """
         字典匹配的方式抽取louceng实体,先查询图找到异名列表，匹配异名
         :param question_str:
@@ -66,9 +67,6 @@ class DictMatch2():
         :return:返回正名
         """
         entity_list = []
-        dict_list = rdfPrepare.rdf_query_varientnames('floor',graph)
-        for entity in dict_list.keys():
-            entity_list += dict_list[entity]
         entity_list = cls.dict_match(question_str, var_list, "floor", graph)
         return entity_list
 

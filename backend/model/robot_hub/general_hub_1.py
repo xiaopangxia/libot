@@ -14,6 +14,7 @@ from model.grapg_QA.json_bot import jsonBot
 from model.grapg_QA.rdf_bot import rdfBot
 from model import aiml_cn
 from model.kb_prepare.rdf_prepare import rdfPrepare
+import numpy as np
 import time
 
 
@@ -35,6 +36,29 @@ class GeneralHub():
         g = rdfPrepare.load_graph()
         question_replaced, entity_dict = entityMatch2.match_and_replace_all(question_str,g)
         # question_replaced, entity_dict = entityMatch.match_and_replace_all(question_str)
+
+        arr = []
+        if len(entity_dict['room']) > 0:
+            for i in entity_dict['room']:
+                if len(i) == 0:
+                    continue
+                index = question_str.find(i[0])
+                arr.append(index)
+            # print(arr)
+            arr_index = np.argsort(np.array(arr))
+            # print(arr_index)
+            entity_dict2 = []
+            for i in entity_dict['room']:
+                if len(i) == 0:
+                    continue
+                entity_dict2.append(i)
+
+            for i in range(len(entity_dict['room'])):
+                if len(entity_dict['room'][i]) == 0:
+                    continue
+                # print(arr_index[i],entity_dict2[arr_index[i]])
+                entity_dict['room'][i] = entity_dict2[arr_index[i]]
+
         aiml_respons = self._aiml_kernal.respond(question_replaced)
         if 'task_' in aiml_respons:
             print("aiml_respons: ", str(aiml_respons))

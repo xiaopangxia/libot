@@ -822,6 +822,8 @@ class rdfBot():
                         #print(len(arr),arr[len(arr) - 2],i)
                         respons_str += arr[len(arr) - 2] + "\n"
             last = ans[len(ans)-1]
+            if last.find('厕所') != -1 or last.find('梯') != -1 or last.find('卫生间') != -1:
+                return respons_str
             if last.find('_') == -1:
                 #print(last,"-1")
                 respons_str += i + "\n"
@@ -852,19 +854,29 @@ class rdfBot():
                     #print(i)
                     respons_str += i + "\n"
                 else:
-                    #print("------"+i)
                     arr = i.split('_')
-                    respons_str += arr[len(arr)-2] + "\n"
+                    if len(arr) == 3:
+                        if i == '总馆北区_F4人工复制处_5':
+                            respons_str += arr[len(arr) - 2] + "\n"
+                        else:
+                            respons_str += arr[len(arr) - 1] + "\n"
+                    else:
+                        respons_str += arr[len(arr) - 2] + "\n"
             last = ans[len(ans) - 1]
+            if last.find('厕所') != -1 or last.find('梯') != -1 or last.find('卫生间') != -1:
+                return respons_str
             #print(last)
             if last.find('_') == -1:
                 #print(last)
                 respons_str += i + "\n"
             else:
-                #print(last)
                 arr = last.split('_')
-                #print(arr)
-                respons_str += arr[len(arr) - 2]+"\n"
+                if len(arr) == 3:
+                    # print(len(arr),"which")
+                    respons_str += arr[len(arr) - 1] + "\n"
+                else:
+                    # print(len(arr),"lll")
+                    respons_str += arr[len(arr) - 2] + "\n"
 
             return respons_str
 
@@ -895,36 +907,76 @@ class rdfBot():
 
         index = 0
         for target in room_in_question:
+
             if (len(target)) == 0:
                 continue
             if ans[index]:
                 if count_yes == 0:
                     count_yes = count_yes + 1
-                    respons_str += target[0]
+                    if target[0].find('_') == -1:
+                        # print(last,"-1")
+                        respons_str += (target[0])
+                    else:
+                        arr = target[0].split('_')
+                        if len(arr) == 3:
+                            # print(len(arr),"which")
+                            respons_str += (arr[len(arr) - 1])
+                        else:
+                            # print(len(arr),"lll")
+                            respons_str += (arr[len(arr) - 2])
+                    #respons_str += target[0]
 
                 else:
-                    respons_str += '和'+target[0]
-
+                    if target[0].find('_') == -1:
+                        # print(last,"-1")
+                        respons_str += ('和' + target[0])
+                    else:
+                        arr = target[0].split('_')
+                        if len(arr) == 3:
+                            # print(len(arr),"which")
+                            respons_str += ('和' + arr[len(arr) - 1])
+                        else:
+                            # print(len(arr),"lll")
+                            respons_str += ('和' + arr[len(arr) - 2])
             index = index + 1
         if count_yes>0:
-            respons_str += ('在' + floor_in_question[0][0]+"。")
+            respons_str += ('在' + floor_in_question[0][0]+"。\n")
 
         index = 0
         for target in room_in_question:
             if (len(target)) == 0:
                 continue
-            #print(index)
             if ans[index] == 0:
                 if count_no == 0:
                     count_no = count_no+1
-                    respons_str += target[0]
+                    if target[0].find('_') == -1:
+                        # print(last,"-1")
+                        respons_str += (target[0])
+                    else:
+                        arr = target[0].split('_')
+                        if len(arr) == 3:
+                            # print(len(arr),"which")
+                            respons_str += (arr[len(arr) - 1])
+                        else:
+                            # print(len(arr),"lll")
+                            respons_str += (arr[len(arr) - 2])
 
                 else:
-                    respons_str += '和' + target[0]
+                    if target[0].find('_') == -1:
+                        # print(last,"-1")
+                        respons_str += ('和' + target[0])
+                    else:
+                        arr = target[0].split('_')
+                        if len(arr) == 3:
+                            # print(len(arr),"which")
+                            respons_str += ('和' + arr[len(arr) - 1])
+                        else:
+                            # print(len(arr),"lll")
+                            respons_str += ('和' + arr[len(arr) - 2])
 
             index = index + 1
         if count_no > 0:
-            respons_str += ('不在' + floor_in_question[0][0]+"。")
+            respons_str += ('不在' + floor_in_question[0][0]+"。\n")
 
 
         return respons_str+'\n'
@@ -960,14 +1012,42 @@ class rdfBot():
             if ans[index]:
                 if count_yes == 0:
                     count_yes = count_yes + 1
+                    if target[0].find('_') == -1:
+                        # print(last,"-1")
+                        respons_str += (floor_in_question+'有'+target[0])
+                    else:
+                        arr = target[0].split('_')
+                        if len(arr) == 3:
+                            # print(len(arr),"which")
+                            respons_str += (floor_in_question+'有'+arr[len(arr) - 1])
+                        else:
+                            # print(len(arr),"lll")
+                            respons_str += (floor_in_question+'有'+arr[len(arr) - 2])
+            else:
+                if target[0].find('_') == -1:
+                    # print(last,"-1")
+                    respons_str += ('和' + target[0])
+                else:
+                    arr = target[0].split('_')
+                    if len(arr) == 3:
+                        # print(len(arr),"which")
+                        respons_str += ('和' + arr[len(arr) - 1])
+                    else:
+                        # print(len(arr),"lll")
+                        respons_str += ('和' + arr[len(arr) - 2])
+            '''
+            if ans[index]:
+                if count_yes == 0:
+                    count_yes = count_yes + 1
                     respons_str += (floor_in_question+'有'+target[0])
 
                 else:
                     respons_str += '和'+target[0]
+            '''
 
             index = index + 1
         if count_yes>0:
-            respons_str += ("。")
+            respons_str += ("。\n")
 
         index = 0
         for target in room_in_question:
@@ -977,18 +1057,50 @@ class rdfBot():
             if ans[index] == 0:
                 if count_no == 0:
                     count_no = count_no+1
+                    if target[0].find('_') == -1:
+                        # print(last,"-1")
+                        respons_str += (floor_in_question+'没有'+target[0])
+                    else:
+                        arr = target[0].split('_')
+                        if len(arr) == 3:
+                            # print(len(arr),"which")
+                            respons_str += (floor_in_question+'没有'+arr[len(arr) - 1])
+                        else:
+                            # print(len(arr),"lll")
+                            respons_str += (floor_in_question+'没有'+arr[len(arr) - 2])
+
+                    #respons_str += (father + '没有' + target[0])
+
+                else:
+                    if target[0].find('_') == -1:
+                        # print(last,"-1")
+                        respons_str += '和'+target[0]
+                    else:
+                        arr = target[0].split('_')
+                        if len(arr) == 3:
+                            # print(len(arr),"which")
+                            respons_str += '和'+arr[len(arr) - 1]
+                        else:
+                            # print(len(arr),"lll")
+                            respons_str += '和'+arr[len(arr) - 2]
+
+            '''
+            if ans[index] == 0:
+                if count_no == 0:
+                    count_no = count_no+1
 
                     respons_str += (floor_in_question + '没有' + target[0])
 
                 else:
                     respons_str += '和' + target[0]
+            '''
 
             index = index + 1
         if count_no > 0:
-            respons_str += ("。")
+            respons_str += ("。\n")
 
 
-        return respons_str+'\n'
+        return respons_str
 
     #资源楼层
     def answer_res_floor_h(cls,entity_dict,graph):
@@ -1081,11 +1193,40 @@ class rdfBot():
             if ans[index]:
                 if count_yes == 0:
                     count_yes = count_yes + 1
+                    if target[0].find('_') == -1:
+                        # print(last,"-1")
+                        respons_str += (target[0])
+                    else:
+                        arr = target[0].split('_')
+                        if len(arr) == 3:
+                            # print(len(arr),"which")
+                            respons_str += (arr[len(arr) - 1])
+                        else:
+                            # print(len(arr),"lll")
+                            respons_str += (arr[len(arr) - 2])
+                    #respons_str += target[0]
+
+                else:
+                    if target[0].find('_') == -1:
+                        # print(last,"-1")
+                        respons_str += ('和' + target[0])
+                    else:
+                        arr = target[0].split('_')
+                        if len(arr) == 3:
+                            # print(len(arr),"which")
+                            respons_str += ('和' + arr[len(arr) - 1])
+                        else:
+                            # print(len(arr),"lll")
+                            respons_str += ('和' + arr[len(arr) - 2])
+            '''
+            if ans[index]:
+                if count_yes == 0:
+                    count_yes = count_yes + 1
                     respons_str += target[0]
 
                 else:
                     respons_str += '和'+target[0]
-
+            '''
             index = index + 1
         if count_yes>0:
             respons_str += ('在' + floor_in_question[0][0]+"。")
@@ -1098,10 +1239,39 @@ class rdfBot():
             if ans[index] == 0:
                 if count_no == 0:
                     count_no = count_no+1
+                    if target[0].find('_') == -1:
+                        # print(last,"-1")
+                        respons_str += (target[0])
+                    else:
+                        arr = target[0].split('_')
+                        if len(arr) == 3:
+                            # print(len(arr),"which")
+                            respons_str += (arr[len(arr) - 1])
+                        else:
+                            # print(len(arr),"lll")
+                            respons_str += (arr[len(arr) - 2])
+
+                else:
+                    if target[0].find('_') == -1:
+                        # print(last,"-1")
+                        respons_str += ('和' + target[0])
+                    else:
+                        arr = target[0].split('_')
+                        if len(arr) == 3:
+                            # print(len(arr),"which")
+                            respons_str += ('和' + arr[len(arr) - 1])
+                        else:
+                            # print(len(arr),"lll")
+                            respons_str += ('和' + arr[len(arr) - 2])
+            '''
+            if ans[index] == 0:
+                if count_no == 0:
+                    count_no = count_no+1
                     respons_str += target[0]
 
                 else:
                     respons_str += '和' + target[0]
+            '''
 
             index = index + 1
         if count_no > 0:
@@ -1143,14 +1313,48 @@ class rdfBot():
             if ans[index]:
                 if count_yes == 0:
                     count_yes = count_yes + 1
+                    if target[0].find('_') == -1:
+                        # print(last,"-1")
+                        respons_str += (room_in_question+'有'+target[0])
+                    else:
+                        arr = target[0].split('_')
+                        respons_str += (room_in_question + '有' + arr[len(arr) - 1])
+                        '''
+                        if len(arr) == 3:
+                            # print(len(arr),"which")
+                            respons_str += (room_in_question+'有'+arr[len(arr) - 1])
+                        else:
+                            # print(len(arr),"lll")
+                            respons_str += (room_in_question+'有'+arr[len(arr) - 2])
+                        '''
+            else:
+                if target[0].find('_') == -1:
+                    # print(last,"-1")
+                    respons_str += ('和' + target[0])
+                else:
+                    arr = target[0].split('_')
+                    respons_str += ('和' + arr[len(arr) - 1])
+                    '''
+                    if len(arr) == 3:
+                        # print(len(arr),"which")
+                        respons_str += ('和' + arr[len(arr) - 1])
+                    else:
+                        # print(len(arr),"lll")
+                        respons_str += ('和' + arr[len(arr) - 2])
+                    '''
+            '''
+            if ans[index]:
+                if count_yes == 0:
+                    count_yes = count_yes + 1
                     respons_str += (room_in_question+'有'+target[0])
 
                 else:
                     respons_str += '和'+target[0]
+            '''
 
             index = index + 1
         if count_yes>0:
-            respons_str += ("。")
+            respons_str += ("。\n")
 
         index = 0
         for target in res_in_question:
@@ -1160,16 +1364,54 @@ class rdfBot():
             if ans[index] == 0:
                 if count_no == 0:
                     count_no = count_no+1
+                    if target[0].find('_') == -1:
+                        # print(last,"-1")
+                        respons_str += (room_in_question+'没有'+target[0])
+                    else:
+
+                        arr = target[0].split('_')
+                        respons_str += (room_in_question + '没有' + arr[len(arr) - 1])
+                        '''
+                        if len(arr) == 3:
+                            # print(len(arr),"which")
+                            respons_str += (room_in_question+'没有'+arr[len(arr) - 1])
+                        else:
+                            # print(len(arr),"lll")
+                            respons_str += (room_in_question+'没有'+arr[len(arr) - 2])
+                        '''
+
+                    #respons_str += (father + '没有' + target[0])
+
+                else:
+                    if target[0].find('_') == -1:
+                        # print(last,"-1")
+                        respons_str += '和'+target[0]
+                    else:
+                        arr = target[0].split('_')
+                        respons_str += ('和' + arr[len(arr) - 1])
+                        '''
+                        if len(arr) == 3:
+                            # print(len(arr),"which")
+                            respons_str += '和'+arr[len(arr) - 1]
+                        else:
+                            # print(len(arr),"lll")
+                            respons_str += '和'+arr[len(arr) - 2]
+                        '''
+            '''
+            if ans[index] == 0:
+                if count_no == 0:
+                    count_no = count_no+1
 
                     respons_str += (room_in_question + '没有' + target[0])
 
                 else:
                     respons_str += '和' + target[0]
+            '''
 
             index = index + 1
         if count_no > 0:
-            respons_str += ("。")
-        return respons_str+'\n'
+            respons_str += ("。\n")
+        return respons_str
 
 
     def answer_res_room_l(cls,entity_dict,graph):
@@ -1202,10 +1444,46 @@ class rdfBot():
             if ans[index]:
                 if count_yes == 0:
                     count_yes = count_yes + 1
+                    if target[0].find('_') == -1:
+                        # print(last,"-1")
+                        respons_str += (target[0])
+                    else:
+                        arr = target[0].split('_')
+                        respons_str += (arr[len(arr) - 1])
+                        '''
+                        if len(arr) == 3:
+                            # print(len(arr),"which")
+                            respons_str += (arr[len(arr) - 1])
+                        else:
+                            # print(len(arr),"lll")
+                            respons_str += (arr[len(arr) - 2])
+                        '''
+                    #respons_str += target[0]
+
+                else:
+                    if target[0].find('_') == -1:
+                        # print(last,"-1")
+                        respons_str += ('和' + target[0])
+                    else:
+                        arr = target[0].split('_')
+                        respons_str += ('和' + arr[len(arr) - 1])
+                        '''
+                        if len(arr) == 3:
+                            # print(len(arr),"which")
+                            respons_str += ('和' + arr[len(arr) - 1])
+                        else:
+                            # print(len(arr),"lll")
+                            respons_str += ('和' + arr[len(arr) - 2])
+                        '''
+            '''
+            if ans[index]:
+                if count_yes == 0:
+                    count_yes = count_yes + 1
                     respons_str += target[0]
 
                 else:
                     respons_str += '和'+target[0]
+            '''
 
             index = index + 1
         if count_yes>0:
@@ -1219,10 +1497,45 @@ class rdfBot():
             if ans[index] == 0:
                 if count_no == 0:
                     count_no = count_no+1
+                    if target[0].find('_') == -1:
+                        # print(last,"-1")
+                        respons_str += (target[0])
+                    else:
+                        arr = target[0].split('_')
+                        respons_str += (arr[len(arr) - 1])
+                        '''
+                        if len(arr) == 3:
+                            # print(len(arr),"which")
+                            respons_str += (arr[len(arr) - 1])
+                        else:
+                            # print(len(arr),"lll")
+                            respons_str += (arr[len(arr) - 2])
+                        '''
+
+                else:
+                    if target[0].find('_') == -1:
+                        # print(last,"-1")
+                        respons_str += ('和' + target[0])
+                    else:
+                        arr = target[0].split('_')
+                        respons_str += ('和' + arr[len(arr) - 1])
+                        '''
+                        if len(arr) == 3:
+                            # print(len(arr),"which")
+                            respons_str += ('和' + arr[len(arr) - 1])
+                        else:
+                            # print(len(arr),"lll")
+                            respons_str += ('和' + arr[len(arr) - 2])
+                        '''
+            '''
+            if ans[index] == 0:
+                if count_no == 0:
+                    count_no = count_no+1
                     respons_str += target[0]
 
                 else:
                     respons_str += '和' + target[0]
+            '''
 
             index = index + 1
         if count_no > 0:

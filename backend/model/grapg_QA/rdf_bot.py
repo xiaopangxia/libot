@@ -12,13 +12,14 @@ from model.config.base_config import GraphBaseConfig
 from model.kb_prepare.rdf_prepare import rdfPrepare
 import time
 import datetime
+import numpy as np
 class rdfBot():
     """
     对应问题模式在知识图谱中查找答案
     目前包括馆室位置，馆室开放日，馆室开放时间，馆室联系方式，资源馆室
     """
     @classmethod
-    def task_response(cls, task, entity_dict, graph):
+    def task_response(cls, task, entity_dict, question_str, graph):
         """
         响应hub指派的回答任务，也就是对graphQA类的问题分intent处理
         :param task:
@@ -93,9 +94,9 @@ class rdfBot():
             answer = cls.answer_res_room(entity_dict, graph)
         #包含类
         elif task == 'task_room_room_l':
-            answer = cls.answer_room_room_l(cls=cls,entity_dict=entity_dict, graph=graph)
+            answer = cls.answer_room_room_l(cls=cls,entity_dict=entity_dict, question_str=question_str,graph=graph)
         elif task == 'task_room_room_h':
-            answer = cls.answer_room_room_h(cls=cls,entity_dict=entity_dict, graph=graph)
+            answer = cls.answer_room_room_h(cls=cls,entity_dict=entity_dict, question_str=question_str,graph=graph)
         elif task == 'task_room_floor_l':
             answer = cls.answer_room_floor_l(cls=cls,entity_dict=entity_dict, graph=graph)
         elif task == 'task_room_floor_h':
@@ -550,7 +551,28 @@ class rdfBot():
         else:
             return None
     #馆室馆室
-    def answer_room_room_l(cls,entity_dict,graph):
+    def answer_room_room_l(cls,entity_dict,question_str,graph):
+        arr = []
+        if len(entity_dict['room']) > 0:
+            for i in entity_dict['room']:
+                if len(i) == 0:
+                    continue
+                index = question_str.find(i[0])
+                arr.append(index)
+            # print(arr)
+            arr_index = np.argsort(np.array(arr))
+            # print(arr_index)
+            entity_dict2 = []
+            for i in entity_dict['room']:
+                if len(i) == 0:
+                    continue
+                entity_dict2.append(i)
+
+            for i in range(len(entity_dict['room'])):
+                if len(entity_dict['room'][i]) == 0:
+                    continue
+                # print(arr_index[i],entity_dict2[arr_index[i]])
+                entity_dict['room'][i] = entity_dict2[arr_index[i]]
         room_in_question = entity_dict['room']
         #print(room_in_question)
         respons_str = ''
@@ -604,7 +626,28 @@ class rdfBot():
         return respons_str+'\n'
 
 
-    def answer_room_room_h(cls,entity_dict,graph):
+    def answer_room_room_h(cls,entity_dict,question_str,graph):
+        arr = []
+        if len(entity_dict['room']) > 0:
+            for i in entity_dict['room']:
+                if len(i) == 0:
+                    continue
+                index = question_str.find(i[0])
+                arr.append(index)
+            # print(arr)
+            arr_index = np.argsort(np.array(arr))
+            # print(arr_index)
+            entity_dict2 = []
+            for i in entity_dict['room']:
+                if len(i) == 0:
+                    continue
+                entity_dict2.append(i)
+
+            for i in range(len(entity_dict['room'])):
+                if len(entity_dict['room'][i]) == 0:
+                    continue
+                # print(arr_index[i],entity_dict2[arr_index[i]])
+                entity_dict['room'][i] = entity_dict2[arr_index[i]]
         room_in_question = entity_dict['room']
         #print(room_in_question)
         respons_str = ''

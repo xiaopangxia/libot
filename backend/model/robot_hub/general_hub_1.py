@@ -26,6 +26,7 @@ class GeneralHub():
     def __init__(self):
         self._aiml_kernal = aiml_cn.Kernel()
         self._aiml_kernal.learn('../../resource/template.aiml')
+        self._aiml_kernal.learn('../../resource/contain_template.aiml')
 
     def question_answer_hub(self, question_str):
         """

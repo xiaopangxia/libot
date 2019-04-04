@@ -552,12 +552,16 @@ class rdfBot():
             return None
     #馆室馆室
     def answer_room_room_l(cls,entity_dict,question_str,graph):
+        entity_count = 1
         arr = []
         if len(entity_dict['room']) > 0:
             for i in entity_dict['room']:
                 if len(i) == 0:
                     continue
                 index = question_str.find(i[0])
+                if index == -1:
+                    index = len(entity_dict['room'])-entity_count
+                    entity_count = entity_count+1
                 arr.append(index)
             # print(arr)
             arr_index = np.argsort(np.array(arr))
@@ -598,14 +602,35 @@ class rdfBot():
             if ans[index]:
                 if count_yes == 0:
                     count_yes = count_yes + 1
-                    respons_str += target[0]
+                    if target[0].find('_') == -1:
+                        # print(last,"-1")
+                        respons_str += (target[0])
+                    else:
+                        arr = target[0].split('_')
+                        if len(arr) == 3:
+                            # print(len(arr),"which")
+                            respons_str += (arr[len(arr) - 1])
+                        else:
+                            # print(len(arr),"lll")
+                            respons_str += (arr[len(arr) - 2])
+                    #respons_str += target[0]
 
                 else:
-                    respons_str += '和'+target[0]
+                    if target[0].find('_') == -1:
+                        # print(last,"-1")
+                        respons_str += ('和' + target[0])
+                    else:
+                        arr = target[0].split('_')
+                        if len(arr) == 3:
+                            # print(len(arr),"which")
+                            respons_str += ('和' + arr[len(arr) - 1])
+                        else:
+                            # print(len(arr),"lll")
+                            respons_str += ('和' + arr[len(arr) - 2])
 
             index = index + 1
         if count_yes>0:
-            respons_str += ('在' + father+"。")
+            respons_str += ('在' + father+"。\n")
 
         index = 0
         for target in room_in_question[:-1]:
@@ -613,26 +638,50 @@ class rdfBot():
             if ans[index] == 0:
                 if count_no == 0:
                     count_no = count_no+1
-                    respons_str += target[0]
+                    if target[0].find('_') == -1:
+                        # print(last,"-1")
+                        respons_str += (target[0])
+                    else:
+                        arr = target[0].split('_')
+                        if len(arr) == 3:
+                            # print(len(arr),"which")
+                            respons_str += (arr[len(arr) - 1])
+                        else:
+                            # print(len(arr),"lll")
+                            respons_str += (arr[len(arr) - 2])
 
                 else:
-                    respons_str += '和' + target[0]
+                    if target[0].find('_') == -1:
+                        # print(last,"-1")
+                        respons_str += ('和' + target[0])
+                    else:
+                        arr = target[0].split('_')
+                        if len(arr) == 3:
+                            # print(len(arr),"which")
+                            respons_str += ('和' + arr[len(arr) - 1])
+                        else:
+                            # print(len(arr),"lll")
+                            respons_str += ('和' + arr[len(arr) - 2])
 
             index = index + 1
         if count_no > 0:
-            respons_str += ('不在' + father+"。")
+            respons_str += ('不在' + father+"。\n")
 
 
-        return respons_str+'\n'
+        return respons_str
 
 
     def answer_room_room_h(cls,entity_dict,question_str,graph):
+        entity_count = 1
         arr = []
         if len(entity_dict['room']) > 0:
             for i in entity_dict['room']:
                 if len(i) == 0:
                     continue
                 index = question_str.find(i[0])
+                if index == -1:
+                    index = len(entity_dict['room'])-entity_count
+                    entity_count = entity_count+1
                 arr.append(index)
             # print(arr)
             arr_index = np.argsort(np.array(arr))
@@ -649,7 +698,7 @@ class rdfBot():
                 # print(arr_index[i],entity_dict2[arr_index[i]])
                 entity_dict['room'][i] = entity_dict2[arr_index[i]]
         room_in_question = entity_dict['room']
-        #print(room_in_question)
+        print(room_in_question)
         respons_str = ''
 
         ans=[]
@@ -673,14 +722,36 @@ class rdfBot():
             if ans[index]:
                 if count_yes == 0:
                     count_yes = count_yes + 1
-                    respons_str += (father+'有'+target[0])
+                    if target[0].find('_') == -1:
+                        # print(last,"-1")
+                        respons_str += (father+'有'+target[0])
+                    else:
+                        arr = target[0].split('_')
+                        if len(arr) == 3:
+                            # print(len(arr),"which")
+                            respons_str += (father+'有'+arr[len(arr) - 1])
+                        else:
+                            # print(len(arr),"lll")
+                            respons_str += (father+'有'+arr[len(arr) - 2])
+                    #respons_str += (father+'有'+target[0])
 
                 else:
-                    respons_str += '和'+target[0]
+                    if target[0].find('_') == -1:
+                        # print(last,"-1")
+                        respons_str += ('和'+target[0])
+                    else:
+                        arr = target[0].split('_')
+                        if len(arr) == 3:
+                            # print(len(arr),"which")
+                            respons_str += ('和'+arr[len(arr) - 1])
+                        else:
+                            # print(len(arr),"lll")
+                            respons_str += ('和'+arr[len(arr) - 2])
+                    #respons_str += '和'+target[0]
 
             index = index + 1
         if count_yes>0:
-            respons_str += ("。")
+            respons_str += ("。\n")
 
         index = 0
         for target in room_in_question[1:]:
@@ -688,18 +759,40 @@ class rdfBot():
             if ans[index] == 0:
                 if count_no == 0:
                     count_no = count_no+1
+                    if target[0].find('_') == -1:
+                        # print(last,"-1")
+                        respons_str += (father+'没有'+target[0])
+                    else:
+                        arr = target[0].split('_')
+                        if len(arr) == 3:
+                            # print(len(arr),"which")
+                            respons_str += (father+'没有'+arr[len(arr) - 1])
+                        else:
+                            # print(len(arr),"lll")
+                            respons_str += (father+'没有'+arr[len(arr) - 2])
 
-                    respons_str += (father + '没有' + target[0])
+                    #respons_str += (father + '没有' + target[0])
 
                 else:
-                    respons_str += '和' + target[0]
+                    if target[0].find('_') == -1:
+                        # print(last,"-1")
+                        respons_str += '和'+target[0]
+                    else:
+                        arr = target[0].split('_')
+                        if len(arr) == 3:
+                            # print(len(arr),"which")
+                            respons_str += '和'+arr[len(arr) - 1]
+                        else:
+                            # print(len(arr),"lll")
+                            respons_str += '和'+arr[len(arr) - 2]
+                    #respons_str += '和' + target[0]
 
             index = index + 1
         if count_no > 0:
-            respons_str += ("。")
+            respons_str += ("。\n")
 
 
-        return respons_str+'\n'
+        return respons_str
 
     def answer_room_room_a(cls, entity_dict, graph):
         room_in_question = entity_dict['room'][0][0]
@@ -713,19 +806,36 @@ class rdfBot():
                 if i.find('厕所') != -1 or i.find('梯')!=-1 or i.find('卫生间') != -1:
                     continue
                 if i.find('_') == -1:
+                    #if i == '5':
+                        #print("5_-1")
                     respons_str += i+"\n"
                 else:
                     arr = i.split('_')
-                    respons_str += arr[len(arr) - 2] + "\n"
+                    if len(arr) == 3:
+                        if i == '总馆北区_F4人工复制处_5':
+                            respons_str += arr[len(arr) - 2] + "\n"
+                        else:
+                            respons_str += arr[len(arr) - 1] + "\n"
+                    else:
+                        #if (arr[len(arr) - 2] == '5'):
+                        #    print(i, "5")
+                        #print(len(arr),arr[len(arr) - 2],i)
+                        respons_str += arr[len(arr) - 2] + "\n"
             last = ans[len(ans)-1]
             if last.find('_') == -1:
-                #print(last)
+                #print(last,"-1")
                 respons_str += i + "\n"
             else:
                 arr = last.split('_')
-                respons_str += arr[len(arr)-2]
+                if len(arr) == 3:
+                    #print(len(arr),"which")
+                    respons_str += arr[len(arr) - 1] + "\n"
+                else:
+                    #print(len(arr),"lll")
+                    respons_str += arr[len(arr) - 2] + "\n"
+                #respons_str += arr[len(arr)-2]
 
-            return respons_str+"\n"
+            return respons_str
 
     def answer_floor_room_a(cls, entity_dict, graph):
         floor_in_question = entity_dict['floor'][0][0]

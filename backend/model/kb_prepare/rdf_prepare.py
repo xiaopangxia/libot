@@ -144,6 +144,7 @@ class rdfPrepare():
     @classmethod
     def rdf_query_varientnames(cls, type, g):
         entity_list = rdfPrepare.rdf_query_entity_list(type,g)
+        #print(entity_list)
         varient_list = dict()
         for enity in entity_list:
             q = "select?part where {<"+str(enity)+"> <http://www.libot.org/pro_variant_name> ?part}"
@@ -200,16 +201,40 @@ class rdfPrepare():
         # print(entity_list)
         return entity_list
 
+    @classmethod
+    def rdf_query_count(cls, enity, g):
+
+        q = "select?part where {<http://www.libot.org/" + str(enity) + "> <http://www.libot.org/pro_count> ?part}"
+        x = g.query(q)
+        t = list(x)
+        vlist = t[0][0].strip().split('，')
+
+        return vlist
+
+    @classmethod
+    def test(cls, g):
+
+        q = "select?part where {<http://www.libot.org/中文_普通图书（含民国平装书）> <http://www.libot.org/pro_count> ?part}"
+        x = g.query(q)
+        t = list(x)
+        vlist = t[0][0].strip().split('，')
+        print(vlist)
+        return t
+
+
 
 
 
 if __name__ == '__main__':
     # rdfPrepare.excel_to_RDF(r'../../resource/libot.xlsx',"../../resource/libot.rdf")
     g = rdfPrepare.load_graph()
+    #rdfPrepare.rdf_query_varientnames('room',g)
+    a=rdfPrepare.rdf_query_count('中文_普通图书（含民国平装书）',g)
+    print(a)
     # rdfPrepare.rdf_query_relation('少年儿童馆主题活动区','rel_part_of_room',g)
     # var = ["亲子区"]
     # rdfPrepare.rdf_query_name("小儿馆","room",g)
-    rdfPrepare.rdf_queryreverse_relation('台港澳文献阅览室','rel_part_of_room','resource',g)
+    #rdfPrepare.rdf_queryreverse_relation('台港澳文献阅览室','rel_part_of_room','resource',g)
     # print(rdfPrepare.rdf_query_propertiy("中文期刊区",'pro_open_day',g))
     # rdfPrepare.rdf_queryreverse_propertiy('周一至周五（周六、周日不开放）','pro_open_day',g)
 

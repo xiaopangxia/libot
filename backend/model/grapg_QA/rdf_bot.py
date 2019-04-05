@@ -119,6 +119,18 @@ class rdfBot():
             answer = cls.answer_floor_res_a(cls=cls, entity_dict=entity_dict, graph=graph)
         elif task == 'task_room_room_or_res_a':
             answer = cls.answer_room_room_or_res_a(cls=cls, entity_dict=entity_dict, graph=graph)
+        elif task == 'task_count_res':
+            answer = cls.answer_count_res(cls=cls, entity_dict=entity_dict, graph=graph)
+        elif task == 'task_count_floor':
+            answer = cls.answer_count_floor(cls=cls, entity_dict=entity_dict, graph=graph)
+        elif task == 'task_floor_count_room':
+            answer = cls.answer_floor_count_room(cls=cls, entity_dict=entity_dict, graph=graph)
+        elif task == 'task_res_res_h':
+            answer = cls.answer_res_res_h(cls=cls, entity_dict=entity_dict, question_str=question_str,graph=graph)
+        elif task == 'task_res_res_a':
+            answer = cls.answer_res_res_a(cls=cls, entity_dict=entity_dict,graph=graph)
+        elif task == 'task_room_count_room':
+            answer = cls.answer_room_count_room(cls=cls, entity_dict=entity_dict, question_str=question_str,graph=graph)
 
 
         return answer
@@ -716,13 +728,14 @@ class rdfBot():
         count_no = 0
         #print(len(room_in_question[:-1]))
         for target in room_in_question[1:]:
-            if (len(rdfPrepare.rdf_query_relation(target[0], "rel_part_of_room", graph))<=0):
-                ans.append(0)
+            flag = 0
+            if (len(target)) == 0:
                 continue
-            if (rdfPrepare.rdf_query_relation(target[0], "rel_part_of_room", graph)[0] == father):
-                ans.append(1)
-            else :
-                ans.append(0)
+            for t in target:
+                if (rdfPrepare.rdf_query_relation(t, "rel_part_of_room", graph)[0] == father):
+                    flag = 1
+            ans.append(flag)
+
         #print(ans)
 
         index = 0
@@ -904,15 +917,14 @@ class rdfBot():
         count_no = 0
         #print(len(room_in_question[:-1]))
         for target in room_in_question:
+            flag = 0
             if (len(target)) == 0:
                 continue
-            if (len(rdfPrepare.rdf_query_relation(target[0], "rel_part_of_floor", graph))<=0):
-                ans.append(0)
-                continue
-            if (rdfPrepare.rdf_query_relation(target[0], "rel_part_of_floor", graph)[0] == floor_in_question[0][0]):
-                ans.append(1)
-            else :
-                ans.append(0)
+            for t in target:
+                if (rdfPrepare.rdf_query_relation(t, "rel_part_of_floor", graph)[0] == floor_in_question[0][0]):
+                    flag = 1
+            ans.append(flag)
+
         #print(ans)
 
         index = 0
@@ -994,7 +1006,7 @@ class rdfBot():
     def answer_room_floor_h(cls,entity_dict,graph):
         room_in_question = entity_dict['room']
         floor_in_question = entity_dict['floor'][0][0]
-        #print(room_in_question)
+        #print(room_in_question,floor_in_question)
         respons_str = ''
 
         ans=[]
@@ -1004,16 +1016,14 @@ class rdfBot():
         count_no = 0
         #print(len(room_in_question[:-1]))
         for target in room_in_question:
+            flag = 0
             if (len(target)) == 0:
                 continue
-            if (len(rdfPrepare.rdf_query_relation(target[0], "rel_part_of_floor", graph))<=0):
-                ans.append(0)
-                continue
-            if (rdfPrepare.rdf_query_relation(target[0], "rel_part_of_floor", graph)[0] == floor_in_question):
-                ans.append(1)
-            else :
-                ans.append(0)
-        #print(ans)
+            for t in target:
+                if (rdfPrepare.rdf_query_relation(t, "rel_part_of_floor", graph)[0] == floor_in_question[0][0]):
+                    flag = 1
+            ans.append(flag)
+
 
         index = 0
         for target in room_in_question:
@@ -1689,6 +1699,273 @@ class rdfBot():
                         subroom = arr[len(arr) - 2]
                         respons_str += (arr[len(arr) - 2]+'\n')
         return respons_str
+
+    def answer_count_res(cls, entity_dict, graph):
+        res_in_question = entity_dict['res']
+        #print(res_in_question)
+        count = rdfPrepare.rdf_query_count(res_in_question[0][0], graph)
+        #print(count)
+        respons_str = res_in_question[0][0] + '一共有' + str(count[0]) + '本。\n'
+
+        return respons_str
+
+    def answer_count_floor(cls, entity_dict, graph):
+        respons_str = ''
+        if(len(entity_dict['room'][0])>1):
+            r = entity_dict['room'][0][0]
+            if r.find('_') == -1:
+                # print(last,"-1")
+
+                respons_str += (r + '一共有'+str(len(entity_dict['room'][0]))+'层。\n')
+            else:
+                arr = r.split('_')
+                if len(arr) == 3:
+
+                    respons_str += (arr[len(arr) - 1] + '一共有'+str(len(entity_dict['room'][0]))+'层。\n')
+                else:
+
+                    respons_str += (arr[len(arr) - 2] + '一共有'+str(len(entity_dict['room'][0]))+'层。\n')
+            return respons_str
+
+        room_in_question = entity_dict['room'][0][0]
+        #print(entity_dict['room'],room_in_question)
+        floor = rdfPrepare.rdf_queryreverse_relation(room_in_question, 'rel_part_of_room', 'floor', graph)
+        if len(floor)>0:
+
+            respons_str += room_in_question+"一共有"+str(len(floor))+'层。\n'
+        else :
+            respons_str += '只有一层。\n'
+        return respons_str
+
+    def answer_floor_count_room(cls, entity_dict, graph):
+        room_in_question = entity_dict['room']
+        floor_in_question = entity_dict['floor'][0][0]
+        respons_str = ''
+        #print(room_in_question)
+        for target in room_in_question:
+            count = 0
+            for t in target:
+                #print(t,floor_in_question)
+                if (rdfPrepare.rdf_query_relation(t, "rel_part_of_floor", graph)[0] == floor_in_question):
+                    count = count+1
+                    #print(t, floor_in_question,count)
+            #arr.append(count)
+            if count == 0:
+
+                if target[0].find('_') == -1:
+                    # print(last,"-1")
+                    respons_str += (floor_in_question + '没有' + target[0]+"。\n")
+                else:
+                    arr = target[0].split('_')
+                    if len(arr) == 3:
+                        # print(len(arr),"which")
+                        respons_str += (floor_in_question + '没有' + arr[len(arr) - 1]+"。\n")
+                    else:
+                        # print(len(arr),"lll")
+                        respons_str += (floor_in_question + '没有' + arr[len(arr) - 2]+"。\n")
+            else:
+                if target[0].find('_') == -1:
+                    # print(last,"-1")
+                    respons_str += (floor_in_question + '一共有' + str(count) + '间'+target[0]+"。\n")
+                else:
+                    arr = target[0].split('_')
+                    if len(arr) == 3:
+                        # print(len(arr),"which")
+                        respons_str += (floor_in_question + '一共有' + str(count) + '间'+ arr[len(arr) - 1]+"。\n")
+                    else:
+                        # print(len(arr),"lll")
+                        respons_str += (floor_in_question + '一共有' + str(count) + '间'+ arr[len(arr) - 2]+"。\n")
+                #respons_str += (floor_in_question + '一共有' + str(count) + '间'+'。\n')
+        return respons_str
+
+    def answer_res_res_h(cls, entity_dict, question_str,graph):
+
+            entity_count = 1
+            arr = []
+            if len(entity_dict['res']) > 0:
+                for i in entity_dict['res']:
+                    if len(i) == 0:
+                        continue
+                    index = question_str.find(i[0])
+                    if index == -1:
+                        index = len(entity_dict['res']) - entity_count
+                        entity_count = entity_count + 1
+                    arr.append(index)
+                # print(arr)
+                arr_index = np.argsort(np.array(arr))
+                # print(arr_index)
+                entity_dict2 = []
+                for i in entity_dict['res']:
+                    if len(i) == 0:
+                        continue
+                    entity_dict2.append(i)
+
+                for i in range(len(entity_dict['res'])):
+                    if len(entity_dict['res'][i]) == 0:
+                        continue
+                    # print(arr_index[i],entity_dict2[arr_index[i]])
+                    entity_dict['res'][i] = entity_dict2[arr_index[i]]
+            res_in_question = entity_dict['res']
+            #print(res_in_question)
+            respons_str = ''
+
+            ans = []
+            father = res_in_question[0][0]
+            # print(father)
+            count_yes = 0
+            count_no = 0
+            # print(len(room_in_question[:-1]))
+            for target in res_in_question[1:]:
+                flag = 0
+                if (len(target)) == 0:
+                    continue
+                for t in target:
+                    if (rdfPrepare.rdf_query_relation(t, "rel_part_of_source", graph)[0] == father):
+                        flag = 1
+                ans.append(flag)
+
+            # print(ans)
+
+            index = 0
+            for target in res_in_question[1:]:
+                if ans[index]:
+                    if count_yes == 0:
+                        count_yes = count_yes + 1
+                        if target[0].find('_') == -1:
+                            # print(last,"-1")
+                            respons_str += (father + '包括' + target[0])
+                        else:
+                            arr = target[0].split('_')
+                            respons_str += (father + '包括' + arr[len(arr) - 1])
+
+
+                    else:
+                        if target[0].find('_') == -1:
+                            # print(last,"-1")
+                            respons_str += ('和' + target[0])
+                        else:
+                            arr = target[0].split('_')
+                            respons_str += ('和' + arr[len(arr) - 1])
+
+
+                index = index + 1
+            if count_yes > 0:
+                respons_str += ("。\n")
+
+            index = 0
+            for target in res_in_question[1:]:
+                # print(index)
+                if ans[index] == 0:
+                    if count_no == 0:
+                        count_no = count_no + 1
+                        if target[0].find('_') == -1:
+                            # print(last,"-1")
+                            respons_str += (father + '不包括' + target[0])
+                        else:
+                            arr = target[0].split('_')
+                            respons_str += (father + '不包括' + arr[len(arr) - 1])
+
+
+                    else:
+                        if target[0].find('_') == -1:
+                            # print(last,"-1")
+                            respons_str += '和' + target[0]
+                        else:
+                            arr = target[0].split('_')
+                            respons_str += '和' + arr[len(arr) - 1]
+
+
+                index = index + 1
+            if count_no > 0:
+                respons_str += ("。\n")
+
+            return respons_str
+
+    def answer_res_res_a(cls, entity_dict, graph):
+        res_in_question = entity_dict['res'][0][0]
+        #print(res_in_question)
+        ans=rdfPrepare.rdf_queryreverse_relation(res_in_question,'rel_part_of_source','resource',graph)
+        #print(ans)
+        if len(ans)==0:
+            return "很抱歉，"+res_in_question+"不包括其他资源。"
+        else:
+            respons_str = res_in_question+"有:\n"
+            for i in ans:
+                if i.find('_') == -1:
+                    respons_str += i+"\n"
+                else:
+                    arr = i.split('_')
+                    respons_str += arr[len(arr) - 1] + "\n"
+
+        return respons_str
+
+    def answer_room_count_room(cls, entity_dict, question_str,graph):
+        entity_count = 1
+        arr = []
+        if len(entity_dict['room']) > 0:
+            for i in entity_dict['room']:
+                if len(i) == 0:
+                    continue
+                index = question_str.find(i[0])
+                if index == -1:
+                    index = len(entity_dict['room']) - entity_count
+                    entity_count = entity_count + 1
+                arr.append(index)
+            # print(arr)
+            arr_index = np.argsort(np.array(arr))
+            # print(arr_index)
+            entity_dict2 = []
+            for i in entity_dict['room']:
+                if len(i) == 0:
+                    continue
+                entity_dict2.append(i)
+
+            for i in range(len(entity_dict['room'])):
+                if len(entity_dict['room'][i]) == 0:
+                    continue
+                # print(arr_index[i],entity_dict2[arr_index[i]])
+                entity_dict['room'][i] = entity_dict2[arr_index[i]]
+
+        room_in_question = entity_dict['room'][1:]
+        father = entity_dict['room'][0][0]
+        respons_str = ''
+        #print(room_in_question)
+        for target in room_in_question:
+            count = 0
+            for t in target:
+                #print(t,floor_in_question)
+                if (rdfPrepare.rdf_query_relation(t, "rel_part_of_room", graph)[0] == father):
+                    count = count+1
+                    #print(t, floor_in_question,count)
+            #arr.append(count)
+            if count == 0:
+
+                if target[0].find('_') == -1:
+                    # print(last,"-1")
+                    respons_str += (father + '没有' + target[0]+"。\n")
+                else:
+                    arr = target[0].split('_')
+                    if len(arr) == 3:
+                        # print(len(arr),"which")
+                        respons_str += (father + '没有' + arr[len(arr) - 1]+"。\n")
+                    else:
+                        # print(len(arr),"lll")
+                        respons_str += (father + '没有' + arr[len(arr) - 2]+"。\n")
+            else:
+                if target[0].find('_') == -1:
+                    # print(last,"-1")
+                    respons_str += (father + '一共有' + str(count) + '间'+target[0]+"。\n")
+                else:
+                    arr = target[0].split('_')
+                    if len(arr) == 3:
+                        # print(len(arr),"which")
+                        respons_str += (father + '一共有' + str(count) + '间'+ arr[len(arr) - 1]+"。\n")
+                    else:
+                        # print(len(arr),"lll")
+                        respons_str += (father + '一共有' + str(count) + '间'+ arr[len(arr) - 2]+"。\n")
+                #respons_str += (floor_in_question + '一共有' + str(count) + '间'+'。\n')
+        return respons_str
+
 
 
 

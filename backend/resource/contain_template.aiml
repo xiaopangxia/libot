@@ -76,6 +76,13 @@
     </category>
 
     <category>
+        <pattern>#FLOOR#含#RES#</pattern>
+        <template>
+            task_res_floor_h
+        </template>
+    </category>
+
+    <category>
         <pattern>#RES#在#FLOOR#</pattern>
         <template>
             task_res_floor_l
@@ -84,6 +91,12 @@
 
     <category>
         <pattern>#ROOM#有#RES#</pattern>
+        <template>
+            task_res_room_h
+        </template>
+    </category>
+    <category>
+        <pattern>#ROOM#含#RES#</pattern>
         <template>
             task_res_room_h
         </template>

@@ -1115,28 +1115,29 @@ class rdfBot():
     #资源楼层
     def answer_res_floor_h(cls,entity_dict,graph):
         res_in_question = entity_dict['res']
-        floor_in_question = entity_dict['floor'][0][0]
-        #print(room_in_question)
         respons_str = ''
+        ans = []
+        floor_in_question = entity_dict['floor'][0][0]
+        room = rdfPrepare.rdf_queryreverse_relation(floor_in_question, 'rel_part_of_floor', 'room', graph)
+        # print(room)
+        for i in range(len(res_in_question)):
 
-        ans=[]
-
-        #print(father)
+            # print(r)
+            flag = 0
+            for r in room:
+                # print(r,res_in_question[i][0],rdfPrepare.rdf_query_relation(res_in_question[i][0], 'rel_part_of_room', graph)[0])
+                if (rdfPrepare.rdf_query_relation(res_in_question[i][0], 'rel_part_of_room', graph)[0]) == r:
+                    # print('ysssssssss')
+                    ans.append(1)
+                    flag = 1
+                    break
+                # else:
+                #    print('asdfghjj',r, res_in_question[i][0],
+                #          rdfPrepare.rdf_query_relation(res_in_question[i][0], 'rel_part_of_room', graph)[0])
+            if flag == 0:
+                ans.append(0)
         count_yes = 0
         count_no = 0
-        #print(len(room_in_question[:-1]))
-        for target in res_in_question:
-            if (len(target)) == 0:
-                continue
-            if (len(rdfPrepare.rdf_query_relation(target[0], "rel_part_of_floor", graph))<=0):
-                ans.append(0)
-                continue
-            if (rdfPrepare.rdf_query_relation(target[0], "rel_part_of_floor", graph)[0] == floor_in_question):
-                ans.append(1)
-            else :
-                ans.append(0)
-        #print(ans)
-
         index = 0
         for target in res_in_question:
             if (len(target)) == 0:
@@ -1144,14 +1145,24 @@ class rdfBot():
             if ans[index]:
                 if count_yes == 0:
                     count_yes = count_yes + 1
-                    respons_str += (floor_in_question+'有'+target[0])
+                    if target[0].find('_') == -1:
+                        respons_str += (floor_in_question+'有'+target[0])
+                    else:
+                        arr = target[0].split('_')
+                        respons_str += (floor_in_question+'有'+arr[len(arr) - 1])
+
 
                 else:
-                    respons_str += '和'+target[0]
+                    if target[0].find('_') == -1:
+                        respons_str += ('和'+target[0])
+                    else:
+                        arr = target[0].split('_')
+                        respons_str += ('和'+arr[len(arr) - 1])
+                    #respons_str += '和'+target[0]
 
             index = index + 1
         if count_yes>0:
-            respons_str += ("。")
+            respons_str += ("。\n")
 
         index = 0
         for target in res_in_question:
@@ -1161,40 +1172,55 @@ class rdfBot():
             if ans[index] == 0:
                 if count_no == 0:
                     count_no = count_no+1
+                    if target[0].find('_') == -1:
+                        respons_str += (floor_in_question+'没有'+target[0])
+                    else:
+                        arr = target[0].split('_')
+                        respons_str += (floor_in_question+'没有'+arr[len(arr) - 1])
 
-                    respons_str += (floor_in_question + '没有' + target[0])
+                    #respons_str += (floor_in_question + '没有' + target[0])
 
                 else:
-                    respons_str += '和' + target[0]
+                    if target[0].find('_') == -1:
+                        respons_str += ('和'+target[0])
+                    else:
+                        arr = target[0].split('_')
+                        respons_str += ('和'+arr[len(arr) - 1])
+                    #respons_str += '和' + target[0]
 
             index = index + 1
         if count_no > 0:
-            respons_str += ("。")
-        return respons_str+'\n'
+            respons_str += ("。\n")
+        return respons_str
 
 
     def answer_res_floor_l(cls,entity_dict,graph):
+        #print("ssssss")
         res_in_question = entity_dict['res']
-        floor_in_question = entity_dict['room']
-
-        #print(room_in_question,floor_in_question)
         respons_str = ''
-
         ans=[]
+        floor_in_question = entity_dict['floor'][0][0]
+        room = rdfPrepare.rdf_queryreverse_relation(floor_in_question, 'rel_part_of_floor', 'room', graph)
+        #print(room)
+        for i in range(len(res_in_question)):
+
+            #print(r)
+            flag = 0
+            for r in room:
+                #print(r,res_in_question[i][0],rdfPrepare.rdf_query_relation(res_in_question[i][0], 'rel_part_of_room', graph)[0])
+                if (rdfPrepare.rdf_query_relation(res_in_question[i][0], 'rel_part_of_room', graph)[0])==r:
+                    #print('ysssssssss')
+                    ans.append(1)
+                    flag = 1
+                    break
+                #else:
+                #    print('asdfghjj',r, res_in_question[i][0],
+                #          rdfPrepare.rdf_query_relation(res_in_question[i][0], 'rel_part_of_room', graph)[0])
+            if flag == 0:
+                ans.append(0)
+
         count_yes = 0
         count_no = 0
-        #print(len(room_in_question[:-1]))
-        for target in res_in_question:
-            if (len(target)) == 0:
-                continue
-            if (len(rdfPrepare.rdf_query_relation(target[0], "rel_part_of_floor", graph))<=0):
-                ans.append(0)
-                continue
-            if (rdfPrepare.rdf_query_relation(target[0], "rel_part_of_floor", graph)[0] == floor_in_question[0][0]):
-                ans.append(1)
-            else :
-                ans.append(0)
-        #print(ans)
 
         index = 0
         for target in res_in_question:
@@ -1204,17 +1230,10 @@ class rdfBot():
                 if count_yes == 0:
                     count_yes = count_yes + 1
                     if target[0].find('_') == -1:
-                        # print(last,"-1")
                         respons_str += (target[0])
                     else:
                         arr = target[0].split('_')
-                        if len(arr) == 3:
-                            # print(len(arr),"which")
-                            respons_str += (arr[len(arr) - 1])
-                        else:
-                            # print(len(arr),"lll")
-                            respons_str += (arr[len(arr) - 2])
-                    #respons_str += target[0]
+                        respons_str += (arr[len(arr) - 1])
 
                 else:
                     if target[0].find('_') == -1:
@@ -1222,24 +1241,10 @@ class rdfBot():
                         respons_str += ('和' + target[0])
                     else:
                         arr = target[0].split('_')
-                        if len(arr) == 3:
-                            # print(len(arr),"which")
-                            respons_str += ('和' + arr[len(arr) - 1])
-                        else:
-                            # print(len(arr),"lll")
-                            respons_str += ('和' + arr[len(arr) - 2])
-            '''
-            if ans[index]:
-                if count_yes == 0:
-                    count_yes = count_yes + 1
-                    respons_str += target[0]
-
-                else:
-                    respons_str += '和'+target[0]
-            '''
+                        respons_str += ('和' + arr[len(arr) - 1])
             index = index + 1
         if count_yes>0:
-            respons_str += ('在' + floor_in_question[0][0]+"。\n")
+            respons_str += ('在' + floor_in_question+"。\n")
 
         index = 0
         for target in res_in_question:
@@ -1254,12 +1259,8 @@ class rdfBot():
                         respons_str += (target[0])
                     else:
                         arr = target[0].split('_')
-                        if len(arr) == 3:
-                            # print(len(arr),"which")
-                            respons_str += (arr[len(arr) - 1])
-                        else:
-                            # print(len(arr),"lll")
-                            respons_str += (arr[len(arr) - 2])
+                        respons_str += (arr[len(arr) - 1])
+
 
                 else:
                     if target[0].find('_') == -1:
@@ -1267,25 +1268,11 @@ class rdfBot():
                         respons_str += ('和' + target[0])
                     else:
                         arr = target[0].split('_')
-                        if len(arr) == 3:
-                            # print(len(arr),"which")
-                            respons_str += ('和' + arr[len(arr) - 1])
-                        else:
-                            # print(len(arr),"lll")
-                            respons_str += ('和' + arr[len(arr) - 2])
-            '''
-            if ans[index] == 0:
-                if count_no == 0:
-                    count_no = count_no+1
-                    respons_str += target[0]
-
-                else:
-                    respons_str += '和' + target[0]
-            '''
+                        respons_str += ('和' + arr[len(arr) - 1])
 
             index = index + 1
         if count_no > 0:
-            respons_str += ('不在' + floor_in_question[0][0]+"。\n")
+            respons_str += ('不在' + floor_in_question+"。\n")
 
 
         return respons_str
@@ -1558,9 +1545,10 @@ class rdfBot():
         respons_str = ''
         room_in_question = entity_dict['room'][0][0]
         room = rdfPrepare.rdf_queryreverse_relation(room_in_question,'rel_part_of_room','room',graph)
+        #print(room)
         if len(room) == 0:
             res=rdfPrepare.rdf_queryreverse_relation(room_in_question,'rel_part_of_room','resource',graph)
-            print(res)
+            #print(res)
             if len(res)==0:
                 return "很抱歉，"+room_in_question+"不包含任何资源。\n"
             else:

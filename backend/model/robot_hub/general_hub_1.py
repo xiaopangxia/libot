@@ -65,6 +65,7 @@ class GeneralHub():
             print("aiml_respons: ", str(aiml_respons))
             #print("entity_dict: ", str(entity_dict))
             graph_respons = rdfBot.task_response(aiml_respons,entity_dict,question_str,g)
+
             return graph_respons
         else:
             return aiml_respons
@@ -79,7 +80,6 @@ if __name__ == '__main__':
     # gh.question_answer_hub('会议论文在哪？')
     # gh.question_answer_hub('学位论文在哪？')
     # gh.question_answer_hub('香港书在哪个馆啊？')
-
     #gh.question_answer_hub('古籍馆什么时候开？')
     test_hub = GeneralHub()
     while True:

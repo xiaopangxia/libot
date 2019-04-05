@@ -1710,21 +1710,35 @@ class rdfBot():
         return respons_str
 
     def answer_count_floor(cls, entity_dict, graph):
+        print(entity_dict)
         respons_str = ''
         if(len(entity_dict['room'][0])>1):
-            r = entity_dict['room'][0][0]
-            if r.find('_') == -1:
-                # print(last,"-1")
+            temp = rdfPrepare.rdf_queryreverse_relation(entity_dict['room'][0][0], 'rel_part_of_room', 'room', graph)
+            if(len(temp)>0):
+                for room in entity_dict['room'][0]:
 
-                respons_str += (r + '一共有'+str(len(entity_dict['room'][0]))+'层。\n')
+                    # print(entity_dict['room'],room_in_question)
+                    floor = rdfPrepare.rdf_queryreverse_relation(room, 'rel_part_of_room', 'floor', graph)
+                    if len(floor) > 0:
+
+                        respons_str += room + "一共有" + str(len(floor)) + '层。\n'
+                    else:
+                        respons_str += '只有一层。\n'
             else:
-                arr = r.split('_')
-                if len(arr) == 3:
 
-                    respons_str += (arr[len(arr) - 1] + '一共有'+str(len(entity_dict['room'][0]))+'层。\n')
+                r = entity_dict['room'][0][0]
+                if r.find('_') == -1:
+                    # print(last,"-1")
+
+                    respons_str += (r + '一共有'+str(len(entity_dict['room'][0]))+'层。\n')
                 else:
+                    arr = r.split('_')
+                    if len(arr) == 3:
 
-                    respons_str += (arr[len(arr) - 2] + '一共有'+str(len(entity_dict['room'][0]))+'层。\n')
+                        respons_str += (arr[len(arr) - 1] + '一共有'+str(len(entity_dict['room'][0]))+'层。\n')
+                    else:
+
+                        respons_str += (arr[len(arr) - 2] + '一共有'+str(len(entity_dict['room'][0]))+'层。\n')
             return respons_str
 
         room_in_question = entity_dict['room'][0][0]

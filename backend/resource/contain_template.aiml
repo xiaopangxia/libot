@@ -20,9 +20,21 @@
             task_room_room_a
         </template>
     </category>
+    <category>
+        <pattern>#ROOM#包括#馆#</pattern>
+        <template>
+            task_room_room_a
+        </template>
+    </category>
 
     <category>
         <pattern>#ROOM#有#室#</pattern>
+        <template>
+            task_room_room_a
+        </template>
+    </category>
+    <category>
+        <pattern>#ROOM#包括#室#</pattern>
         <template>
             task_room_room_a
         </template>
@@ -104,6 +116,12 @@
             task_floor_room_a
         </template>
     </category>
+    <category>
+        <pattern>#FLOOR#包括#</pattern>
+        <template>
+            task_floor_room_a
+        </template>
+    </category>
 
     <category>
         <pattern>#FLOOR#含#室#</pattern>
@@ -113,16 +131,70 @@
     </category>
 
     <category>
-        <pattern>#FLOOR#有什么#</pattern>
+        <pattern>#FLOOR#有#</pattern>
         <template>
             task_floor_room_a
         </template>
     </category>
 
     <category>
-        <pattern>#ROOM#有什么#资源#</pattern>
+        <pattern>#ROOM#有#资源#</pattern>
         <template>
-            task_floor_room_a
+            task_room_res_a
+        </template>
+    </category>
+
+    <category>
+        <pattern>#ROOM#含#资源#</pattern>
+        <template>
+            task_room_res_a
+        </template>
+    </category>
+
+    <category>
+        <pattern>#ROOM#包括#资源#</pattern>
+        <template>
+            task_room_res_a
+        </template>
+    </category>
+
+    <category>
+        <pattern>#FLOOR#有#资源#</pattern>
+        <template>
+            task_floor_res_a
+        </template>
+    </category>
+
+    <category>
+        <pattern>#FLOOR#含#资源#</pattern>
+        <template>
+            task_floor_res_a
+        </template>
+    </category>
+    <category>
+        <pattern>#FLOOR#包括#资源#</pattern>
+        <template>
+            task_floor_res_a
+        </template>
+    </category>
+
+    <category>
+        <pattern>#ROOM#含#</pattern>
+        <template>
+            task_room_room_or_res_a
+        </template>
+    </category>
+
+    <category>
+        <pattern>#ROOM#包括#</pattern>
+        <template>
+            task_room_room_or_res_a
+        </template>
+    </category>
+    <category>
+        <pattern>#ROOM#有#</pattern>
+        <template>
+            task_room_room_or_res_a
         </template>
     </category>
 

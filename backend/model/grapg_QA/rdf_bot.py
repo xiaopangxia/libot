@@ -113,6 +113,14 @@ class rdfBot():
             answer = cls.answer_room_room_a(cls=cls,entity_dict=entity_dict, graph=graph)
         elif task == 'task_floor_room_a':
             answer = cls.answer_floor_room_a(cls=cls,entity_dict=entity_dict, graph=graph)
+        elif task == 'task_room_res_a':
+            answer = cls.answer_room_res_a(cls=cls,entity_dict=entity_dict, graph=graph)
+        elif task == 'task_floor_res_a':
+            answer = cls.answer_floor_res_a(cls=cls, entity_dict=entity_dict, graph=graph)
+        elif task == 'task_room_room_or_res_a':
+            answer = cls.answer_room_room_or_res_a(cls=cls, entity_dict=entity_dict, graph=graph)
+
+
         return answer
 
     @classmethod
@@ -1545,5 +1553,154 @@ class rdfBot():
 
 
         return respons_str+'\n'
+
+    def answer_room_res_a(cls, entity_dict, graph):
+        respons_str = ''
+        room_in_question = entity_dict['room'][0][0]
+        room = rdfPrepare.rdf_queryreverse_relation(room_in_question,'rel_part_of_room','room',graph)
+        if len(room) == 0:
+            res=rdfPrepare.rdf_queryreverse_relation(room_in_question,'rel_part_of_room','resource',graph)
+            print(res)
+            if len(res)==0:
+                return "很抱歉，"+room_in_question+"不包含任何资源。\n"
+            else:
+                respons_str += room_in_question+"有:\n"
+                for i in res[:-1]:
+
+                    if i.find('_') == -1:
+                        #print(i,"-1")
+                        respons_str += i + "\n"
+                    else:
+                        arr = i.split('_')
+                        respons_str += arr[len(arr) - 1] + "\n"
+
+                last = res[len(res) - 1]
+
+                #print(last)
+                if last.find('_') == -1:
+                    #print(last)
+                    respons_str += last + "\n"
+                else:
+                    arr = last.split('_')
+                    respons_str += arr[len(arr) - 1] + "\n"
+        else:
+            for r in room:
+                subroom = ''
+                if r.find('厕所') != -1 or r.find('梯')!=-1 or r.find('卫生间') != -1:
+                    continue
+                if r.find('_') == -1:
+                    # print(last,"-1")
+                    subroom = r
+                    respons_str += ('\n'+room_in_question+'包含' + r+'，其中有的资源如下：\n')
+                else:
+                    arr = r.split('_')
+                    if len(arr) == 3:
+                        subroom = arr[len(arr) - 1]
+                        respons_str += ('\n'+room_in_question+'包含' + arr[len(arr) - 1]+'，其中有的资源如下：\n')
+                    else:
+                        subroom = arr[len(arr) - 2]
+                        respons_str += ('\n'+room_in_question+'包含' + arr[len(arr) - 2]+'，其中有的资源如下：\n')
+                mulres = rdfPrepare.rdf_queryreverse_relation(r, 'rel_part_of_room', 'resource', graph)
+                if len(mulres) == 0:
+                    respons_str += subroom + "不包含任何资源。\n"
+                else:
+
+                    for subres in mulres:
+
+                        if subres.find('_') == -1:
+                            # print(i,"-1")
+                            respons_str += subres + "\n"
+                        else:
+                            arr = subres.split('_')
+                            respons_str += arr[len(arr) - 1] + "\n"
+
+        return respons_str
+    def answer_floor_res_a(cls, entity_dict, graph):
+        respons_str = ''
+        floor_in_question = entity_dict['floor'][0][0]
+        room = rdfPrepare.rdf_queryreverse_relation(floor_in_question,'rel_part_of_floor','room',graph)
+        for r in room:
+            subroom = ''
+            if r.find('厕所') != -1 or r.find('梯')!=-1 or r.find('卫生间') != -1:
+                continue
+            if r.find('_') == -1:
+                # print(last,"-1")
+                subroom = r
+                respons_str += ('\n'+floor_in_question+'包含' + r+'，其中有的资源如下：\n')
+            else:
+                arr = r.split('_')
+                if len(arr) == 3:
+                    subroom = arr[len(arr) - 1]
+                    respons_str += ('\n'+floor_in_question+'包含' + arr[len(arr) - 1]+'，其中有的资源如下：\n')
+                else:
+
+                    subroom = arr[len(arr) - 2]
+                    respons_str += ('\n'+floor_in_question+'包含' + arr[len(arr) - 2]+'，其中有的资源如下：\n')
+            mulres = rdfPrepare.rdf_queryreverse_relation(r, 'rel_part_of_room', 'resource', graph)
+            if len(mulres) == 0:
+                respons_str += subroom + "不包含任何资源。\n"
+            else:
+
+                for subres in mulres:
+
+                    if subres.find('_') == -1:
+                            # print(i,"-1")
+                        respons_str += subres + "\n"
+                    else:
+                        arr = subres.split('_')
+                        respons_str += arr[len(arr) - 1] + "\n"
+
+        return respons_str
+    def answer_room_room_or_res_a(cls, entity_dict, graph):
+        respons_str = ''
+        room_in_question = entity_dict['room'][0][0]
+        room = rdfPrepare.rdf_queryreverse_relation(room_in_question,'rel_part_of_room','room',graph)
+        if len(room) == 0:
+            res=rdfPrepare.rdf_queryreverse_relation(room_in_question,'rel_part_of_room','resource',graph)
+            print(res)
+            if len(res)==0:
+                return "很抱歉，"+room_in_question+"不包含任何资源。\n"
+            else:
+                respons_str += room_in_question+"有:\n"
+                for i in res[:-1]:
+
+                    if i.find('_') == -1:
+                        #print(i,"-1")
+                        respons_str += i + "\n"
+                    else:
+                        arr = i.split('_')
+                        respons_str += arr[len(arr) - 1] + "\n"
+
+                last = res[len(res) - 1]
+
+                #print(last)
+                if last.find('_') == -1:
+                    #print(last)
+                    respons_str += last + "\n"
+                else:
+                    arr = last.split('_')
+                    respons_str += arr[len(arr) - 1] + "\n"
+        else:
+            respons_str += room_in_question + "有:\n"
+            for r in room:
+                subroom = ''
+                if r.find('厕所') != -1 or r.find('梯')!=-1 or r.find('卫生间') != -1:
+                    continue
+                if r.find('_') == -1:
+                    # print(last,"-1")
+                    subroom = r
+                    respons_str += (r+'\n')
+                else:
+                    arr = r.split('_')
+                    if len(arr) == 3:
+                        subroom = arr[len(arr) - 1]
+                        respons_str += (arr[len(arr) - 1]+'\n')
+                    else:
+                        subroom = arr[len(arr) - 2]
+                        respons_str += (arr[len(arr) - 2]+'\n')
+        return respons_str
+
+
+
 
 

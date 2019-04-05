@@ -816,6 +816,7 @@ class rdfBot():
         return respons_str
 
     def answer_room_room_a(cls, entity_dict, graph):
+        c = 0
         room_in_question = entity_dict['room'][0][0]
         ans=rdfPrepare.rdf_queryreverse_relation(room_in_question,'rel_part_of_room','room',graph)
         #print(ans)
@@ -826,6 +827,7 @@ class rdfBot():
             for i in ans[:-1]:
                 if i.find('厕所') != -1 or i.find('梯')!=-1 or i.find('卫生间') != -1:
                     continue
+                c = c+1
                 if i.find('_') == -1:
                     #if i == '5':
                         #print("5_-1")
@@ -844,7 +846,8 @@ class rdfBot():
                         respons_str += arr[len(arr) - 2] + "\n"
             last = ans[len(ans)-1]
             if last.find('厕所') != -1 or last.find('梯') != -1 or last.find('卫生间') != -1:
-                return respons_str
+                return respons_str+'总共有'+str(c)+"间馆室。\n"
+            c=c+1
             if last.find('_') == -1:
                 #print(last,"-1")
                 respons_str += last + "\n"
@@ -858,9 +861,10 @@ class rdfBot():
                     respons_str += arr[len(arr) - 2] + "\n"
                 #respons_str += arr[len(arr)-2]
 
-            return respons_str
+            return respons_str+'总共有'+str(c)+"间馆室。\n"
 
     def answer_floor_room_a(cls, entity_dict, graph):
+        count = 0
         floor_in_question = entity_dict['floor'][0][0]
         ans=rdfPrepare.rdf_queryreverse_relation(floor_in_question,'rel_part_of_floor','room',graph)
         #print(ans)
@@ -871,6 +875,7 @@ class rdfBot():
             for i in ans[:-1]:
                 if i.find('厕所') != -1 or i.find('梯')!=-1 or i.find('卫生间') != -1:
                     continue
+                count = count+1
                 if i.find('_') == -1:
                     #print(i,"-1")
                     respons_str += i + "\n"
@@ -887,7 +892,8 @@ class rdfBot():
                         respons_str += arr[len(arr) - 2] + "\n"
             last = ans[len(ans) - 1]
             if last.find('厕所') != -1 or last.find('梯') != -1 or last.find('卫生间') != -1:
-                return respons_str
+                return respons_str+'总共有'+str(count)+"间馆室。\n"
+            count = count + 1
             #print(last)
             if last.find('_') == -1:
                 print(last)
@@ -901,7 +907,7 @@ class rdfBot():
                     # print(len(arr),"lll")
                     respons_str += arr[len(arr) - 2] + "\n"
 
-            return respons_str
+            return respons_str+'总共有'+str(count)+"间馆室。\n"
 
 
     #楼层馆室
@@ -1979,6 +1985,8 @@ class rdfBot():
                         respons_str += (father + '一共有' + str(count) + '间'+ arr[len(arr) - 2]+"。\n")
                 #respons_str += (floor_in_question + '一共有' + str(count) + '间'+'。\n')
         return respons_str
+
+
 
 
 

@@ -242,13 +242,13 @@
         </template>
     </category>
     <category>
-        <pattern>#ROOM#有什么#</pattern>
+        <pattern>#ROOM#有#</pattern>
         <template>
             task_room_room_or_res_a
         </template>
     </category>
     <category>
-        <pattern>#ROOM#有哪些#</pattern>
+        <pattern>#ROOM#有#</pattern>
         <template>
             task_room_room_or_res_a
         </template>

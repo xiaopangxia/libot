@@ -1126,7 +1126,7 @@ class rdfBot():
             flag = 0
             for r in room:
                 # print(r,res_in_question[i][0],rdfPrepare.rdf_query_relation(res_in_question[i][0], 'rel_part_of_room', graph)[0])
-                if (rdfPrepare.rdf_query_relation(res_in_question[i][0], 'rel_part_of_room', graph)[0]) == r:
+                if (r in rdfPrepare.rdf_query_relation(res_in_question[i][0], 'rel_part_of_room', graph)):
                     # print('ysssssssss')
                     ans.append(1)
                     flag = 1
@@ -1201,14 +1201,16 @@ class rdfBot():
         ans=[]
         floor_in_question = entity_dict['floor'][0][0]
         room = rdfPrepare.rdf_queryreverse_relation(floor_in_question, 'rel_part_of_floor', 'room', graph)
-        #print(room)
+        print(room)
         for i in range(len(res_in_question)):
 
             #print(r)
             flag = 0
             for r in room:
+                a=rdfPrepare.rdf_query_relation(res_in_question[i][0], 'rel_part_of_room', graph)
+                #print(r,a)
                 #print(r,res_in_question[i][0],rdfPrepare.rdf_query_relation(res_in_question[i][0], 'rel_part_of_room', graph)[0])
-                if (rdfPrepare.rdf_query_relation(res_in_question[i][0], 'rel_part_of_room', graph)[0])==r:
+                if r in (rdfPrepare.rdf_query_relation(res_in_question[i][0], 'rel_part_of_room', graph)):
                     #print('ysssssssss')
                     ans.append(1)
                     flag = 1

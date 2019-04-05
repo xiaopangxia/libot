@@ -185,6 +185,18 @@
         </template>
     </category>
     <category>
+        <pattern>#FLOOR#有#看#</pattern>
+        <template>
+            task_floor_res_a
+        </template>
+    </category>
+    <category>
+        <pattern>#FLOOR#有#书#</pattern>
+        <template>
+            task_floor_res_a
+        </template>
+    </category>
+    <category>
         <pattern>#FLOOR#包括#资源#</pattern>
         <template>
             task_floor_res_a

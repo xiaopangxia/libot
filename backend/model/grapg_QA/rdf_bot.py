@@ -826,7 +826,7 @@ class rdfBot():
                 return respons_str
             if last.find('_') == -1:
                 #print(last,"-1")
-                respons_str += i + "\n"
+                respons_str += last + "\n"
             else:
                 arr = last.split('_')
                 if len(arr) == 3:
@@ -851,7 +851,7 @@ class rdfBot():
                 if i.find('厕所') != -1 or i.find('梯')!=-1 or i.find('卫生间') != -1:
                     continue
                 if i.find('_') == -1:
-                    #print(i)
+                    #print(i,"-1")
                     respons_str += i + "\n"
                 else:
                     arr = i.split('_')
@@ -859,16 +859,18 @@ class rdfBot():
                         if i == '总馆北区_F4人工复制处_5':
                             respons_str += arr[len(arr) - 2] + "\n"
                         else:
+                            #print(i,arr[len(arr) - 1], "3")
                             respons_str += arr[len(arr) - 1] + "\n"
                     else:
+                        #print(i, arr[len(arr) - 2], "4")
                         respons_str += arr[len(arr) - 2] + "\n"
             last = ans[len(ans) - 1]
             if last.find('厕所') != -1 or last.find('梯') != -1 or last.find('卫生间') != -1:
                 return respons_str
             #print(last)
             if last.find('_') == -1:
-                #print(last)
-                respons_str += i + "\n"
+                print(last)
+                respons_str += last + "\n"
             else:
                 arr = last.split('_')
                 if len(arr) == 3:
@@ -1229,7 +1231,7 @@ class rdfBot():
             '''
             index = index + 1
         if count_yes>0:
-            respons_str += ('在' + floor_in_question[0][0]+"。")
+            respons_str += ('在' + floor_in_question[0][0]+"。\n")
 
         index = 0
         for target in res_in_question:
@@ -1275,10 +1277,10 @@ class rdfBot():
 
             index = index + 1
         if count_no > 0:
-            respons_str += ('不在' + floor_in_question[0][0]+"。")
+            respons_str += ('不在' + floor_in_question[0][0]+"。\n")
 
 
-        return respons_str+'\n'
+        return respons_str
 
     #资源馆室
     def answer_res_room_h(cls,entity_dict,graph):
@@ -1304,7 +1306,7 @@ class rdfBot():
                 ans.append(1)
             else :
                 ans.append(0)
-        #print(ans)
+        #print(ans,res_in_question)
 
         index = 0
         for target in res_in_question:
@@ -1327,13 +1329,13 @@ class rdfBot():
                             # print(len(arr),"lll")
                             respons_str += (room_in_question+'有'+arr[len(arr) - 2])
                         '''
-            else:
-                if target[0].find('_') == -1:
-                    # print(last,"-1")
-                    respons_str += ('和' + target[0])
                 else:
-                    arr = target[0].split('_')
-                    respons_str += ('和' + arr[len(arr) - 1])
+                    if target[0].find('_') == -1:
+                    # print(last,"-1")
+                        respons_str += ('和' + target[0])
+                    else:
+                        arr = target[0].split('_')
+                        respons_str += ('和' + arr[len(arr) - 1])
                     '''
                     if len(arr) == 3:
                         # print(len(arr),"which")

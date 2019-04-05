@@ -112,5 +112,20 @@
         </template>
     </category>
 
+    <category>
+        <pattern>#FLOOR#有什么#</pattern>
+        <template>
+            task_floor_room_a
+        </template>
+    </category>
+
+    <category>
+        <pattern>#ROOM#有什么#资源#</pattern>
+        <template>
+            task_floor_room_a
+        </template>
+    </category>
+
+
 
 </aiml>

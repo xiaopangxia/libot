@@ -202,6 +202,12 @@ class rdfBot():
         machine_room = rdfPrepare.rdf_query_relation(machine, 'rel_part_of_room', graph)[0]
         machine_floor = rdfPrepare.rdf_query_relation(machine, 'rel_part_of_floor', graph)[0]
         father_room = rdfPrepare.rdf_query_relation(des_room, 'rel_part_of_room', graph)
+        if len(destination)>1:
+            for jud in destination:
+                if jud.find(machine_room) == -1:
+                    print(jud,destination,machine_room)
+                    del jud
+                    print(destination)
         if len(father_room)>0:
             father_room = father_room[0]
         ##print('father',father_room)
@@ -234,6 +240,7 @@ class rdfBot():
             #print(pos_near_machine,near_machine_dir,near_machine_dis,near_des,near_des_dir,near_des_dis)
             print(destination,near_des)
             if destination[0] in near_des:
+                print("?")
                 for i in range(len(near_des)):
                     if des_room == near_des[i]:
                         distance = near_des_dis[i]

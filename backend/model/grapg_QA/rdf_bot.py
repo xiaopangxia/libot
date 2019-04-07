@@ -67,7 +67,7 @@ class rdfBot():
         elif task == 'task_room_contact':
             answer = cls.answer_room_contact(entity_dict, graph=graph)
         elif task == 'task_room_pos':
-            answer = cls.answer_room_pos(entity_dict, graph,1)
+            answer = cls.answer_room_navi(entity_dict, graph,1)
         elif task == 'task_res_time':
             answer = cls.answer_res_time(entity_dict, graph,"today")
         elif task == 'task_res_time_tomorrow':
@@ -174,6 +174,137 @@ class rdfBot():
             return respons_str
         else:
             return None
+
+    @classmethod
+    def answer_room_navi(cls, entity_dict, graph, tag):
+        if tag:
+            respons_str = '\n您当前位置是' + GraphBaseConfig['now_floor'] + '。\n'
+        else:
+            respons_str = ''
+        machine = GraphBaseConfig['now_machine']
+        #print(machine)
+        destination = entity_dict['room'][0]
+
+        des_room = rdfPrepare.rdf_query_relation(destination[0], 'rel_part_of_room', graph)
+        #print(des_room)
+        if len(des_room)<=0:
+            respons_str += destination[0]
+            if len(destination)>1:
+                for d in destination[1:]:
+                    respons_str += '和' + d
+            respons_str += "不在该馆区。\n"
+            return respons_str
+
+        #print(len(entity_dict),type(entity_dict),entity_dict)
+
+        des_room = des_room[0]
+        #print(des_room)
+        machine_room = rdfPrepare.rdf_query_relation(machine, 'rel_part_of_room', graph)[0]
+        machine_floor = rdfPrepare.rdf_query_relation(machine, 'rel_part_of_floor', graph)[0]
+        father_room = rdfPrepare.rdf_query_relation(des_room, 'rel_part_of_room', graph)
+        if len(father_room)>0:
+            father_room = father_room[0]
+        ##print('father',father_room)
+        des_floor = []
+        form_des = ''
+        if destination[0].find('_') == -1:
+            #respons_str += (destination[0])
+            form_des = destination[0]
+        else:
+            arr = destination[0].split('_')
+            if len(arr) == 3:
+                #respons_str += (arr[len(arr) - 1])
+                form_des = arr[len(arr) - 1]
+            else:
+                #respons_str += (arr[len(arr) - 2])
+                form_des = arr[len(arr) - 2]
+        for des in destination:
+            des_floor.append(rdfPrepare.rdf_query_relation(des, 'rel_part_of_floor', graph)[0])
+        #print(machine_room,machine_floor,des_room,des_floor)
+        if machine_floor in des_floor:
+
+            pos_near_machine = rdfPrepare.rdf_query_navi_propertiy(machine,'pro_neighbor',graph)
+            near_machine_dir = rdfPrepare.rdf_query_navi_propertiy(machine,'pro_neighbor_dir',graph)
+            near_machine_dis = rdfPrepare.rdf_query_navi_propertiy(machine,'pro_nei_dis',graph)
+
+            near_des = rdfPrepare.rdf_query_navi_propertiy(machine,'pro_destination',graph)
+            near_des_dir = rdfPrepare.rdf_query_navi_propertiy(machine, 'pro_destination_dir', graph)
+            near_des_dis = rdfPrepare.rdf_query_navi_propertiy(machine, 'pro_des_dis', graph)
+
+            #print(pos_near_machine,near_machine_dir,near_machine_dis,near_des,near_des_dir,near_des_dis)
+            print(destination,near_des)
+            if destination[0] in near_des:
+                for i in range(len(near_des)):
+                    if des_room == near_des[i]:
+                        distance = near_des_dis[i]
+                        print(distance.split('m')[0])
+                        if int(distance.split('m')[0])<=50:
+                            respons_str += form_des+'在您'+near_des_dir[i]+"面"+distance+"处。\n"
+
+                        else:
+                            respons_str += '向'+near_des_dis[i]+"走"+distance+"您就能找到"+form_des+"。\n"
+            else:
+                return None
+
+
+
+            respons_str += 'same floor.\n'
+        elif machine_room == des_room:
+            respons_str += form_des
+            first = des_floor[0]
+            if first.find(des_room)!=-1:
+                respons_str += '在本馆区'+first.split('_')[1]+'层'
+            if len(des_floor)>1:
+                for sub_floor in des_floor[1:]:
+                    if sub_floor.find(des_room) == -1:
+                        continue
+                    print(sub_floor)
+                    respons_str += '和'+sub_floor.split('_')[1]+"层"
+            respons_str += '。\n'
+        elif (machine_room == father_room):
+            respons_str += form_des
+            r = des_room
+
+            if r.find('_') == -1:
+                respons_str += '在本馆区的' + (r) + '。\n位于'
+                first = des_floor[0]
+
+                respons_str += '本馆区的' + first.split('_')[1] + '层'
+                if len(des_floor) > 1:
+                    for sub_floor in des_floor[1:]:
+                        respons_str += '、' + sub_floor.split('_')[1] + "层"
+                respons_str += '。\n'
+            else:
+                arr = r.split('_')
+                #print(arr)
+                if len(arr) == 3:
+                    respons_str += '在本馆区的' + (arr[len(arr) - 1]) + '。\n位于'
+                else:
+                    #print(arr)
+                    respons_str += '在本馆区的' + (arr[len(arr) - 2]) + '。\n位于'
+                first = des_floor[0]
+
+                respons_str += '本馆区的' + first.split('_')[1] + '层'
+                if len(des_floor) > 1:
+                    for sub_floor in des_floor[1:]:
+                        respons_str += '、' + sub_floor.split('_')[1] + "层"
+                respons_str += '。\n'
+
+        else:
+            respons_str += form_des
+            r = des_room
+
+            if r.find('_') == -1:
+                respons_str += '不在该馆区。'+form_des+'在'+(r)+'。\n'
+            else:
+                arr = r.split('_')
+                print(arr)
+                if len(arr) == 3:
+                    respons_str += '不在该馆区。'+form_des+'在'+(arr[len(arr) - 1])+'。\n'
+                else:
+                    print(arr)
+                    respons_str += '不在该馆区。'+form_des+'在'+(arr[len(arr) - 2])+'。\n'
+        return respons_str
 
     @classmethod
     def answer_res_pos(cls, entity_dict, graph, tag):

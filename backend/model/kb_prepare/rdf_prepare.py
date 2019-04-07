@@ -102,10 +102,16 @@ class rdfPrepare():
         return g
 
     @classmethod
+    def load_navi_graph(cls):
+        navi_g = rdflib.Graph()
+        navi_g.parse("../../resource/navigation.rdf", format="xml")
+        return navi_g
+
+    @classmethod
     def rdf_query_propertiy(cls,entity, intension, g):
 
         q = "select?part where {<http://www.libot.org/" + entity + "> <http://www.libot.org/" + intension + "> ?part}"
-        # print(q)
+        #print(q)
         x = g.query(q)
         t = list(x)
         part_list = []
@@ -115,30 +121,66 @@ class rdfPrepare():
         return part_list
 
     @classmethod
+    def rdf_query_navi_propertiy(cls, entity, intension, g):
+
+        q = "select?part where {<http://www.libot.org/" + entity + "> <http://www.libot.org/" + intension + "> ?part}"
+        # print(q)
+        x = g.query(q)
+        t = list(x)
+        #t = list(x)
+        #print('？',t)
+        vlist = t[0][0].strip().split('，')
+
+        return vlist
+
+    @classmethod
     def rdf_query_relation(cls, entity, intension, g):
 
         q = "select?part where {<http://www.libot.org/" + entity + "> <http://www.libot.org/" + intension + "> ?part}"
         # print(q)
         x = g.query(q)
         t = list(x)
+        #print(t)
         part_list = []
+        #print(t[0][0])
+
         for i in range(len(t)):
             part_list.append(t[i][0].split('/')[3])
         # print(part_list)
+
+        return part_list
+
+    @classmethod
+    def rdf_navi_query_relation(cls, entity, intension, g):
+
+        q = "select?part where {<http://www.libot.org/" + entity + "> <http://www.libot.org/" + intension + "> ?part}"
+        # print(q)
+        x = g.query(q)
+        t = list(x)
+        #print(t)
+        part_list = []
+
+
+        for i in range(len(t)):
+            part_list.append(str(t[i][0]))
+
+
         return part_list
 
     @classmethod
     def rdf_query_entity_list(cls, type, g):
 
         q = "select?part where {?part <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.libot.org/" + type + ">}"
+
         # print(q)
         x = g.query(q)
         t = list(x)
+        #print(t)
         entity_list = []
         for i in range(len(t)):
             # print(t[i][0])
             entity_list.append(t[i][0])
-        # print(entity_list[5])
+        #print(entity_list[1])
         return entity_list
 
     @classmethod
@@ -148,13 +190,20 @@ class rdfPrepare():
         varient_list = dict()
         for enity in entity_list:
             q = "select?part where {<"+str(enity)+"> <http://www.libot.org/pro_variant_name> ?part}"
+
             x = g.query(q)
             t = list(x)
+            #print(t)
+
+            #print(t[0])
             vlist = t[0][0].strip().split('，')
+            #print(str(enity).split('/'))
             enity_name = str(enity).split('/')[3]
             varient_list[enity_name] = []
             varient_list[enity_name].extend(vlist)
+
         return varient_list
+        #return None
 
     @classmethod
     def rdf_query_allvarient(cls, g):
@@ -192,13 +241,30 @@ class rdfPrepare():
         q = "select?entity where " \
             "{?entity <http://www.libot.org/" + intension + "> <http://www.libot.org/"+ relation +"> ." \
               "?entity <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.libot.org/"+type+">}"
-        # print(q)
+        print(q)
         x = g.query(q)
         t = list(x)
+        #print(t)
         entity_list = []
         for i in range(len(t)):
             entity_list.append(t[i][0].split('/')[3])
         # print(entity_list)
+        return entity_list
+
+    @classmethod
+    def rdf_navi_query_reverse_relation(cls, relation, intension, type, g):
+        q = "select?entity where " \
+            "{?entity <http://www.libot.org/" + intension + "/"+ relation + "> ." \
+            "?entity <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.libot.org/" + type + ">}"
+        print(q)
+
+        x = g.query(q)
+        t = list(x)
+        print(t)
+        entity_list = []
+        for i in range(len(t)):
+            entity_list.append(str(t[i][0]))
+
         return entity_list
 
     @classmethod
@@ -226,12 +292,21 @@ class rdfPrepare():
 
 
 if __name__ == '__main__':
-    # rdfPrepare.excel_to_RDF(r'../../resource/libot.xlsx',"../../resource/libot.rdf")
+    navi_g = rdfPrepare.load_navi_graph()
     g = rdfPrepare.load_graph()
+    #总馆北区_F1_少年儿童馆_1
+    #a = rdfPrepare.rdf_query_varientnames('room', navi_g)
+
+    #rdfPrepare.excel_to_RDF(r'../../resource/one.xlsx',"../../resource/one.rdf")
+    #g = rdfPrepare.load_graph()
     #rdfPrepare.rdf_query_varientnames('room',g)
-    a=rdfPrepare.rdf_query_count('中文_普通图书（含民国平装书）',g)
-    print(a)
-    # rdfPrepare.rdf_query_relation('少年儿童馆主题活动区','rel_part_of_room',g)
+    #a=rdfPrepare.rdf_query_count('中文_普通图书（含民国平装书）',g)
+    #print(a)
+    #c = rdfPrepare.rdf_navi_query_reverse_relation('总馆南区','rel_part_of_room','room',navi_g)
+    #a = rdfPrepare.rdf_query_relation('总馆北区_F2_标志位B_2','rel_part_of_room',navi_g)
+    pos_near_machine = rdfPrepare.rdf_query_navi_propertiy('总馆北区_F2_标志位B_2', 'pro_neighbor_dir', navi_g)
+    #b = rdfPrepare.rdf_queryreverse_relation('总馆南区', 'rel_part_of_room', 'room',g)
+    print(pos_near_machine)
     # var = ["亲子区"]
     # rdfPrepare.rdf_query_name("小儿馆","room",g)
     #rdfPrepare.rdf_queryreverse_relation('台港澳文献阅览室','rel_part_of_room','resource',g)

@@ -42,33 +42,17 @@
     </category>
 
     <category>
-        <pattern>#明天#ROOM#开放时间#</pattern>
-        <template>
-           task_room_time_tomorrow
-        </template>
-    </category>
-
-    <category>
         <pattern>#周末#几点#ROOM#</pattern>
         <template>
            task_room_time_Sunday
         </template>
     </category>
-
     <category>
         <pattern>#星期天#几点#ROOM#</pattern>
         <template>
            task_room_time_Sunday
         </template>
     </category>
-
-     <category>
-        <pattern>#星期日#几点#ROOM#</pattern>
-        <template>
-           task_room_time_Sunday
-        </template>
-    </category>
-
     <category>
         <pattern>#星期一#几点#ROOM#</pattern>
         <template>
@@ -660,13 +644,6 @@
     </category>
 
     <category>
-        <pattern>#明天#RES#开放时间#</pattern>
-        <template>
-            task_res_time_tomorrow
-        </template>
-    </category>
-
-    <category>
         <pattern>#明天#什么时候#RES#</pattern>
         <template>
            task_res_time_tomorrow
@@ -757,15 +734,8 @@
         </template>
     </category>
 
-    <category>
+        <category>
         <pattern>#星期日#RES#什么时候#</pattern>
-        <template>
-            task_res_time_Sunday
-        </template>
-    </category>
-
-     <category>
-        <pattern>#星期天#RES#什么时候#</pattern>
         <template>
             task_res_time_Sunday
         </template>
@@ -773,13 +743,6 @@
 
     <category>
         <pattern>#周日#什么时候#RES#</pattern>
-        <template>
-           task_res_time_Sunday
-        </template>
-    </category>
-
-    <category>
-        <pattern>#星期天#什么时候#RES#</pattern>
         <template>
            task_res_time_Sunday
         </template>

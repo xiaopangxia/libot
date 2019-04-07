@@ -121,7 +121,7 @@ class rdfPrepare():
         return part_list
 
     @classmethod
-    def rdf_query_navi_propertiy(cls, entity, intension, g):
+    def rdf_query_navi_propertiy_dis(cls, entity, intension, g):
 
         q = "select?part where {<http://www.libot.org/" + entity + "> <http://www.libot.org/" + intension + "> ?part}"
         # print(q)
@@ -129,9 +129,27 @@ class rdfPrepare():
         t = list(x)
         #t = list(x)
         #print('？',t)
-        vlist = t[0][0].strip().split('，')
+        vlist = t[0][0].strip().split('米，')
+        del vlist[len(vlist)-1]
+        #print(vlist)
 
         return vlist
+
+    @classmethod
+    def rdf_query_navi_propertiy(cls, entity, intension, g):
+
+        q = "select?part where {<http://www.libot.org/" + entity + "> <http://www.libot.org/" + intension + "> ?part}"
+        # print(q)
+        x = g.query(q)
+        t = list(x)
+        # t = list(x)
+        # print('？',t)
+        vlist = t[0][0].strip().split('，')
+
+
+        return vlist
+
+
 
     @classmethod
     def rdf_query_relation(cls, entity, intension, g):
@@ -304,7 +322,7 @@ if __name__ == '__main__':
     #print(a)
     #c = rdfPrepare.rdf_navi_query_reverse_relation('总馆南区','rel_part_of_room','room',navi_g)
     #a = rdfPrepare.rdf_query_relation('总馆北区_F2_标志位B_2','rel_part_of_room',navi_g)
-    pos_near_machine = rdfPrepare.rdf_query_navi_propertiy('总馆北区_F2_标志位B_2', 'pro_neighbor_dir', navi_g)
+    pos_near_machine = rdfPrepare.rdf_query_navi_propertiy('总馆北区_F2_标志位D_2', 'pro_des_dis', navi_g)
     #b = rdfPrepare.rdf_queryreverse_relation('总馆南区', 'rel_part_of_room', 'room',g)
     print(pos_near_machine)
     # var = ["亲子区"]

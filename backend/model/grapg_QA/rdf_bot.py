@@ -205,9 +205,9 @@ class rdfBot():
         if len(destination)>1:
             for jud in destination:
                 if jud.find(machine_room) == -1:
-                    print(jud,destination,machine_room)
+                    #print(jud,destination,machine_room)
                     del jud
-                    print(destination)
+                    #print(destination)
         if len(father_room)>0:
             father_room = father_room[0]
         ##print('father',father_room)
@@ -227,35 +227,86 @@ class rdfBot():
         for des in destination:
             des_floor.append(rdfPrepare.rdf_query_relation(des, 'rel_part_of_floor', graph)[0])
         #print(machine_room,machine_floor,des_room,des_floor)
+        #if False and machine_floor in des_floor:
         if machine_floor in des_floor:
 
             pos_near_machine = rdfPrepare.rdf_query_navi_propertiy(machine,'pro_neighbor',graph)
             near_machine_dir = rdfPrepare.rdf_query_navi_propertiy(machine,'pro_neighbor_dir',graph)
-            near_machine_dis = rdfPrepare.rdf_query_navi_propertiy(machine,'pro_nei_dis',graph)
+            near_machine_dis = rdfPrepare.rdf_query_navi_propertiy_dis(machine,'pro_nei_dis',graph)
 
             near_des = rdfPrepare.rdf_query_navi_propertiy(machine,'pro_destination',graph)
             near_des_dir = rdfPrepare.rdf_query_navi_propertiy(machine, 'pro_destination_dir', graph)
-            near_des_dis = rdfPrepare.rdf_query_navi_propertiy(machine, 'pro_des_dis', graph)
-
+            near_des_dis = rdfPrepare.rdf_query_navi_propertiy_dis(machine, 'pro_des_dis', graph)
+            #print(pos_near_machine, near_machine_dir, near_machine_dis)
             #print(pos_near_machine,near_machine_dir,near_machine_dis,near_des,near_des_dir,near_des_dis)
-            print(destination,near_des)
-            if destination[0] in near_des:
-                print("?")
+            candidate_des=[]
+            #print(destination,near_des)
+            for des_3 in destination:
+                if des_3 in near_des:
+                    candidate_des.append(des_3)
+            #print(candidate_des,near_des,destination,"not straight")
+            if len(candidate_des)>0:
+                #print(candidate_des,near_des)
+                #print("yes")
+                distance = 10000000
+                final_des = ''
                 for i in range(len(near_des)):
-                    if des_room == near_des[i]:
-                        distance = near_des_dis[i]
-                        print(distance.split('m')[0])
-                        if int(distance.split('m')[0])<=50:
-                            respons_str += form_des+'在您'+near_des_dir[i]+"面"+distance+"处。\n"
+                    #print(near_des,candidate_des)
+                    if near_des[i] in candidate_des and distance>int(near_des_dis[i]):
+                        distance = int(near_des_dis[i])
+                        final_des = near_des[i]
+                        final_dir = near_des_dir[i]
+                #print(distance.split('m')[0])
+                if distance<100:
+                    respons_str += form_des+'在您'+final_dir+"面"+str(distance)+"米处。\n"
 
-                        else:
-                            respons_str += '向'+near_des_dis[i]+"走"+distance+"您就能找到"+form_des+"。\n"
+                else:
+                    respons_str += '向'+final_dir+"走"+str(distance)+"米您就能找到"+form_des+"。\n"
             else:
-                return None
+                f_distance = 10000000
+                final_des = ''
+                final_dir = ''
+                flag = True
+                conors = pos_near_machine
+                while(flag):
+                    #print("while")
+                    for conorindex in range(len(conors)):
+                        tmpdistance = 10000000
+                        conor = conors[conorindex]
+                        flag = False
+                        #f_distance = near_machine_dis[conorindex]
+                        #pos_near_conor = rdfPrepare.rdf_query_navi_propertiy(conor, 'pro_neighbor', graph)
+                        #near_conor_dir = rdfPrepare.rdf_query_navi_propertiy(conor, 'pro_neighbor_dir', graph)
+                        #near_conor_dis = rdfPrepare.rdf_query_navi_propertiy_dis(conor, 'pro_nei_dis', graph)
+                        conor_des = rdfPrepare.rdf_query_navi_propertiy(conor, 'pro_destination', graph)
+                        conor_des_dir = rdfPrepare.rdf_query_navi_propertiy(conor, 'pro_destination_dir', graph)
+                        conor_des_dis = rdfPrepare.rdf_query_navi_propertiy_dis(conor, 'pro_des_dis', graph)
+                        #print(conor_des,conor_des_dir,conor_des_dis)
+                        for des_4 in destination:
+                            if des_4 in conor_des:
+                                candidate_des.append(des_4)
+                        #print(candidate_des)
+                        if len(candidate_des) > 0:
+                            flag = False
+                            for i in range(len(conor_des)):
+                                # print(near_des,candidate_des)
+                                tmpdistance = int(near_machine_dis[conorindex])+int(conor_des_dis[i])
+                                if conor_des[i] in candidate_des and f_distance > tmpdistance:
+                                    f_distance = tmpdistance
+                                    final_conor = conorindex
+                                    final_dir = conor_des_dir[i]
+                                    f_dis = conor_des_dis[i]
+                            # print(distance.split('m')[0])
+                    respons_str += '先向' + near_machine_dir[final_conor]+"走"+str(near_machine_dis[final_conor])+'米直到一个拐角，'
+                    if int(f_dis) < 100:
+                        respons_str += form_des + '在您' + final_dir + "面" + str(f_dis) + "米处。\n"
 
+                    else:
+                        #print("else")
+                        respons_str += '再向' + final_dir + "走" + str(f_dis) + "米您就能找到" + form_des + "。\n"
+                #print(respons_str,"llll")
 
-
-            respons_str += 'same floor.\n'
+            #respons_str += 'same floor.\n'
         elif machine_room == des_room:
             respons_str += form_des
             first = des_floor[0]

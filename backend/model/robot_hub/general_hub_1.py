@@ -70,7 +70,7 @@ class GeneralHub():
             #print("aiml_respons: ", str(aiml_respons))
             #print("entity_dict: ", str(entity_dict))
             if aiml_respons == 'task_room_pos':
-                graph_respons = rdfBot.task_response(aiml_respons, entity_dict, question_str, navi_g)
+                graph_respons = rdfBot.task_response(aiml_respons, navi_entity_dict, question_str, navi_g)
             else:
                 graph_respons = rdfBot.task_response(aiml_respons,entity_dict,question_str,g)
 

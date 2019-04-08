@@ -156,10 +156,8 @@ class rdfBot():
 
     @classmethod
     def answer_room_pos(cls, entity_dict, graph, tag):
-        if tag:
-            respons_str = '您当前位置是' + GraphBaseConfig['now_floor'] + '。\n'
-        else:
-            respons_str = ''
+
+        respons_str = ''
         if len(entity_dict['room'])!=0:
             for i in range(len(entity_dict['room'])):
                 room_in_question = entity_dict['room'][i]
@@ -177,30 +175,32 @@ class rdfBot():
 
     @classmethod
     def answer_room_navi(cls, entity_dict, graph, tag):
-        if tag:
-            respons_str = '\n您当前位置是' + GraphBaseConfig['now_floor'] + '。\n'
-        else:
-            respons_str = ''
-        machine = GraphBaseConfig['now_machine']
-        #print(machine)
-        destination = entity_dict['room'][0]
 
+        respons_str = ''
+        machine = GraphBaseConfig['now_machine']
+        destination = entity_dict['room'][0]
         des_room = rdfPrepare.rdf_query_relation(destination[0], 'rel_part_of_room', graph)
-        #print(des_room)
+        machine_room = rdfPrepare.rdf_query_relation(machine, 'rel_part_of_room', graph)[0]
+        machine_floor = rdfPrepare.rdf_query_relation(machine, 'rel_part_of_floor', graph)[0]
         if len(des_room)<=0:
+            des_areas = rdfPrepare.rdf_query_navi_propertiy(machine_room, 'pro_destination', graph)
+            des_area_dirs = rdfPrepare.rdf_query_navi_propertiy(machine_room, 'pro_destination_dir', graph)
+            des_area=''
+            des_area_dir=''
+            #print(des_areas,destination[0])
+            for area_index in range(len(des_areas)):
+                if des_areas[area_index] == destination[0]:
+                    des_area = des_areas[area_index]
+                    des_area_dir = des_area_dirs[area_index]
+                    break
+            #respons_str += '您当前在'+machine_room+"。"
             respons_str += destination[0]
             if len(destination)>1:
                 for d in destination[1:]:
                     respons_str += '和' + d
-            respons_str += "不在该馆区。\n"
+            respons_str += "不在该馆区。您当前在"+machine_room+"。请出门"+des_area_dir+"走。\n"
             return respons_str
-
-        #print(len(entity_dict),type(entity_dict),entity_dict)
-
         des_room = des_room[0]
-        #print(des_room)
-        machine_room = rdfPrepare.rdf_query_relation(machine, 'rel_part_of_room', graph)[0]
-        machine_floor = rdfPrepare.rdf_query_relation(machine, 'rel_part_of_floor', graph)[0]
         father_room = rdfPrepare.rdf_query_relation(des_room, 'rel_part_of_room', graph)
         if len(destination)>1:
             for jud in destination:
@@ -233,6 +233,8 @@ class rdfBot():
             pos_near_machine = rdfPrepare.rdf_query_navi_propertiy(machine,'pro_neighbor',graph)
             near_machine_dir = rdfPrepare.rdf_query_navi_propertiy(machine,'pro_neighbor_dir',graph)
             near_machine_dis = rdfPrepare.rdf_query_navi_propertiy_dis(machine,'pro_nei_dis',graph)
+            pos_machine = rdfPrepare.rdf_query_propertiy(machine,'pro_position_describe',graph)[0]
+            respons_str+="\n"+form_des+"和您在同一楼层。您当前在"+pos_machine+"。\n"
 
             near_des = rdfPrepare.rdf_query_navi_propertiy(machine,'pro_destination',graph)
             near_des_dir = rdfPrepare.rdf_query_navi_propertiy(machine, 'pro_destination_dir', graph)
@@ -257,7 +259,9 @@ class rdfBot():
                         final_des = near_des[i]
                         final_dir = near_des_dir[i]
                 #print(distance.split('m')[0])
-                if distance<100:
+                if distance == 0:
+                    respons_str += "您当前所在地附近就是"+form_des+"。\n"
+                elif distance<100:
                     respons_str += form_des+'在您'+final_dir+"面"+str(distance)+"米处。\n"
 
                 else:
@@ -298,7 +302,9 @@ class rdfBot():
                                     f_dis = conor_des_dis[i]
                             # print(distance.split('m')[0])
                     respons_str += '先向' + near_machine_dir[final_conor]+"走"+str(near_machine_dis[final_conor])+'米直到一个拐角，'
-                    if int(f_dis) < 100:
+                    if f_dis == 0:
+                        respons_str += '此时您所在地就在'+form_des+"附近。\n"
+                    elif int(f_dis) < 100:
                         respons_str += form_des + '在您' + final_dir + "面" + str(f_dis) + "米处。\n"
 
                     else:
@@ -308,60 +314,80 @@ class rdfBot():
 
             #respons_str += 'same floor.\n'
         elif machine_room == des_room:
-            respons_str += form_des
+            respons_str += '\n'+form_des+"在"
             first = des_floor[0]
             if first.find(des_room)!=-1:
-                respons_str += '在本馆区'+first.split('_')[1]+'层'
+                respons_str += first.split('_')[0]+"，"
             if len(des_floor)>1:
                 for sub_floor in des_floor[1:]:
                     if sub_floor.find(des_room) == -1:
                         continue
-                    print(sub_floor)
-                    respons_str += '和'+sub_floor.split('_')[1]+"层"
-            respons_str += '。\n'
+                    #print(sub_floor)
+                    respons_str += ''+sub_floor.split('_')[0]+"，"
+            respons_str += '您当前位置在'+machine_floor.split('_')[0]+'。\n'
         elif (machine_room == father_room):
-            respons_str += form_des
+
+            respons_str += '\n'+form_des+"在"+machine_room+"的"
             r = des_room
 
             if r.find('_') == -1:
-                respons_str += '在本馆区的' + (r) + '。\n位于'
+                respons_str += (r) + '。\n位于'
                 first = des_floor[0]
 
-                respons_str += '本馆区的' + first.split('_')[1] + '层'
+                respons_str += machine_room+'的第' + first.split('_')[1] + '层'
                 if len(des_floor) > 1:
                     for sub_floor in des_floor[1:]:
-                        respons_str += '、' + sub_floor.split('_')[1] + "层"
+                        respons_str += '、第' + sub_floor.split('_')[1] + "层"
                 respons_str += '。\n'
             else:
                 arr = r.split('_')
                 #print(arr)
                 if len(arr) == 3:
-                    respons_str += '在本馆区的' + (arr[len(arr) - 1]) + '。\n位于'
+                    respons_str += (arr[len(arr) - 1]) + '。\n位于'
                 else:
                     #print(arr)
-                    respons_str += '在本馆区的' + (arr[len(arr) - 2]) + '。\n位于'
+                    respons_str += (arr[len(arr) - 2]) + '。\n位于'
                 first = des_floor[0]
 
-                respons_str += '本馆区的' + first.split('_')[1] + '层'
+                respons_str += machine_room+'的第' + first.split('_')[1] + '层'
                 if len(des_floor) > 1:
                     for sub_floor in des_floor[1:]:
-                        respons_str += '、' + sub_floor.split('_')[1] + "层"
-                respons_str += '。\n'
+                        respons_str += '、第' + sub_floor.split('_')[1] + "层"
+                respons_str += '\n您当前在' + machine_floor.split('_')[0] + "。"
+                #respons_str += '。\n'
 
         else:
-            respons_str += form_des
             r = des_room
+            des_areas = rdfPrepare.rdf_query_navi_propertiy(machine_room, 'pro_destination', graph)
+            des_area_dirs = rdfPrepare.rdf_query_navi_propertiy(machine_room, 'pro_destination_dir', graph)
+            des_area = ''
+            des_area_dir = ''
+            #print(des_areas, r)
+            for area_index in range(len(des_areas)):
+                if des_areas[area_index] == r:
+                    des_area = des_areas[area_index]
+                    des_area_dir = des_area_dirs[area_index]
+                    break
+            des_floor
+            respons_str += '\n'+form_des+'在' +des_floor[0]
+            if len(des_floor)>1:
+                for f in des_floor[1:]:
+                    respons_str += "、"+f
+            respons_str += "。\n您当前在"+ machine_room + "。请出门"+des_area_dir+"走。\n"
 
+
+            '''
             if r.find('_') == -1:
-                respons_str += '不在该馆区。'+form_des+'在'+(r)+'。\n'
+                respons_str += form_des+'在'+(r)+'。\n'
             else:
                 arr = r.split('_')
                 print(arr)
                 if len(arr) == 3:
-                    respons_str += '不在该馆区。'+form_des+'在'+(arr[len(arr) - 1])+'。\n'
+                    respons_str += form_des+'在'+(arr[len(arr) - 1])+'。\n'
                 else:
                     print(arr)
-                    respons_str += '不在该馆区。'+form_des+'在'+(arr[len(arr) - 2])+'。\n'
+                    respons_str += form_des+'在'+(arr[len(arr) - 2])+'。\n'
+            '''
         return respons_str
 
     @classmethod

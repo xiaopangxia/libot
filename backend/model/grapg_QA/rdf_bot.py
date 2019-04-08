@@ -185,6 +185,8 @@ class rdfBot():
         if len(des_room)<=0:
             des_areas = rdfPrepare.rdf_query_navi_propertiy(machine_room, 'pro_destination', graph)
             des_area_dirs = rdfPrepare.rdf_query_navi_propertiy(machine_room, 'pro_destination_dir', graph)
+            des_area_describe = rdfPrepare.rdf_query_navi_propertiy(destination[0], 'pro_position_describe', graph)[0]
+            machine_area_describe = rdfPrepare.rdf_query_navi_propertiy(machine_room, 'pro_position_describe', graph)[0]
             des_area=''
             des_area_dir=''
             #print(des_areas,destination[0])
@@ -198,7 +200,7 @@ class rdfBot():
             if len(destination)>1:
                 for d in destination[1:]:
                     respons_str += '和' + d
-            respons_str += "不在该馆区。您当前在"+machine_room+"。请出门"+des_area_dir+"走。\n"
+            respons_str += "在"+des_area_describe+"。您当前在"+machine_area_describe+"。请出门"+des_area_dir+"走。\n"
             return respons_str
         des_room = des_room[0]
         father_room = rdfPrepare.rdf_query_relation(des_room, 'rel_part_of_room', graph)
@@ -314,6 +316,9 @@ class rdfBot():
 
             #respons_str += 'same floor.\n'
         elif machine_room == des_room:
+            stairs_dir = rdfPrepare.rdf_query_navi_propertiy(machine, 'pro_stairs_dir', graph)[0]
+            stairs_dis = rdfPrepare.rdf_query_navi_propertiy_dis(machine, 'pro_stairs_dis', graph)[0]
+            #print(stairs_dir,stairs_dis)
             respons_str += '\n'+form_des+"在"
             first = des_floor[0]
             if first.find(des_room)!=-1:
@@ -325,13 +330,20 @@ class rdfBot():
                     #print(sub_floor)
                     respons_str += ''+sub_floor.split('_')[0]+"，"
             respons_str += '您当前位置在'+machine_floor.split('_')[0]+'。\n'
+            if int(stairs_dis) <= 50:
+                respons_str += "最近的电梯在您"+stairs_dir+"面"+str(stairs_dis)+"米处。\n"
+            else:
+                respons_str += "往"+stairs_dir+"走"+str(stairs_dis)+"米您就能找到最近的电梯。"
+
         elif (machine_room == father_room):
+            stairs_dir = rdfPrepare.rdf_query_navi_propertiy(machine, 'pro_stairs_dir', graph)[0]
+            stairs_dis = rdfPrepare.rdf_query_navi_propertiy_dis(machine, 'pro_stairs_dis', graph)[0]
 
             respons_str += '\n'+form_des+"在"+machine_room+"的"
             r = des_room
 
             if r.find('_') == -1:
-                respons_str += (r) + '。\n位于'
+                respons_str += (r) + '。位于'
                 first = des_floor[0]
 
                 respons_str += machine_room+'的第' + first.split('_')[1] + '层'
@@ -343,20 +355,26 @@ class rdfBot():
                 arr = r.split('_')
                 #print(arr)
                 if len(arr) == 3:
-                    respons_str += (arr[len(arr) - 1]) + '。\n位于'
+                    respons_str += (arr[len(arr) - 1]) + '。位于'
                 else:
                     #print(arr)
-                    respons_str += (arr[len(arr) - 2]) + '。\n位于'
+                    respons_str += (arr[len(arr) - 2]) + '。位于'
                 first = des_floor[0]
 
                 respons_str += machine_room+'的第' + first.split('_')[1] + '层'
                 if len(des_floor) > 1:
                     for sub_floor in des_floor[1:]:
                         respons_str += '、第' + sub_floor.split('_')[1] + "层"
-                respons_str += '\n您当前在' + machine_floor.split('_')[0] + "。"
+                respons_str += '。\n您当前在' + machine_floor.split('_')[0] + "。"
+                if int(stairs_dis) <= 50:
+                    respons_str += "最近的电梯在您" + stairs_dir + "面" + str(stairs_dis) + "米处。\n"
+                else:
+                    respons_str += "往" + stairs_dir + "走" + str(stairs_dis) + "米您就能找到最近的电梯。"
                 #respons_str += '。\n'
 
         else:
+            machine_area_describe = rdfPrepare.rdf_query_navi_propertiy(machine_room, 'pro_position_describe', graph)[0]
+            des_area_describe = rdfPrepare.rdf_query_navi_propertiy(des_room, 'pro_position_describe', graph)[0]
             r = des_room
             des_areas = rdfPrepare.rdf_query_navi_propertiy(machine_room, 'pro_destination', graph)
             des_area_dirs = rdfPrepare.rdf_query_navi_propertiy(machine_room, 'pro_destination_dir', graph)
@@ -368,12 +386,12 @@ class rdfBot():
                     des_area = des_areas[area_index]
                     des_area_dir = des_area_dirs[area_index]
                     break
-            des_floor
+            #des_floor
             respons_str += '\n'+form_des+'在' +des_floor[0]
             if len(des_floor)>1:
                 for f in des_floor[1:]:
                     respons_str += "、"+f
-            respons_str += "。\n您当前在"+ machine_room + "。请出门"+des_area_dir+"走。\n"
+            respons_str += "。"+r+"在"+des_area_describe+"。\n您当前在"+ machine_area_describe + "。请出门"+des_area_dir+"走。\n"
 
 
             '''

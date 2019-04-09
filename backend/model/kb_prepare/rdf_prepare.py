@@ -139,11 +139,13 @@ class rdfPrepare():
     def rdf_query_navi_propertiy(cls, entity, intension, g):
 
         q = "select?part where {<http://www.libot.org/" + entity + "> <http://www.libot.org/" + intension + "> ?part}"
+        #print(q)
         # print(q)
         x = g.query(q)
         t = list(x)
         # t = list(x)
         #print('？',t)
+        print(t)
         vlist = t[0][0].strip().split('，')
 
 

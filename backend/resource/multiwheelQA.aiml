@@ -1,0 +1,56 @@
+<aiml version="1.0.1" encoding="UTF-8">
+<!-- basic_chat.aiml -->
+
+    <category>
+        <pattern>#读者卡#</pattern>
+        <template>
+            multiwheeltask_business_readerCard_00
+        </template>
+    </category>
+    <category>
+        <pattern>#读书证#</pattern>
+        <template>
+            multiwheeltask_business_readerCard_00
+        </template>
+    </category>
+    <category>
+        <pattern>#读书卡#</pattern>
+        <template>
+            multiwheeltask_business_readerCard_00
+        </template>
+    </category>
+    <category>
+        <pattern>#读者证#</pattern>
+        <template>
+            multiwheeltask_business_readerCard_00
+        </template>
+    </category>
+    <category>
+      <pattern>#满#读卡#</pattern>
+      <template>multiwheeltask_business_readerCard_yes</template>
+    </category>
+    <category>
+      <pattern>#是#读卡#</pattern>
+      <template>multiwheeltask_business_readerCard_yes</template>
+    </category>
+    <category>
+      <pattern>#有#读卡#</pattern>
+      <template>multiwheeltask_business_readerCard_yes</template>
+    </category>
+    <category>
+      <pattern>#没#读卡#</pattern>
+      <template>multiwheeltask_business_readerCard_no</template>
+    </category>
+     <category>
+      <pattern>#不#读卡#</pattern>
+      <template>multiwheeltask_business_readerCard_no</template>
+    </category>
+    <category>
+      <pattern>#否#读卡#</pattern>
+      <template>multiwheeltask_business_readerCard_no</template>
+    </category>
+    <category>
+      <pattern>#未#读卡#</pattern>
+      <template>multiwheeltask_business_readerCard_no</template>
+    </category>
+</aiml>

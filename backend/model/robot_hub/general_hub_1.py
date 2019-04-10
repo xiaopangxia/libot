@@ -8,10 +8,12 @@ import sys
 project_path = os.path.abspath(os.path.join(os.getcwd(), "../.."))
 sys.path.append(project_path)
 
+import model.config.multiwheel_manage as multiwheelUnit
 from model.question.entity_match import entityMatch
 from model.question.entity_match2 import entityMatch2
 from model.grapg_QA.json_bot import jsonBot
 from model.grapg_QA.rdf_bot import rdfBot
+from model.grapg_QA.rdf_bot_multiwheel import rdfBotMul
 from model import aiml_cn
 from model.kb_prepare.rdf_prepare import rdfPrepare
 import numpy as np
@@ -27,7 +29,7 @@ class GeneralHub():
         self._aiml_kernal = aiml_cn.Kernel()
         self._aiml_kernal.learn('../../resource/template.aiml')
         self._aiml_kernal.learn('../../resource/contain_template.aiml')
-
+        self._aiml_kernal.learn('../../resource/multiwheelQA.aiml')
     def question_answer_hub(self, question_str):
         """
         问答总控，基于aiml构建问题匹配器
@@ -36,6 +38,11 @@ class GeneralHub():
         """
         g = rdfPrepare.load_graph()
         question_replaced, entity_dict = entityMatch2.match_and_replace_all(question_str,g)
+        #print(question_replaced,entity_dict)
+
+        navi_g = rdfPrepare.load_navi_graph()
+        navi_question_replaced, navi_entity_dict = entityMatch2.match_and_replace_all(question_str, navi_g)
+        #print(navi_question_replaced, navi_entity_dict)
         # question_replaced, entity_dict = entityMatch.match_and_replace_all(question_str)
         '''
         arr = []
@@ -60,11 +67,27 @@ class GeneralHub():
                 # print(arr_index[i],entity_dict2[arr_index[i]])
                 entity_dict['room'][i] = entity_dict2[arr_index[i]]
         '''
+        if multiwheelUnit.get_value('business') == "办理读书卡":
+            if "answer" not in multiwheelUnit.get_value('step'):
+                question_replaced += "读卡"
+            else:
+                multiwheelUnit.set_value('business',None)
+                multiwheelUnit.set_value('step', None)
+
         aiml_respons = self._aiml_kernal.respond(question_replaced)
-        if 'task_' in aiml_respons:
+
+        if 'multiwheeltask_'in aiml_respons:
+            print("aiml_respons: ", str(aiml_respons))
+            # print("entity_dict: ", str(entity_dict))
+            graph_respons = rdfBotMul.task_response(aiml_respons, entity_dict, question_str, g)
+            return graph_respons
+        elif 'task_' in aiml_respons:
             print("aiml_respons: ", str(aiml_respons))
             #print("entity_dict: ", str(entity_dict))
-            graph_respons = rdfBot.task_response(aiml_respons,entity_dict,question_str,g)
+            if aiml_respons == 'task_room_pos':
+                graph_respons = rdfBot.task_response(aiml_respons, navi_entity_dict, question_str, navi_g)
+            else:
+                graph_respons = rdfBot.task_response(aiml_respons,entity_dict,question_str,g)
 
             return graph_respons
         else:
@@ -81,6 +104,8 @@ if __name__ == '__main__':
     # gh.question_answer_hub('学位论文在哪？')
     # gh.question_answer_hub('香港书在哪个馆啊？')
     #gh.question_answer_hub('古籍馆什么时候开？')
+    multiwheelUnit._init()
+    multiwheelUnit.set_value('userid',1)
     test_hub = GeneralHub()
     while True:
         question_str = input('User:')

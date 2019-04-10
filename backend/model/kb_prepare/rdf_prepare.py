@@ -111,9 +111,10 @@ class rdfPrepare():
     def rdf_query_propertiy(cls,entity, intension, g):
 
         q = "select?part where {<http://www.libot.org/" + entity + "> <http://www.libot.org/" + intension + "> ?part}"
-        #print(q)
+
         x = g.query(q)
         t = list(x)
+        #print(t)
         part_list = []
         for i in range(len(t)):
             part_list.append(t[i][0])
@@ -157,7 +158,7 @@ class rdfPrepare():
     def rdf_query_relation(cls, entity, intension, g):
 
         q = "select?part where {<http://www.libot.org/" + entity + "> <http://www.libot.org/" + intension + "> ?part}"
-        # print(q)
+        #print(q)
         x = g.query(q)
         t = list(x)
         #print(t)
@@ -166,7 +167,7 @@ class rdfPrepare():
 
         for i in range(len(t)):
             part_list.append(t[i][0].split('/')[3])
-        # print(part_list)
+        #print(part_list)
 
         return part_list
 
@@ -261,7 +262,7 @@ class rdfPrepare():
         q = "select?entity where " \
             "{?entity <http://www.libot.org/" + intension + "> <http://www.libot.org/"+ relation +"> ." \
               "?entity <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.libot.org/"+type+">}"
-        print(q)
+        #print(q)
         x = g.query(q)
         t = list(x)
         #print(t)
@@ -276,11 +277,11 @@ class rdfPrepare():
         q = "select?entity where " \
             "{?entity <http://www.libot.org/" + intension + "/"+ relation + "> ." \
             "?entity <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.libot.org/" + type + ">}"
-        print(q)
+        #print(q)
 
         x = g.query(q)
         t = list(x)
-        print(t)
+        #print(t)
         entity_list = []
         for i in range(len(t)):
             entity_list.append(str(t[i][0]))
@@ -304,7 +305,7 @@ class rdfPrepare():
         x = g.query(q)
         t = list(x)
         vlist = t[0][0].strip().split('，')
-        print(vlist)
+        #print(vlist)
         return t
 
 
@@ -326,7 +327,7 @@ if __name__ == '__main__':
     #a = rdfPrepare.rdf_query_relation('总馆北区_F2_标志位B_2','rel_part_of_room',navi_g)
     pos_near_machine = rdfPrepare.rdf_query_navi_propertiy('总馆北区_F2_标志位D_2', 'pro_des_dis', navi_g)
     #b = rdfPrepare.rdf_queryreverse_relation('总馆南区', 'rel_part_of_room', 'room',g)
-    print(pos_near_machine)
+    #print(pos_near_machine)
     # var = ["亲子区"]
     # rdfPrepare.rdf_query_name("小儿馆","room",g)
     #rdfPrepare.rdf_queryreverse_relation('台港澳文献阅览室','rel_part_of_room','resource',g)

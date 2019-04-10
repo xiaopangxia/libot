@@ -182,17 +182,23 @@ class rdfBot():
         #print(destination)
         machine_room = rdfPrepare.rdf_query_relation(machine, 'rel_part_of_room', graph)[0]
         destination2=[]
+        #print(destination,"origin")
         if len(destination)>2:
             for d in range(len(destination)):
                 if destination[d].find(machine_room)!=-1:
                     destination2.append(destination[d])
-
+        if len(destination2)!=0:
             destination = destination2
+        #print(destination,"yes")
+
         #print(destination)
         #print(destination[0],"qqqqqqq")
+        #print(destination,"process")
         des_room = rdfPrepare.rdf_query_relation(destination[0], 'rel_part_of_room', graph)
+        #print(des_room)
 
         machine_floor = rdfPrepare.rdf_query_relation(machine, 'rel_part_of_floor', graph)[0]
+
         #print(des_room,machine_room)
         if len(des_room)<=0:
             if machine_room in destination:
@@ -219,6 +225,7 @@ class rdfBot():
             return respons_str
         des_room = des_room[0]
         father_room = rdfPrepare.rdf_query_relation(des_room, 'rel_part_of_room', graph)
+        #print("?????")
         '''
         if len(destination)>1:
             for jud in destination:

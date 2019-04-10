@@ -26,6 +26,8 @@ class GeneralHub():
     总控程序版本1
     """
     def __init__(self):
+        multiwheelUnit._init()
+        multiwheelUnit.set_value('userid', 1)
         self._aiml_kernal = aiml_cn.Kernel()
         self._aiml_kernal.learn('../../resource/template.aiml')
         self._aiml_kernal.learn('../../resource/contain_template.aiml')
@@ -105,8 +107,6 @@ if __name__ == '__main__':
     # gh.question_answer_hub('学位论文在哪？')
     # gh.question_answer_hub('香港书在哪个馆啊？')
     #gh.question_answer_hub('古籍馆什么时候开？')
-    multiwheelUnit._init()
-    multiwheelUnit.set_value('userid',1)
     test_hub = GeneralHub()
     while True:
         question_str = input('User:')

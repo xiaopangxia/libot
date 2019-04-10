@@ -38,6 +38,11 @@ class GeneralHub():
         """
         g = rdfPrepare.load_graph()
         question_replaced, entity_dict = entityMatch2.match_and_replace_all(question_str,g)
+        #print(question_replaced,entity_dict)
+
+        navi_g = rdfPrepare.load_navi_graph()
+        navi_question_replaced, navi_entity_dict = entityMatch2.match_and_replace_all(question_str, navi_g)
+        #print(navi_question_replaced, navi_entity_dict)
         # question_replaced, entity_dict = entityMatch.match_and_replace_all(question_str)
         '''
         arr = []
@@ -70,6 +75,7 @@ class GeneralHub():
                 multiwheelUnit.set_value('step', None)
 
         aiml_respons = self._aiml_kernal.respond(question_replaced)
+
         if 'multiwheeltask_'in aiml_respons:
             print("aiml_respons: ", str(aiml_respons))
             # print("entity_dict: ", str(entity_dict))
@@ -78,7 +84,10 @@ class GeneralHub():
         elif 'task_' in aiml_respons:
             print("aiml_respons: ", str(aiml_respons))
             #print("entity_dict: ", str(entity_dict))
-            graph_respons = rdfBot.task_response(aiml_respons,entity_dict,question_str,g)
+            if aiml_respons == 'task_room_pos':
+                graph_respons = rdfBot.task_response(aiml_respons, navi_entity_dict, question_str, navi_g)
+            else:
+                graph_respons = rdfBot.task_response(aiml_respons,entity_dict,question_str,g)
 
             return graph_respons
         else:

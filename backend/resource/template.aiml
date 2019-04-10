@@ -135,7 +135,7 @@
     <category>
         <pattern>#周末#可以#ROOM#吗</pattern>
         <template>
-           task_room_time_Sunday
+           task_room_time_Weekend
         </template>
     </category>
     <category>
@@ -291,7 +291,7 @@
     <category>
         <pattern>#ROOM#周末#吗</pattern>
         <template>
-           task_room_time
+           task_room_time_Weekend
         </template>
     </category>
 
@@ -371,7 +371,7 @@
     <category>
         <pattern>#周末#ROOM#什么时候#借阅#</pattern>
         <template>
-           task_room_time_borrow_Sunday
+           task_room_time_borrow_Weekend
         </template>
     </category>
     <category>
@@ -765,7 +765,7 @@
     <category>
         <pattern>#周末#可以#RES#吗</pattern>
         <template>
-           task_res_time
+           task_res_time_Weekend
         </template>
     </category>
 
@@ -814,7 +814,7 @@
     <category>
         <pattern>#RES#周末#吗</pattern>
         <template>
-           task_res_time
+           task_res_time_Weekend
         </template>
     </category>
 

@@ -391,7 +391,19 @@ class rdfBot():
                             respons_str += '再向' + final_dir + "走" + str(f_dis) + "米，您就能找到" + form_des + "。\n"
 
                     else :
-                        print("没找到")
+                        if des_room.find('_') == -1:
+                            # respons_str += (destination[0])
+                            des_room2 = des_room
+                        else:
+                            arr = des_room.split('_')
+                            if len(arr) == 3:
+                                # respons_str += (arr[len(arr) - 1])
+                                des_room2 = arr[len(arr) - 1]
+                            else:
+                                # respons_str += (arr[len(arr) - 2])
+                                des_room2 = arr[len(arr) - 2]
+                        respons_str += form_des+"隶属于"+des_room2+"，您可以询问"+des_room2+"在哪。"
+                        #print("没找到",des_room2)
                         flag = False
 
         elif machine_room == des_room:
@@ -481,7 +493,7 @@ class rdfBot():
             r = des_room
             des_areas = rdfPrepare.rdf_query_navi_propertiy(machine_room, 'pro_destination', graph)
             des_area_dirs = rdfPrepare.rdf_query_navi_propertiy(machine_room, 'pro_destination_dir', graph)
-            print(machine_area_describe,des_area_describe,des_areas,des_area_dirs)
+            #print(machine_area_describe,des_area_describe,des_areas,des_area_dirs)
             des_area = ''
             des_area_dir = ''
             #print(des_areas, r)
@@ -491,7 +503,7 @@ class rdfBot():
                     des_area_dir = des_area_dirs[area_index]
                     break
             #des_floor
-            print("???")
+            #print("???")
             respons_str += '\n'+form_des+'在' +des_floor[0].split("_")[0]
             if len(des_floor)>1:
                 for f in des_floor[1:]:

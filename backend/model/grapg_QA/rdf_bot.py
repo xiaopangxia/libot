@@ -551,21 +551,24 @@ class rdfBot():
         :param graph:
         :return:
         '''
-        if len(entity_dict['res'])!= 0:
+        if len(entity_dict['res']) != 0:
             respons_str = ''
             for i in range(len(entity_dict['res'])):
                 res_in_question = entity_dict['res'][i]
                 if res_in_question:
                     for target_res in res_in_question:
-                        room=rdfPrepare.rdf_query_relation(target_res, "rel_part_of_room", graph)
-                        if(len(room)!=0):
-                            if(len(rdfPrepare.rdf_query_propertiy(room[0], "pro_open_day", graph))!=0):
-                                respons_str += target_res +"开放日是："+rdfPrepare.rdf_query_propertiy(room[0], "pro_open_day", graph)[0]+"。\n"
-                        elif(len(rdfPrepare.rdf_query_relation(room[0], "rel_part_of_room", graph))!=0):
+                        room = rdfPrepare.rdf_query_relation(target_res, "rel_part_of_room", graph)
+                        if (len(room) != 0):
+                            if (len(rdfPrepare.rdf_query_propertiy(room[0], "pro_open_day", graph)) != 0):
+                                respons_str += target_res + "开放日是：" + \
+                                               rdfPrepare.rdf_query_propertiy(room[0], "pro_open_day", graph)[0] + "。\n"
+                        elif (len(rdfPrepare.rdf_query_relation(room[0], "rel_part_of_room", graph)) != 0):
                             parent_room = rdfPrepare.rdf_query_relation(room[0], "rel_part_of_room", graph)
                             for p_room in parent_room:
-                                if(rdfPrepare.rdf_query_propertiy(p_room, "pro_open_day", graph)):
-                                    respons_str += target_res + '位于' + p_room.split('_')[2] + '，开放日是：' + rdfPrepare.rdf_query_propertiy(p_room, "pro_open_day", graph)[0] + '。\n'
+                                if (rdfPrepare.rdf_query_propertiy(p_room, "pro_open_day", graph)):
+                                    respons_str += target_res + '位于' + p_room.split('_')[2] + '，开放日是：' + \
+                                                   rdfPrepare.rdf_query_propertiy(p_room, "pro_open_day", graph)[
+                                                       0] + '。\n'
             return respons_str
         else:
             return None
@@ -578,7 +581,7 @@ class rdfBot():
         :param graph:
         :return:
         '''
-        if len(entity_dict['room'])!= 0:
+        if len(entity_dict['room']) != 0:
             respons_str = ''
             for i in range(len(entity_dict['room'])):
                 room_in_question = entity_dict['room'][i]
@@ -592,83 +595,84 @@ class rdfBot():
                             for p_room in parent_room:
                                 if (rdfPrepare.rdf_query_propertiy(p_room, "pro_open_day", graph)):
                                     respons_str += target_room + '位于' + p_room.split('_')[2] + '，开放日是：' + \
-                                                   rdfPrepare.rdf_query_propertiy(p_room, "pro_open_day", graph)[0] + '。\n'
+                                                   rdfPrepare.rdf_query_propertiy(p_room, "pro_open_day", graph)[
+                                                       0] + '。\n'
             return respons_str
         else:
             return None
 
     @classmethod
-    def answer_room_time(cls, entity_dict, graph,day):
+    def answer_room_time(cls, entity_dict, graph, day):
         '''
         馆室开放时间（当天、明天、星期）
         '''
-        if len(entity_dict['room'])!= 0:
+        if len(entity_dict['room']) != 0:
             respons_str = ''
-            flag_respons_str=''
+            flag_respons_str = ''
             for i in range(len(entity_dict['room'])):
                 room_in_question = entity_dict['room'][i]
                 if room_in_question:
-                    if day=="today":
-                        respons_str ="今天是"
-                        week_str=time.strftime("%w", time.localtime())
-                        if str(week_str)=='1':
-                            week_str="pro_Monday_opentime"
-                            respons_str =respons_str+ '星期一，'
-                        elif str(week_str)=='2':
-                            week_str="pro_Tuesday_opentime"
-                            respons_str = respons_str+'星期二，'
-                        elif str(week_str)=='3':
-                            week_str="pro_Wednesday_opentime"
-                            respons_str = respons_str+'星期三，'
-                        elif str(week_str)=='4':
-                            week_str="pro_Thursday_opentime"
-                            respons_str = respons_str+'星期四,'
-                        elif str(week_str)=='5':
-                            week_str="pro_Friday_opentime"
-                            respons_str = respons_str+'星期五,'
-                        elif str(week_str)=='6':
-                            week_str="pro_Saturday_opentime"
-                            respons_str = respons_str+'星期六,'
-                        elif str(week_str)=='日':
-                            week_str="pro_Sunday_opentime"
-                            respons_str = respons_str+'星期天,'
-                    elif day=="tomorrow":
+                    if day == "today":
+                        respons_str = "今天是"
+                        week_str = time.strftime("%w", time.localtime())
+                        if str(week_str) == '1':
+                            week_str = "pro_Monday_opentime"
+                            respons_str = respons_str + '星期一，'
+                        elif str(week_str) == '2':
+                            week_str = "pro_Tuesday_opentime"
+                            respons_str = respons_str + '星期二，'
+                        elif str(week_str) == '3':
+                            week_str = "pro_Wednesday_opentime"
+                            respons_str = respons_str + '星期三，'
+                        elif str(week_str) == '4':
+                            week_str = "pro_Thursday_opentime"
+                            respons_str = respons_str + '星期四,'
+                        elif str(week_str) == '5':
+                            week_str = "pro_Friday_opentime"
+                            respons_str = respons_str + '星期五,'
+                        elif str(week_str) == '6':
+                            week_str = "pro_Saturday_opentime"
+                            respons_str = respons_str + '星期六,'
+                        elif str(week_str) == '日':
+                            week_str = "pro_Sunday_opentime"
+                            respons_str = respons_str + '星期天,'
+                    elif day == "tomorrow":
                         respons_str = '明天是'
                         week_str = time.strftime("%w", time.localtime())
                         if str(week_str) == '1':
                             week_str = "pro_Tuesday_opentime"
-                            respons_str =respons_str+'星期二,'
+                            respons_str = respons_str + '星期二,'
                         elif str(week_str) == '2':
                             week_str = "pro_Wednesday_opentime"
-                            respons_str = respons_str+'星期三,'
+                            respons_str = respons_str + '星期三,'
                         elif str(week_str) == '3':
                             week_str = "pro_Thursday_opentime"
-                            respons_str = respons_str+'星期四,'
+                            respons_str = respons_str + '星期四,'
                         elif str(week_str) == '4':
                             week_str = "pro_Friday_opentime"
-                            respons_str = respons_str+'星期五,'
+                            respons_str = respons_str + '星期五,'
                         elif str(week_str) == '5':
                             week_str = "pro_Saturday_opentime"
-                            respons_str = respons_str+ '星期六,'
+                            respons_str = respons_str + '星期六,'
                         elif str(week_str) == '6':
                             week_str = "pro_Sunday_opentime"
-                            respons_str = respons_str+'星期日,'
+                            respons_str = respons_str + '星期日,'
                         elif str(week_str) == '日':
                             week_str = "pro_Monday_opentime"
-                            respons_str = respons_str+'星期一,'
-                    elif day=="Monday":
+                            respons_str = respons_str + '星期一,'
+                    elif day == "Monday":
                         respons_str = '星期一'
                         week_str = "pro_Monday_opentime"
-                    elif day=="Tuesday":
+                    elif day == "Tuesday":
                         respons_str = '星期二'
                         week_str = "pro_Tuesday_opentime"
-                    elif day=="Wednesday":
+                    elif day == "Wednesday":
                         respons_str = '星期三'
                         week_str = "pro_Wednesday_opentime"
-                    elif day=="Thursday":
+                    elif day == "Thursday":
                         respons_str = '星期四'
                         week_str = "pro_Thursday_opentime"
-                    elif day=="Friday":
+                    elif day == "Friday":
                         respons_str = '星期五'
                         week_str = "pro_Friday_opentime"
                     elif day == "Saturday":
@@ -677,17 +681,20 @@ class rdfBot():
                     elif day == "Sunday":
                         respons_str = '星期日'
                         week_str = "pro_Sunday_opentime"
-                    flag_respons_str=respons_str
+                    flag_respons_str = respons_str
                     if room_in_question:
                         for target_room in room_in_question:
-                            if(len(rdfPrepare.rdf_query_propertiy(target_room, week_str, graph))!=0):
-                                respons_str += "_".join(target_room.split('_')[0:3]) +"开放时间是："+rdfPrepare.rdf_query_propertiy(target_room, week_str, graph)[0]+"。\n"
-                            elif(len(rdfPrepare.rdf_query_relation(target_room, "rel_part_of_room", graph))!=0):
+                            if (len(rdfPrepare.rdf_query_propertiy(target_room, week_str, graph)) != 0):
+                                respons_str += "_".join(target_room.split('_')[0:3]) + "开放时间是：" + \
+                                               rdfPrepare.rdf_query_propertiy(target_room, week_str, graph)[0] + "。\n"
+                            elif (len(rdfPrepare.rdf_query_relation(target_room, "rel_part_of_room", graph)) != 0):
                                 parent_room = rdfPrepare.rdf_query_relation(target_room, "rel_part_of_room", graph)
                                 for p_room in parent_room:
-                                    if(rdfPrepare.rdf_query_propertiy(p_room, week_str, graph)):
-                                        respons_str +=  '开放时间是：' + rdfPrepare.rdf_query_propertiy(p_room, week_str, graph)[0] +','+ target_room + '位于' + p_room.split('_')[2] +'。\n'
-            if(respons_str==flag_respons_str):
+                                    if (rdfPrepare.rdf_query_propertiy(p_room, week_str, graph)):
+                                        respons_str += '开放时间是：' + \
+                                                       rdfPrepare.rdf_query_propertiy(p_room, week_str, graph)[
+                                                           0] + ',' + target_room + '位于' + p_room.split('_')[2] + '。\n'
+            if (respons_str == flag_respons_str):
                 return "该馆室当天不开放。"
             else:
                 return respons_str
@@ -695,41 +702,41 @@ class rdfBot():
             return None
 
     @classmethod
-    def answer_room_time_borrow(cls, entity_dict, graph,day):
+    def answer_room_time_borrow(cls, entity_dict, graph, day):
         '''
         馆室借阅时间
         :param entity_dict:
         :param graph:
         :return:
         '''
-        if len(entity_dict['room'])!= 0:
+        if len(entity_dict['room']) != 0:
             respons_str = ''
-            flag_respons_str=''
+            flag_respons_str = ''
             for i in range(len(entity_dict['room'])):
                 room_in_question = entity_dict['room'][i]
-                if day=="today":
+                if day == "today":
                     week_str = time.strftime("%w", time.localtime())
                     respons_str = '今天是'
-                    if str(week_str)=='1':
-                        week_str="pro_Monday_borrowtime"
-                        respons_str =respons_str+'星期一，'
-                    elif str(week_str)=='2':
-                        week_str="pro_Tuesday_borrowtime"
-                        respons_str = respons_str+ '星期二，'
-                    elif str(week_str)=='3':
-                        week_str="pro_Wednesday_borrowtime"
-                        respons_str = respons_str+'星期三，'
-                    elif str(week_str)=='4':
-                        week_str="pro_Thursday_borrowtime"
-                        respons_str = respons_str+ '星期四，'
-                    elif str(week_str)=='5':
-                        week_str="pro_Friday_borrowtime"
-                        respons_str = respons_str+'星期五，'
-                    elif str(week_str)=='6':
-                        week_str="pro_Saturday_borrowtime"
-                        respons_str = respons_str+'星期六，'
-                    elif str(week_str)=='日':
-                        week_str="pro_Sunday_borrowtime"
+                    if str(week_str) == '1':
+                        week_str = "pro_Monday_borrowtime"
+                        respons_str = respons_str + '星期一，'
+                    elif str(week_str) == '2':
+                        week_str = "pro_Tuesday_borrowtime"
+                        respons_str = respons_str + '星期二，'
+                    elif str(week_str) == '3':
+                        week_str = "pro_Wednesday_borrowtime"
+                        respons_str = respons_str + '星期三，'
+                    elif str(week_str) == '4':
+                        week_str = "pro_Thursday_borrowtime"
+                        respons_str = respons_str + '星期四，'
+                    elif str(week_str) == '5':
+                        week_str = "pro_Friday_borrowtime"
+                        respons_str = respons_str + '星期五，'
+                    elif str(week_str) == '6':
+                        week_str = "pro_Saturday_borrowtime"
+                        respons_str = respons_str + '星期六，'
+                    elif str(week_str) == '日':
+                        week_str = "pro_Sunday_borrowtime"
                         respons_str = respons_str + '星期日，'
                 elif day == "tomorrow":
                     respons_str = '明天是'
@@ -779,15 +786,17 @@ class rdfBot():
                 flag_respons_str = respons_str
                 if room_in_question:
                     for target_room in room_in_question:
-                        if(len(rdfPrepare.rdf_query_propertiy(target_room, week_str, graph))!=0):
-                            respons_str += "_".join(target_room.split('_')[0:3]) +"借阅时间是："+rdfPrepare.rdf_query_propertiy(target_room, week_str, graph)[0]+"。\n"
-                        elif(len(rdfPrepare.rdf_query_relation(target_room, "rel_part_of_room", graph))!=0):
+                        if (len(rdfPrepare.rdf_query_propertiy(target_room, week_str, graph)) != 0):
+                            respons_str += "_".join(target_room.split('_')[0:3]) + "借阅时间是：" + \
+                                           rdfPrepare.rdf_query_propertiy(target_room, week_str, graph)[0] + "。\n"
+                        elif (len(rdfPrepare.rdf_query_relation(target_room, "rel_part_of_room", graph)) != 0):
                             parent_room = rdfPrepare.rdf_query_relation(target_room, "rel_part_of_room", graph)
                             for p_room in parent_room:
-                                if(rdfPrepare.rdf_query_propertiy(p_room, week_str, graph)):
-                                    respons_str += '借阅时间是：' + rdfPrepare.rdf_query_propertiy(p_room, week_str, graph)[0] + ','+target_room + '位于' + p_room.split('_')[2] + '。\n'
+                                if (rdfPrepare.rdf_query_propertiy(p_room, week_str, graph)):
+                                    respons_str += '借阅时间是：' + rdfPrepare.rdf_query_propertiy(p_room, week_str, graph)[
+                                        0] + ',' + target_room + '位于' + p_room.split('_')[2] + '。\n'
 
-            if(respons_str==flag_respons_str):
+            if (respons_str == flag_respons_str):
                 return "该馆室当天不可借阅。"
             else:
                 return respons_str
@@ -795,80 +804,80 @@ class rdfBot():
             return None
 
     @classmethod
-    def answer_res_time(cls, entity_dict, graph,day):
+    def answer_res_time(cls, entity_dict, graph, day):
         '''
         资源开放时间
         :param entity_dict:
         :param graph:
         :return:
         '''
-        if len(entity_dict['res'])!= 0:
+        if len(entity_dict['res']) != 0:
             respons_str = ''
-            flag_respons_str=''
+            flag_respons_str = ''
             for i in range(len(entity_dict['res'])):
                 res_in_question = entity_dict['res'][i]
                 if res_in_question:
-                    if day=="today":
-                        respons_str ="今天是"
-                        week_str=time.strftime("%w", time.localtime())
-                        if str(week_str)=='1':
-                            week_str="pro_Monday_opentime"
-                            respons_str =respons_str+ '星期一，'
-                        elif str(week_str)=='2':
-                            week_str="pro_Tuesday_opentime"
-                            respons_str = respons_str+'星期二，'
-                        elif str(week_str)=='3':
-                            week_str="pro_Wednesday_opentime"
-                            respons_str = respons_str+'星期三，'
-                        elif str(week_str)=='4':
-                            week_str="pro_Thursday_opentime"
-                            respons_str = respons_str+'星期四,'
-                        elif str(week_str)=='5':
-                            week_str="pro_Friday_opentime"
-                            respons_str = respons_str+'星期五,'
-                        elif str(week_str)=='6':
-                            week_str="pro_Saturday_opentime"
-                            respons_str = respons_str+'星期六,'
-                        elif str(week_str)=='日':
-                            week_str="pro_Sunday_opentime"
-                            respons_str = respons_str+'星期天,'
-                    elif day=="tomorrow":
+                    if day == "today":
+                        respons_str = "今天是"
+                        week_str = time.strftime("%w", time.localtime())
+                        if str(week_str) == '1':
+                            week_str = "pro_Monday_opentime"
+                            respons_str = respons_str + '星期一，'
+                        elif str(week_str) == '2':
+                            week_str = "pro_Tuesday_opentime"
+                            respons_str = respons_str + '星期二，'
+                        elif str(week_str) == '3':
+                            week_str = "pro_Wednesday_opentime"
+                            respons_str = respons_str + '星期三，'
+                        elif str(week_str) == '4':
+                            week_str = "pro_Thursday_opentime"
+                            respons_str = respons_str + '星期四,'
+                        elif str(week_str) == '5':
+                            week_str = "pro_Friday_opentime"
+                            respons_str = respons_str + '星期五,'
+                        elif str(week_str) == '6':
+                            week_str = "pro_Saturday_opentime"
+                            respons_str = respons_str + '星期六,'
+                        elif str(week_str) == '日':
+                            week_str = "pro_Sunday_opentime"
+                            respons_str = respons_str + '星期天,'
+                    elif day == "tomorrow":
                         respons_str = '明天是'
                         week_str = time.strftime("%w", time.localtime())
                         if str(week_str) == '1':
                             week_str = "pro_Tuesday_opentime"
-                            respons_str =respons_str+'星期二,'
+                            respons_str = respons_str + '星期二,'
                         elif str(week_str) == '2':
                             week_str = "pro_Wednesday_opentime"
-                            respons_str = respons_str+'星期三,'
+                            respons_str = respons_str + '星期三,'
                         elif str(week_str) == '3':
                             week_str = "pro_Thursday_opentime"
-                            respons_str = respons_str+'星期四,'
+                            respons_str = respons_str + '星期四,'
                         elif str(week_str) == '4':
                             week_str = "pro_Friday_opentime"
-                            respons_str = respons_str+'星期五,'
+                            respons_str = respons_str + '星期五,'
                         elif str(week_str) == '5':
                             week_str = "pro_Saturday_opentime"
-                            respons_str = respons_str+ '星期六,'
+                            respons_str = respons_str + '星期六,'
                         elif str(week_str) == '6':
                             week_str = "pro_Sunday_opentime"
-                            respons_str = respons_str+'星期日,'
+                            respons_str = respons_str + '星期日,'
                         elif str(week_str) == '日':
                             week_str = "pro_Monday_opentime"
-                            respons_str = respons_str+'星期一,'
-                    elif day=="Monday":
+                            respons_str = respons_str + '星期一,'
+                    elif day == "Monday":
                         respons_str = '星期一'
                         week_str = "pro_Monday_opentime"
-                    elif day=="Tuesday":
+                    elif day == "Tuesday":
                         respons_str = '星期二'
                         week_str = "pro_Tuesday_opentime"
-                    elif day=="Wednesday":
+                    elif day == "Wednesday":
                         respons_str = '星期三'
                         week_str = "pro_Wednesday_opentime"
-                    elif day=="Thursday":
+                    elif day == "Thursday":
                         respons_str = '星期四'
                         week_str = "pro_Thursday_opentime"
-                    elif day=="Friday":
+                    elif day == "Friday":
                         respons_str = '星期五'
                         week_str = "pro_Friday_opentime"
                     elif day == "Saturday":
@@ -877,17 +886,19 @@ class rdfBot():
                     elif day == "Sunday":
                         respons_str = '星期日'
                         week_str = "pro_Sunday_opentime"
-                    flag_respons_str=respons_str
+                    flag_respons_str = respons_str
                     for target_res in res_in_question:
-                        room=rdfPrepare.rdf_query_relation(target_res, "rel_part_of_room", graph)
-                        if(len(room)!=0):
-                            if(len(rdfPrepare.rdf_query_propertiy(room[0], week_str, graph))!=0):
-                                respons_str += target_res +"开放时间是："+rdfPrepare.rdf_query_propertiy(room[0], week_str, graph)[0]+"。\n"
-                        elif(len(rdfPrepare.rdf_query_relation(room[0], "rel_part_of_room", graph))!=0):
+                        room = rdfPrepare.rdf_query_relation(target_res, "rel_part_of_room", graph)
+                        if (len(room) != 0):
+                            if (len(rdfPrepare.rdf_query_propertiy(room[0], week_str, graph)) != 0):
+                                respons_str += target_res + "开放时间是：" + \
+                                               rdfPrepare.rdf_query_propertiy(room[0], week_str, graph)[0] + "。\n"
+                        elif (len(rdfPrepare.rdf_query_relation(room[0], "rel_part_of_room", graph)) != 0):
                             parent_room = rdfPrepare.rdf_query_relation(room[0], "rel_part_of_room", graph)
                             for p_room in parent_room:
-                                if(rdfPrepare.rdf_query_propertiy(p_room, week_str, graph)):
-                                    respons_str += '开放时间是：' + rdfPrepare.rdf_query_propertiy(p_room, week_str, graph)[0] + ','+target_res + '位于' + p_room.split('_')[2] + '。\n'
+                                if (rdfPrepare.rdf_query_propertiy(p_room, week_str, graph)):
+                                    respons_str += '开放时间是：' + rdfPrepare.rdf_query_propertiy(p_room, week_str, graph)[
+                                        0] + ',' + target_res + '位于' + p_room.split('_')[2] + '。\n'
             if (respons_str == flag_respons_str):
                 return "该资源当天不开放。"
             else:

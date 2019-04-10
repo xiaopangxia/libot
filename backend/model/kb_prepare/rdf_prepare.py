@@ -145,7 +145,7 @@ class rdfPrepare():
         t = list(x)
         # t = list(x)
         #print('？',t)
-        print(t)
+        #print(t)
         vlist = t[0][0].strip().split('，')
 
 

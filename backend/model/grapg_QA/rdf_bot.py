@@ -179,7 +179,7 @@ class rdfBot():
         respons_str = ''
         machine = GraphBaseConfig['now_machine']
         destination = entity_dict['room'][0]
-        print(destination)
+        #print(destination)
         machine_room = rdfPrepare.rdf_query_relation(machine, 'rel_part_of_room', graph)[0]
         destination2=[]
         if len(destination)>2:
@@ -189,15 +189,15 @@ class rdfBot():
 
             destination = destination2
         #print(destination)
-        print(destination[0],"qqqqqqq")
+        #print(destination[0],"qqqqqqq")
         des_room = rdfPrepare.rdf_query_relation(destination[0], 'rel_part_of_room', graph)
 
         machine_floor = rdfPrepare.rdf_query_relation(machine, 'rel_part_of_floor', graph)[0]
-        print(des_room,machine_room)
+        #print(des_room,machine_room)
         if len(des_room)<=0:
             if machine_room in destination:
                 return "您当前已位于"+machine_room+"。\n"
-            print(des_room)
+            #print(des_room)
             des_areas = rdfPrepare.rdf_query_navi_propertiy(machine_room, 'pro_destination', graph)
             des_area_dirs = rdfPrepare.rdf_query_navi_propertiy(machine_room, 'pro_destination_dir', graph)
             des_area_describe = rdfPrepare.rdf_query_navi_propertiy(destination[0], 'pro_position_describe', graph)[0]
@@ -244,7 +244,7 @@ class rdfBot():
                 #respons_str += (arr[len(arr) - 2])
                 form_des = arr[len(arr) - 2]
         for des in destination:
-            print(des)
+            #print(des)
             des_floor.append(rdfPrepare.rdf_query_relation(des, 'rel_part_of_floor', graph)[0])
         #print(machine_room,machine_floor,des_room,des_floor)
         #if False and machine_floor in des_floor:
@@ -277,8 +277,8 @@ class rdfBot():
                     #print(near_des,candidate_des)
                     int_near_des_dis = 10000000
 
-                    print(near_des_dis,i,len(near_des),len(near_des_dir))
-                    print(near_des_dis[i])
+                    #print(near_des_dis,i,len(near_des),len(near_des_dir))
+                    #print(near_des_dis[i])
                     if near_des_dis[i].find("，")!=-1:
                         #print(len(near_des_dir[i]))
                         int_near_des_dis = 0
@@ -320,7 +320,7 @@ class rdfBot():
 
                     for conorindex in range(len(conors)):
                         #print(conors[conorindex])
-
+                        #print(conors)
                         conor = conors[conorindex]
 
                         #f_distance = near_machine_dis[conorindex]
@@ -335,7 +335,7 @@ class rdfBot():
                             if des_4 in conor_des:
                                 candidate_des.append(des_4)
                         #print(conor,conor_des,candidate_des,"yes")
-                        final_conor=0
+                        #final_conor=0
                         if len(candidate_des) > 0:
                             flag = False
                             for i in range(len(conor_des)):
@@ -359,19 +359,23 @@ class rdfBot():
                                         #print(conors[conorindex],f_distance)
                                         f_distance = int_near_des_dis
                                         final_conor = conorindex
+
                                         final_dir = conor_des_dir[i]
                                         f_dis = conor_des_dis[i]
+                                        #print(conorindex, conor, conors[conorindex], conor_des_dir, f_distance,final_conor,
+                                              #final_dir, f_dis, "???")
+
                                         index_final_des = i
                             # print(distance.split('m')[0])
                     if not flag:
-                        print(conors[final_conor],final_dir,f_dis)
+                        #print(conors[final_conor],final_dir,f_dis,final_conor)
                         #print(flag)
                         if near_machine_dis[final_conor].find("，")==-1:
                             respons_str += '先向' + near_machine_dir[final_conor]+"走"+str(near_machine_dis[final_conor])+'米直到一个拐角，'
                         else :
                             arr = near_machine_dis[final_conor].strip().split('，')
                             # print(arr)
-                            respons_str += '先向' + near_machine_dir[final_conor][0] + '走' + arr[0] + "米，再向" + near_machine_dir[final_conor][1] + '走' + arr[1] + "米直到一个拐口，"
+                            respons_str += '先向' + near_machine_dir[final_conor][0] + '走' + arr[0] + "米，随后向" + near_machine_dir[final_conor][1] + '走' + arr[1] + "米直到一个拐角，"
                         if f_dis.find("，") != -1:
                             arr = f_dis.strip().split('，')
                             respons_str += '再向' + final_dir[0] + "走" + str(arr[0]) + "米，随后向" + final_dir[1] + "走" + arr[1] + "米，您就能找到" + form_des + "。\n"

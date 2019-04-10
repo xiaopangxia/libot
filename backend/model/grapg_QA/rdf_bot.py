@@ -245,7 +245,11 @@ class rdfBot():
                 form_des = arr[len(arr) - 2]
         for des in destination:
             #print(des)
-            des_floor.append(rdfPrepare.rdf_query_relation(des, 'rel_part_of_floor', graph)[0])
+            #避免重复楼层
+            tempfloor = rdfPrepare.rdf_query_relation(des, 'rel_part_of_floor', graph)[0]
+            if tempfloor not in des_floor:
+                des_floor.append(rdfPrepare.rdf_query_relation(des, 'rel_part_of_floor', graph)[0])
+        #print(des_floor)
         #print(machine_room,machine_floor,des_room,des_floor)
         #if False and machine_floor in des_floor:
         if machine_floor in des_floor:
@@ -477,6 +481,7 @@ class rdfBot():
             r = des_room
             des_areas = rdfPrepare.rdf_query_navi_propertiy(machine_room, 'pro_destination', graph)
             des_area_dirs = rdfPrepare.rdf_query_navi_propertiy(machine_room, 'pro_destination_dir', graph)
+            print(machine_area_describe,des_area_describe,des_areas,des_area_dirs)
             des_area = ''
             des_area_dir = ''
             #print(des_areas, r)
@@ -486,6 +491,7 @@ class rdfBot():
                     des_area_dir = des_area_dirs[area_index]
                     break
             #des_floor
+            print("???")
             respons_str += '\n'+form_des+'在' +des_floor[0].split("_")[0]
             if len(des_floor)>1:
                 for f in des_floor[1:]:

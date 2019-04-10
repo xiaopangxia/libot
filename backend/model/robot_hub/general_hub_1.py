@@ -30,6 +30,7 @@ class GeneralHub():
         self._aiml_kernal.learn('../../resource/template.aiml')
         self._aiml_kernal.learn('../../resource/contain_template.aiml')
         self._aiml_kernal.learn('../../resource/multiwheelQA.aiml')
+        self._aiml_kernal.learn('../../resource/time_template.aiml')
     def question_answer_hub(self, question_str):
         """
         问答总控，基于aiml构建问题匹配器

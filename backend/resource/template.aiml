@@ -44,7 +44,7 @@
     <category>
         <pattern>#周末#几点#ROOM#</pattern>
         <template>
-           task_room_time_Sunday
+           task_room_time_Weekend
         </template>
     </category>
     <category>
@@ -135,7 +135,7 @@
     <category>
         <pattern>#周末#可以#ROOM#吗</pattern>
         <template>
-           task_room_time_Sunday
+           task_room_time_Weekend
         </template>
     </category>
     <category>
@@ -291,7 +291,7 @@
     <category>
         <pattern>#ROOM#周末#吗</pattern>
         <template>
-           task_room_time
+           task_room_time_Weekend
         </template>
     </category>
 
@@ -371,7 +371,7 @@
     <category>
         <pattern>#周末#ROOM#什么时候#借阅#</pattern>
         <template>
-           task_room_time_borrow_Sunday
+           task_room_time_borrow_Weekend
         </template>
     </category>
     <category>
@@ -765,7 +765,7 @@
     <category>
         <pattern>#周末#可以#RES#吗</pattern>
         <template>
-           task_res_time
+           task_res_time_Weekend
         </template>
     </category>
 
@@ -814,7 +814,7 @@
     <category>
         <pattern>#RES#周末#吗</pattern>
         <template>
-           task_res_time
+           task_res_time_Weekend
         </template>
     </category>
 
@@ -983,6 +983,73 @@
            您好，您有什么问题
         </template>
     </category>
+
+
+    <category>
+        <pattern>#ROOM#是什么#</pattern>
+        <template>
+           task_room_psd
+        </template>
+    </category>
+    <category>
+        <pattern>#什么是ROOM#</pattern>
+        <template>
+           task_room_psd
+        </template>
+    </category>
+    <category>
+        <pattern>#RES#是什么#</pattern>
+        <template>
+           task_res_psd
+        </template>
+    </category>
+    <category>
+        <pattern>#什么是RES#</pattern>
+        <template>
+           task_res_psd
+        </template>
+    </category>
+    <category>
+        <pattern>#ROOM能#什么#</pattern>
+        <template>
+           task_room_psd
+        </template>
+    </category>
+    <category>
+        <pattern>#room可以#什么#</pattern>
+        <template>
+           task_room_psd
+        </template>
+    </category>
+    <category>
+        <pattern>#解释#ROOM#</pattern>
+        <template>
+           task_room_psd
+        </template>
+    </category>
+    <category>
+        <pattern>#介绍#ROOM#</pattern>
+        <template>
+           task_room_psd
+        </template>
+    </category>
+
+    <category>
+        <pattern>#解释#RES#</pattern>
+        <template>
+           task_res_psd
+        </template>
+    </category>
+
+    <category>
+        <pattern>#介绍#RES#</pattern>
+        <template>
+           task_res_psd
+        </template>
+    </category>
+
+
+
 
 
 

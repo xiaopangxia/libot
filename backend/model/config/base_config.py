@@ -11,8 +11,8 @@ GraphBaseConfig = {
 
 
     #'now_machine': '总馆北区_F2_大厅_2'
-    #'now_buiding': '总馆北区',
-    #'now_floor': '总馆北区二层',
+    'now_buiding': '总馆北区',
+    'now_floor': '总馆北区二层',
     #'now_machine': '总馆北区_F2_大厅_2'
     #'now_machine': '总馆北区_F3_标志位A_3'
     #'now_machine': '总馆北区_F4_标志位A_4'
@@ -32,11 +32,6 @@ GraphBaseConfig = {
     #'now_machine': '总馆北区_F1_标志位_3'
     #'now_machine': '总馆北区_F1_标志位_4'
     'now_machine': '总馆北区_F1_标志位_5'
-
-
-
-
-
 }
 
 

@@ -104,7 +104,7 @@ class rdfPrepare():
     @classmethod
     def load_navi_graph(cls):
         navi_g = rdflib.Graph()
-        navi_g.parse("../../resource/navigation.rdf", format="xml")
+        navi_g.parse("../../resource/navigation2.rdf", format="xml")
         return navi_g
 
     @classmethod
@@ -149,6 +149,22 @@ class rdfPrepare():
         #print(t)
         vlist = t[0][0].strip().split('，')
 
+
+        return vlist
+
+    @classmethod
+    def rdf_query_navi_propertiy_pic(cls, entity, intension, g):
+
+        q = "select?part where {<http://www.libot.org/" + entity + "> <http://www.libot.org/" + intension + "> ?part}"
+        # print(q)
+        # print(q)
+        x = g.query(q)
+        t = list(x)
+        # t = list(x)
+        #print('？',t)
+        # print(t)
+        vlist = t[0][0].strip().split('；')
+        #print(vlist)
 
         return vlist
 

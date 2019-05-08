@@ -28,19 +28,36 @@
 &emsp;&emsp;}<br>
 &emsp;b)	Search_qa:<br>
 &emsp;&emsp;{<br>
-		&emsp;&emsp;&emsp;“search_answer”:[<br>
-&emsp;&emsp;&emsp;&emsp;[“相似问题1”，“相似问题1的答案”，“问题1相似度”]，<br>
-&emsp;&emsp;&emsp;&emsp;[“相似问题2”，“相似问题2的答案”，“问题2相似度”]，<br>
-&emsp;&emsp;&emsp;&emsp;[“相似问题3”，“相似问题3的答案”，“问题3相似度”]<br>
-&emsp;&emsp;&emsp;&emsp;]<br>
+&emsp;&emsp;&emsp;    "search_answer": [<br>
+&emsp;&emsp;&emsp;&emsp;        {
+            "question": "相似问题1", "score": "0.0", "answer": "相似问题1的答案"
+        },<br>
+&emsp;&emsp;&emsp;&emsp;        {
+            "question": "相似问题2", "score": "0.0", "answer": "相似问题2的答案"
+        },<br>
+&emsp;&emsp;&emsp;&emsp;        {
+            "question": "相似问题3",
+            "score": "0.0",
+            "answer": "相似问题3的答案"
+        }<br>
+&emsp;&emsp;&emsp;    ]<br>
 &emsp;&emsp;}<br>
+
 &emsp;c)	All:<br>
 &emsp;&emsp;{<br>
-&emsp;&emsp;&emsp;“search_answer”:[<br>
-&emsp;&emsp;&emsp;&emsp;[“相似问题1”，“相似问题1的答案”，“问题1相似度”]，<br>
-&emsp;&emsp;&emsp;&emsp;[“相似问题2”，“相似问题2的答案”，“问题2相似度”]，<br>
-&emsp;&emsp;&emsp;&emsp;[“相似问题3”，“相似问题3的答案”，“问题3相似度”]<br>
-&emsp;&emsp;&emsp;]，<br>
+&emsp;&emsp;&emsp;    "search_answer": [<br>
+&emsp;&emsp;&emsp;&emsp;        {
+            "question": "相似问题1", "score": "0.0", "answer": "相似问题1的答案"
+        },<br>
+&emsp;&emsp;&emsp;&emsp;        {
+            "question": "相似问题2", "score": "0.0", "answer": "相似问题2的答案"
+        },<br>
+&emsp;&emsp;&emsp;&emsp;        {
+            "question": "相似问题3",
+            "score": "0.0",
+            "answer": "相似问题3的答案"
+        }<br>
+&emsp;&emsp;&emsp;    ]，<br>
 				&emsp;&emsp;&emsp;“graph_answer”:”回答字符串”<br>
 &emsp;&emsp;}<br>
 6.  截图

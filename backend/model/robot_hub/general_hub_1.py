@@ -29,10 +29,13 @@ class GeneralHub():
     总控程序版本1
     """
     def __init__(self):
+        multiwheelUnit._init()
+        multiwheelUnit.set_value('userid', 1)
         self._aiml_kernal = aiml_cn.Kernel()
         self._aiml_kernal.learn('../../resource/template.aiml')
         self._aiml_kernal.learn('../../resource/contain_template.aiml')
         self._aiml_kernal.learn('../../resource/multiwheelQA.aiml')
+        self._aiml_kernal.learn('../../resource/time_template.aiml')
     def question_answer_hub(self, question_str):
         """
         问答总控，基于aiml构建问题匹配器
@@ -87,11 +90,17 @@ if __name__ == '__main__':
     # gh.question_answer_hub('少年儿童馆主题活动区电话啥啊？')
     # gh.question_answer_hub('会议论文在哪？')
     # gh.question_answer_hub('学位论文在哪？')
+
     #gh.question_answer_hub('少年儿童馆在哪个馆啊？')
     #gh.question_answer_hub('少年儿童馆怎么走？')
     #multiwheelUnit._init()
     #multiwheelUnit.set_value('userid',1)
     #test_hub = GeneralHub()
+
+
+    # gh.question_answer_hub('香港书在哪个馆啊？')
+    #gh.question_answer_hub('古籍馆什么时候开？')
+    test_hub = GeneralHub()
 
     while True:
         question_str = input('User:')

@@ -48,6 +48,8 @@ class rdfBot():
             answer = cls.answer_room_time(entity_dict, graph,"Saturday")
         elif task == 'task_room_time_Sunday':
             answer = cls.answer_room_time(entity_dict, graph,"Sunday")
+        elif task == 'task_room_time_Weekend':
+            answer=cls.answer_room_time_weekend(entity_dict,graph)
         elif task == 'task_room_time_borrow':
             answer = cls.answer_room_time_borrow(entity_dict, graph,"today")
         elif task == 'task_room_time_borrow_tomorrow':
@@ -66,6 +68,8 @@ class rdfBot():
             answer = cls.answer_room_time_borrow(entity_dict, graph,"Saturday")
         elif task == 'task_room_time_borrow_Sunday':
             answer = cls.answer_room_time_borrow(entity_dict, graph,"Sunday")
+        elif task == 'task_room_time_borrow_Weekend':
+            answer = cls.answer_room_time_borrow_weekend(entity_dict,graph)
         elif task == 'task_room_time_openday':
             answer = cls.answer_room_time_openday(entity_dict, graph=graph)
         elif task == 'task_room_contact':
@@ -90,12 +94,18 @@ class rdfBot():
             answer = cls.answer_res_time(entity_dict, graph,"Saturday")
         elif task == 'task_res_time_Sunday':
             answer = cls.answer_res_time(entity_dict, graph,"Sunday")
+        elif task == 'task_res_time_Weekend':
+            answer=cls.answer_res_time_weekend(entity_dict,graph)
         elif task == 'task_res_time_openday':
             answer = cls.answer_res_time_openday(entity_dict, graph)
         elif task == 'task_res_pos':
             answer = cls.answer_res_pos(entity_dict, graph,1)
         elif task == 'task_res_room':
             answer = cls.answer_res_room(entity_dict, graph)
+        elif task == 'task_room_psd':
+            answer = cls.answer_room_psd(entity_dict, graph)
+        elif task == 'task_res_psd':
+            answer = cls.answer_res_psd(entity_dict, graph)
         #包含类
         elif task == 'task_room_room_l':
             answer = cls.answer_room_room_l(cls=cls,entity_dict=entity_dict, question_str=question_str,graph=graph)
@@ -1150,6 +1160,143 @@ class rdfBot():
                 return respons_str
         else:
             return None
+
+
+    @classmethod
+    def answer_room_time_weekend(cls, entity_dict, graph):
+
+        respons_str = ''
+        week_list = ['pro_Saturday_opentime', "pro_Sunday_opentime"]
+        time = ['', '']
+        room_in_question = entity_dict['room'][0]
+        for target_room in room_in_question:
+            for week_str, i in zip(week_list, range(2)):
+                if (len(rdfPrepare.rdf_query_propertiy(target_room, week_str, graph)) != 0):
+                        time[i] = rdfPrepare.rdf_query_propertiy(target_room, week_str, graph)[0]
+                elif (len(rdfPrepare.rdf_query_relation(target_room, week_str, graph)) != 0):
+                    parent_room = rdfPrepare.rdf_query_relation(target_room, "rel_part_of_room", graph)
+                    for p_room in parent_room:
+                        if (rdfPrepare.rdf_query_propertiy(p_room, week_str, graph)):
+                            time[i] = rdfPrepare.rdf_query_propertiy(target_room, week_str, graph)[0]
+        if (time[0] == time[1] != ''):
+            respons_str += '该馆室周末(周六，周日)开放时间：' + '\t' + time[0] + '。\n'
+        elif (time[0] == time[1] == ''):
+            respons_str += '该馆室周末(周六，周日)不开放。\n'
+        elif (time[0] == '' and time[1] != 0):
+            respons_str += '该馆室周六不开放。\n' + '周日开放时间：' + '\t' + time[1] + '。\n'
+        elif (time[1] == '' and time[0] != 0):
+            respons_str += '该馆室周六开放时间：' + '\t' + time[0] + '。\n' + '该馆室周日不开放。\n'
+        return respons_str
+
+    @classmethod
+    def answer_room_time_borrow_weekend(cls, entity_dict, graph):
+        respons_str = ''
+        week_list = ['pro_Saturday_borrowtime', "pro_Sunday_borrowtime"]
+        time = ['', '']
+        room_in_question = entity_dict['room'][0]
+        for target_room in room_in_question:
+            for week_str, i in zip(week_list, range(2)):
+                if (len(rdfPrepare.rdf_query_propertiy(target_room, week_str, graph)) != 0):
+                    time[i] = rdfPrepare.rdf_query_propertiy(target_room, week_str, graph)[0]
+                elif (len(rdfPrepare.rdf_query_relation(target_room, week_str, graph)) != 0):
+                    parent_room = rdfPrepare.rdf_query_relation(target_room, "rel_part_of_room", graph)
+                    for p_room in parent_room:
+                        if (rdfPrepare.rdf_query_propertiy(p_room, week_str, graph)):
+                            time[i] = rdfPrepare.rdf_query_propertiy(target_room, week_str, graph)[0]
+        if (time[0] == time[1] != ''):
+            respons_str += '该馆室周末(周六，周日)开放时间：' + '\t' + time[0] + '。\n'
+        elif (time[0] == time[1] == ''):
+            respons_str += '该馆室周末(周六，周日)不开放。\n'
+        elif (time[0] == '' and time[1] != 0):
+            respons_str += '该馆室周六不开放。\n' + '周日开放时间：' + '\t' + time[1] + '。\n'
+        elif (time[1] == '' and time[0] != 0):
+            respons_str += '该馆室周六开放时间：' + '\t' + time[0] + '。\n' + '该馆室周日不开放。\n'
+        return respons_str
+
+    @classmethod
+    def answer_res_time_weekend(cls, entity_dict, graph):
+        if len(entity_dict['res']) != 0:
+            for i in range(len(entity_dict['res'])):
+                res_in_question = entity_dict['res'][i]
+                respons_str = ''
+                week_list = ['pro_Saturday_opentime', "pro_Sunday_opentime"]
+                time = ['', '']
+                for target_res in res_in_question:
+                     room = rdfPrepare.rdf_query_relation(target_res, "rel_part_of_room", graph)
+                     if (len(room) != 0):
+                                 for week_str, i in zip(week_list, range(2)):
+                                     if (len(rdfPrepare.rdf_query_propertiy(room[0], week_str, graph)) != 0):
+                                         time[i] = rdfPrepare.rdf_query_propertiy(room[0], week_str, graph)[0]
+                                     elif (len(rdfPrepare.rdf_query_relation(room[0], week_str, graph)) != 0):
+                                         parent_room = rdfPrepare.rdf_query_relation(room[0], "rel_part_of_room",
+                                                                                     graph)
+                                         for p_room in parent_room:
+                                             if (rdfPrepare.rdf_query_propertiy(p_room, week_str, graph)):
+                                                 time[i] = rdfPrepare.rdf_query_propertiy(p_room, week_str, graph)[
+                                                     0]
+                if (time[0] == time[1] != ''):
+                        respons_str += '该资源周末(周六，周日)开放时间：' + '\t' + time[0] + '。\n'
+                elif (time[0] == time[1] == ''):
+                        respons_str += '该资源周末(周六，周日)不开放。\n'
+                elif (time[0] == '' and time[1] != 0):
+                        respons_str += '该资源周六不开放。\n' + '周日开放时间为：' + '\t' + time[1] + '。\n'
+                elif (time[1] == '' and time[0] != 0):
+                        respons_str += '该资源周六开放时间：' + '\t' + time[0] + '。\n' + '周日不开放。\n'
+                return respons_str
+
+
+    @classmethod
+    def answer_room_psd(cls, entity_dict, graph):
+        if (len(entity_dict['room']) != 0):
+            respons_str = ''
+            for i in range(len(entity_dict['room'])):
+                room_in_question = entity_dict['room'][i]
+                if room_in_question:
+                    for target_room in room_in_question:
+                        if (len(rdfPrepare.rdf_query_propertiy(target_room, "pro_serve_describe", graph)) != 0):
+                            respons_str += "_".join(target_room.split('_')[0:3]) + "：" + \
+                                           rdfPrepare.rdf_query_propertiy(target_room, "pro_serve_describe", graph)[0]
+                        elif (len(rdfPrepare.rdf_query_relation(target_room, "rel_part_of_room", graph)) != 0):
+                            parent_room = rdfPrepare.rdf_query_relation(target_room, "rel_part_of_room", graph)
+                            for p_room in parent_room:
+                                if (rdfPrepare.rdf_query_propertiy(p_room, "pro_serve_describe", graph)):
+                                    respons_str += target_room + '位于' + p_room.split('_')[2] + '：' + \
+                                                   rdfPrepare.rdf_query_propertiy(target_room, "pro_serve_describe",
+                                                                                  graph)[0]
+                                else:
+                                    respons_str = "_".join(target_room.split('_')[0:3]) + "：暂无描述" + '。\n'
+                        else:
+                            respons_str = "_".join(target_room.split('_')[0:3]) + "：暂无描述" + '。\n'
+
+                    return respons_str
+        else:
+            return None
+
+    @classmethod
+    def answer_res_psd(cls, entity_dict, graph):
+        if (len(entity_dict['res']) != 0):
+            respons_str = ''
+            for i in range(len(entity_dict['res'])):
+                res_in_question = entity_dict['res'][i]
+                if res_in_question:
+                    for target_res in res_in_question:
+                        if (len(rdfPrepare.rdf_query_propertiy(target_res, "pro_source_describe", graph)) != 0):
+                            respons_str += "_".join(target_res.split('_')[0:3]) + "：" + \
+                                           rdfPrepare.rdf_query_propertiy(target_res, "pro_source_describe", graph)[0]
+                        elif (len(rdfPrepare.rdf_query_relation(target_res, "rel_part_of_source", graph)) != 0):
+                            parent_res = rdfPrepare.rdf_query_relation(target_res, "rel_part_of_source", graph)
+                            for p_res in parent_res:
+                                if (rdfPrepare.rdf_query_propertiy(p_res, "pro_serve_describe", graph)):
+                                    respons_str += target_res + '位于' + p_res.split('_')[2] + '：' + \
+                                                   rdfPrepare.rdf_query_propertiy(p_res, "pro_serve_describe", graph)[0]
+                                else:
+                                    respons_str = "_".join(target_res.split('_')[0:3]) + "：暂无描述" + '。\n'
+                        else:
+                            respons_str = "_".join(target_res.split('_')[0:3]) + "：暂无描述" + '。\n'
+                    return respons_str
+        else:
+            return None
+
     #馆室馆室
     def answer_room_room_l(cls,entity_dict,question_str,graph):
         entity_count = 1

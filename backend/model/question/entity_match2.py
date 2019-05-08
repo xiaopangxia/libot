@@ -5,7 +5,11 @@
 
 import os
 import sys
+#from model.question.dict_match2 import DictMatch2
+#from model.kb_prepare.rdf_prepare import rdfPrepare
+
 from model.question.dict_match2 import DictMatch2
+
 from model.kb_prepare.rdf_prepare import rdfPrepare
 import time
 
@@ -30,9 +34,11 @@ class entityMatch2():
     @classmethod
     def room_dict_match(cls, question_str, var_list, graph):
         dict_list = rdfPrepare.rdf_query_varientnames('room', graph)
+        #print("dict_list",dict_list)
         entities = DictMatch2.room_dict_match(question_str, var_list, graph)
         for i in range(len(entities)):
             for entity in entities[i]:
+                #print("dict_list[entity]",type(dict_list[entity]))
                 dict_list[entity].sort(key=lambda s: len(s), reverse=True)
                 for varname in dict_list[entity]:
                     question_str = question_str.replace(varname, replace_entity_mark['room'])

@@ -253,6 +253,12 @@
             task_room_room_or_res_a
         </template>
     </category>
+    <category>
+        <pattern>#ROOM#有#看</pattern>
+        <template>
+            task_room_res_a
+        </template>
+    </category>
 
     <category>
         <pattern>#多少#RES#</pattern>

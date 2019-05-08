@@ -7,7 +7,10 @@ import sys
 # 模块路径引用统一回退到Libbot目录下
 project_path = os.path.abspath(os.path.join(os.getcwd(), "../.."))
 sys.path.append(project_path)
-
+import rdflib
+import xlrd
+from rdflib import Literal
+from rdflib.namespace import RDF
 import model.config.multiwheel_manage as multiwheelUnit
 from model.question.entity_match import entityMatch
 from model.question.entity_match2 import entityMatch2
@@ -41,34 +44,16 @@ class GeneralHub():
         """
         g = rdfPrepare.load_graph()
         question_replaced, entity_dict = entityMatch2.match_and_replace_all(question_str,g)
-        #print(question_replaced,entity_dict)
+        print(entity_dict)
 
-        navi_g = rdfPrepare.load_navi_graph()
-        navi_question_replaced, navi_entity_dict = entityMatch2.match_and_replace_all(question_str, navi_g)
-        #print(navi_question_replaced, navi_entity_dict)
-        # question_replaced, entity_dict = entityMatch.match_and_replace_all(question_str)
-        '''
-        arr = []
-        if len(entity_dict['room']) > 0:
-            for i in entity_dict['room']:
-                if len(i) == 0:
-                    continue
-                index = question_str.find(i[0])
-                arr.append(index)
-            # print(arr)
-            arr_index = np.argsort(np.array(arr))
-            # print(arr_index)
-            entity_dict2 = []
-            for i in entity_dict['room']:
-                if len(i) == 0:
-                    continue
-                entity_dict2.append(i)
+        #navi_g = rdfPrepare.load_navi_graph()
 
-            for i in range(len(entity_dict['room'])):
-                if len(entity_dict['room'][i]) == 0:
-                    continue
-                # print(arr_index[i],entity_dict2[arr_index[i]])
-                entity_dict['room'][i] = entity_dict2[arr_index[i]]
+        #for room in g.subjects(RDF.type, rdflib.URIRef("http://www.libot.org/room")):
+            #print(room)
+        #for s, p, o in g:
+        #    print((s, p, o))
+        #print(g.serialize(format='n3'))
+        #navi_question_replaced, navi_entity_dict = entityMatch2.match_and_replace_all(question_str, navi_g)
         '''
         if multiwheelUnit.get_value('business') == "办理读书卡":
             if "answer" not in multiwheelUnit.get_value('step'):
@@ -76,19 +61,19 @@ class GeneralHub():
             else:
                 multiwheelUnit.set_value('business',None)
                 multiwheelUnit.set_value('step', None)
-
+        '''
+        #aiml_respons = self._aiml_kernal.respond(question_replaced)
         aiml_respons = self._aiml_kernal.respond(question_replaced)
 
         if 'multiwheeltask_'in aiml_respons:
             print("aiml_respons: ", str(aiml_respons))
-            # print("entity_dict: ", str(entity_dict))
             graph_respons = rdfBotMul.task_response(aiml_respons, entity_dict, question_str, g)
             return graph_respons
         elif 'task_' in aiml_respons:
-            print("aiml_respons: ", str(aiml_respons))
-            #print("entity_dict: ", str(entity_dict))
             if aiml_respons == 'task_room_pos':
-                graph_respons = rdfBot.task_response(aiml_respons, navi_entity_dict, question_str, navi_g)
+                return
+                #graph_respons = rdfBot.task_response(aiml_respons, navi_entity_dict, question_str, navi_g)
+                #graph_respons = rdfBot.task_response(aiml_respons, test_entity_dict, question_str, test_g)
             else:
                 graph_respons = rdfBot.task_response(aiml_respons,entity_dict,question_str,g)
 
@@ -105,15 +90,28 @@ if __name__ == '__main__':
     # gh.question_answer_hub('少年儿童馆主题活动区电话啥啊？')
     # gh.question_answer_hub('会议论文在哪？')
     # gh.question_answer_hub('学位论文在哪？')
+
+    #gh.question_answer_hub('少年儿童馆在哪个馆啊？')
+    #gh.question_answer_hub('少年儿童馆怎么走？')
+    #multiwheelUnit._init()
+    #multiwheelUnit.set_value('userid',1)
+    #test_hub = GeneralHub()
+
+
     # gh.question_answer_hub('香港书在哪个馆啊？')
     #gh.question_answer_hub('古籍馆什么时候开？')
     test_hub = GeneralHub()
+
     while True:
         question_str = input('User:')
         if question_str == 'exit':
             break
         else:
-            print('Libot:', test_hub.question_answer_hub(question_str))
+            time_start = time.time()
+            print('Libot:', gh.question_answer_hub(question_str))
+            time_end = time.time()
+            print('time cost', time_end - time_start, 's')
+
 
 
 

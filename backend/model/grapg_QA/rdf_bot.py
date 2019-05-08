@@ -12,7 +12,11 @@ from model.config.base_config import GraphBaseConfig
 from model.kb_prepare.rdf_prepare import rdfPrepare
 import time
 import datetime
+import matplotlib.pyplot as plt
+from skimage import io
 import numpy as np
+
+from queue import Queue
 class rdfBot():
     """
     对应问题模式在知识图谱中查找答案
@@ -71,7 +75,7 @@ class rdfBot():
         elif task == 'task_room_contact':
             answer = cls.answer_room_contact(entity_dict, graph=graph)
         elif task == 'task_room_pos':
-            answer = cls.answer_room_navi(entity_dict, graph,1)
+            answer = cls.answer_room_test(entity_dict,graph)
         elif task == 'task_res_time':
             answer = cls.answer_res_time(entity_dict, graph,"today")
         elif task == 'task_res_time_tomorrow':
@@ -183,6 +187,72 @@ class rdfBot():
         else:
             return None
 
+
+    @classmethod
+    def answer_room_test(cls,entity_dict, graph):
+
+        start_room = entity_dict['room'][0][0]
+        father_list=[]
+        node_list=[]
+
+        destination_mark = rdfPrepare.rdf_query_relation(start_room, 'rel_neighbor', graph)
+        machine = '拐角'
+        node_list.append(machine)
+        father_list.append(-1)
+        base_index = 0
+        node_index=0
+        flag = False
+        flag_index = True
+        #print("destination_mark",destination_mark)
+        while(1):
+            flag_index = True
+            straight_mark=rdfPrepare.rdf_query_relation(node_list[node_index], 'rel_neighbor', graph)
+            if node_index == 0:
+                base_index = len(straight_mark)
+            print("straight_mark",node_list[node_index],straight_mark,base_index)
+            for sub_mark in straight_mark:
+                if sub_mark not in node_list:
+                    node_list.append(sub_mark)
+                    father_list.append(node_list[node_index])
+                    flag_index = False
+                    #print("sub_mark",sub_mark,node_list,father_list)
+
+                    if sub_mark in destination_mark:
+                        #print("find",node_list,destination_mark)
+                        flag=True
+                        break
+            if flag:
+                break
+            if flag_index and node_index>=base_index:
+                break
+            if node_index<len(node_list)-1:
+                node_index = node_index+1
+
+        if node_list[len(node_list) - 1] not in destination_mark:
+            return "对不起，无法形成路径方案。"
+        count = 0
+        father = father_list[len(node_list) - 1]
+
+        road=[]
+        road.append(node_list[len(node_list)-1])
+        road.append(father)
+        while(1):
+
+
+            print(node_list[len(node_list)-1],father)
+            if father == -1:
+                break
+            node_index=node_list.index(father)
+            father = father_list[node_index]
+            road.append(father)
+            print(node_list,node_index,father_list)
+
+        for i in road[::-1]:
+            print(i)
+
+
+
+
     @classmethod
     def answer_room_navi(cls, entity_dict, graph, tag):
 
@@ -191,6 +261,7 @@ class rdfBot():
         destination = entity_dict['room'][0]
         #print(destination)
         machine_room = rdfPrepare.rdf_query_relation(machine, 'rel_part_of_room', graph)[0]
+        #print(machine_room)
         destination2=[]
         #print(destination,"origin")
         if len(destination)>2:
@@ -270,6 +341,9 @@ class rdfBot():
         #print(machine_room,machine_floor,des_room,des_floor)
         #if False and machine_floor in des_floor:
         if machine_floor in des_floor:
+            x = int(float(rdfPrepare.rdf_query_navi_propertiy_pic(machine,'pro_sx',graph)[0]))
+            y = int(float(rdfPrepare.rdf_query_navi_propertiy_pic(machine,'pro_sy',graph)[0]))
+            #print(x,y)
 
             pos_near_machine = rdfPrepare.rdf_query_navi_propertiy(machine,'pro_neighbor',graph)
             near_machine_dir = rdfPrepare.rdf_query_navi_propertiy(machine,'pro_neighbor_dir',graph)
@@ -319,6 +393,91 @@ class rdfBot():
                         final_des_index = i
                         final_dir = near_des_dir[i]
                 #print(distance.split('m')[0])
+
+                ########################################################################
+                dx = rdfPrepare.rdf_query_navi_propertiy_pic(machine, 'pro_x', graph)
+                dy = rdfPrepare.rdf_query_navi_propertiy_pic(machine, 'pro_y', graph)
+                #print(dx,dy)
+                img = None
+                img = io.imread('../../resource/1.png')
+                #io.imshow(img)
+
+                #print(int(dy[final_des_index]))
+                #plt.plot([x, int(dx[final_des_index])], [y, int(dy[final_des_index])])
+
+                if dx[final_des_index].find('，') != -1:
+                    arrx = dx[final_des_index].split('，')
+                    mindx = min(int(arrx[0]), int(arrx[1]))
+                    maxdx = max(int(arrx[0]), int(arrx[1]))
+                    arry = dy[final_des_index].split('，')
+                    mindy = min(int(arry[0]), int(arry[1]))
+                    maxdy = max(int(arry[0]), int(arry[1]))
+                    sy = min(mindy, y)
+                    sx = min(mindx, x)
+                    ey = max(maxdy, y)
+                    ex = max(maxdx, x)
+                else:
+                    sy = min(int(dy[final_des_index]),y)
+                    sx = min(int(dx[final_des_index]),x)
+                    ey = max(int(dy[final_des_index]),y)
+                    ex = max(int(dx[final_des_index]),x)
+                '''
+                if y>int(dy[final_des_index]):
+
+                    sy = int(dy[final_des_index])
+                    ey = y
+                else:
+                    sy=y
+                    ey = int(dy[final_des_index])
+                if x>int(dx[final_des_index]):
+
+                    sx=int(dx[final_des_index])
+                    ex=x
+                else:
+                    sx = x
+                    ex=int(dx[final_des_index])
+                '''
+                if sx-200>=0:
+                    left=sx-200
+                else :
+                    left=0
+                if sy-200>=0:
+                    up=sy-200
+                else :
+                    up=0
+                if ex+200<=img.shape[1]:
+                    right=ex+200
+                else :
+                    right=img.shape[1]
+                if ey+200<=img.shape[0]:
+                    down=ey+200
+                else :
+                    down=img.shape[0]
+                #print(x,ex,left,right)
+                img = img[up:down, left:right]
+                #io.imshow(img)
+                #plt.axis('off')
+                plt.figure()
+                plt.axis('off')
+                #io.imshow(img2)
+                #plt.plot([x-left, int(dx[final_des_index])-left], [y-up, int(dy[final_des_index])-up])
+
+                if dx[final_des_index].find('，') != -1:
+                    arrx = dx[final_des_index].split('，')
+                    arry = dy[final_des_index].split('，')
+                    # print(dx,dy,arrx,arry)
+
+                    plt.plot([x - left, int(arrx[0]) - left, int(arrx[1]) - left],
+                             [y - up, int(arry[0]) - up, int(arry[1]) - up])
+                else:
+
+                    plt.plot([x - left, int(dx[final_des_index]) - left],
+                             [y - up,  int(dy[final_des_index]) - up])
+
+                io.imshow(img)
+                plt.savefig('../../resource/2.png')
+                ########################################################################
+
                 if distance == 0:
                     respons_str += "您当前所在地附近就是"+form_des+"。"+form_des+"在您"+final_dir+"面。\n"
                 elif distance<=50:
@@ -383,12 +542,79 @@ class rdfBot():
 
                                         final_dir = conor_des_dir[i]
                                         f_dis = conor_des_dis[i]
+                                        f_ind = i
                                         #print(conorindex, conor, conors[conorindex], conor_des_dir, f_distance,final_conor,
                                               #final_dir, f_dis, "???")
 
                                         index_final_des = i
                             # print(distance.split('m')[0])
                     if not flag:
+                        ########################################################################
+                        nx = rdfPrepare.rdf_query_navi_propertiy_pic(machine, 'pro_nei_x', graph)
+                        ny = rdfPrepare.rdf_query_navi_propertiy_pic(machine, 'pro_nei_y', graph)
+                        dx = rdfPrepare.rdf_query_navi_propertiy_pic(conors[final_conor], 'pro_x', graph)
+                        dy = rdfPrepare.rdf_query_navi_propertiy_pic(conors[final_conor], 'pro_y', graph)
+                        #print(nx,ny,dx,dy)
+                        #mx = int(float(rdfPrepare.rdf_query_navi_propertiy_pic(conors[final_conor], 'pro_sx', graph)[0]))
+                        #my = int(float(rdfPrepare.rdf_query_navi_propertiy_pic(conors[final_conor], 'pro_sy', graph)[0]))
+
+                        # print(dx,dy)
+                        img=None
+                        img = io.imread('../../resource/1.png')
+                        # io.imshow(img)
+                        plt.figure()
+                        plt.axis('off')
+                        # print(int(dy[final_des_index]))
+                        # plt.plot([x, int(dx[final_des_index])], [y, int(dy[final_des_index])])
+                        if dx[f_ind].find('，') != -1:
+                            arrx=dx[f_ind].split('，')
+                            mindx = min(int(arrx[0]),int(arrx[1]))
+                            maxdx = max(int(arrx[0]),int(arrx[1]))
+                            arry = dy[f_ind].split('，')
+                            mindy = min(int(arry[0]), int(arry[1]))
+                            maxdy = max(int(arry[0]), int(arry[1]))
+                            sy = min(min(mindy, int(ny[final_conor])), y)
+                            sx = min(min(mindx, int(nx[final_conor])), x)
+                            ey = max(max(maxdy, int(ny[final_conor])), y)
+                            ex = max(max(maxdx, int(nx[final_conor])), x)
+                        else:
+                            sy = min(min(int(dy[f_ind]), int(ny[final_conor])), y)
+                            sx = min(min(int(dx[f_ind]), int(nx[final_conor])), x)
+                            ey = max(max(int(dy[f_ind]),int(ny[final_conor])),y)
+                            ex = max(max(int(dx[f_ind]),int(nx[final_conor])),x)
+                        #print(sy,sx,ey,ex)
+                        if sx - 200 >= 0:
+                            left = sx - 200
+                        else:
+                            left = 0
+                        if sy - 200 >= 0:
+                            up = sy - 200
+                        else:
+                            up = 0
+                        if ex + 200 <= img.shape[1]:
+                            right = ex + 200
+                        else:
+                            right = img.shape[1]
+                        if ey + 200 <= img.shape[0]:
+                            down = ey + 200
+                        else:
+                            down = img.shape[0]
+                        img = img[up:down, left:right]
+                        # io.imshow(img2)
+                        if dx[f_ind].find('，')!=-1:
+                            arrx = dx[f_ind].split('，')
+                            arry = dy[f_ind].split('，')
+                            #print(dx,dy,arrx,arry)
+
+                            plt.plot([x - left, int(nx[final_conor]) - left, int(arrx[0]) - left,int(arrx[1]) - left],
+                                     [y - up, int(ny[final_conor]) - up, int(arry[0]) - up,int(arry[1]) - up])
+                        else:
+
+                            plt.plot([x - left,int(nx[final_conor])-left, int(dx[f_ind])-left],[y - up,int(ny[final_conor])-up, int(dy[f_ind])-up])
+                        io.imshow(img)
+                        plt.savefig('../../resource/2.png')
+
+                        ########################################################################
                         #print(conors[final_conor],final_dir,f_dis,final_conor)
                         #print(flag)
                         if near_machine_dis[final_conor].find("，")==-1:

@@ -1,0 +1,1123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:ns1="http://www.libot.org/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F2_标志位B_2">
+    <ns1:pro_neighbor>总馆北区_F2_标志位D_2，总馆北区_F2_标志位A_2</ns1:pro_neighbor>
+    <ns1:pro_nei_dis>500米，500米，</ns1:pro_nei_dis>
+    <ns1:pro_variant_name>总馆北区_F2_标志位B_2</ns1:pro_variant_name>
+    <ns1:pro_stairs_dir>西</ns1:pro_stairs_dir>
+    <ns1:pro_destination_dir>北，西，东，东，东，东南，东南，南，北，北</ns1:pro_destination_dir>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_des_dis>0米，10米，100米，100米，100米，100，200米，100，700米，0米，50米，50米，</ns1:pro_des_dis>
+    <ns1:pro_destination>总馆北区_F2_中文图书阅览区_2，总馆北区_F2_综合咨询台_1，印象数图，总馆北区_F2_目录查询区_1，读者辅导区，总馆北区_F2_办证处_1，总馆北区_F2_少年儿童馆_2，总馆北区_F2_工具书区_3，总馆北区_F2_电梯_1，总馆北区_F2_卫生间_2</ns1:pro_destination>
+    <ns1:pro_position_describe>工具书区东北角</ns1:pro_position_describe>
+    <ns1:pro_neighbor_dir>南，西</ns1:pro_neighbor_dir>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_stairs_dis>50米，</ns1:pro_stairs_dis>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区二层_二"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F4_标志位A_4">
+    <ns1:pro_position_describe>学位论文阅览室北区</ns1:pro_position_describe>
+    <ns1:pro_stairs_dir>东</ns1:pro_stairs_dir>
+    <ns1:pro_des_dis>50米，0米，100，100米，70米，100米，600米，600米，250米，</ns1:pro_des_dis>
+    <ns1:pro_neighbor_dir>东，南</ns1:pro_neighbor_dir>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_neighbor>总馆北区_F4_标志位B_4，总馆北区_F4_标志位D_4</ns1:pro_neighbor>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_stairs_dis>450米，</ns1:pro_stairs_dis>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区四层_四"/>
+    <ns1:pro_nei_dis>500米，500米，</ns1:pro_nei_dis>
+    <ns1:pro_variant_name>总馆北区_F4_标志位A_4</ns1:pro_variant_name>
+    <ns1:pro_destination_dir>北，西，北东，东，南，东，南，东</ns1:pro_destination_dir>
+    <ns1:pro_destination>视听阅览区，学位论文阅览室，总馆北区_F4_综合咨询台_1，总馆北区_F4_卫生间_1，总馆北区_F4_自助复制处_4，数字共享空间，中文报纸区，总馆北区_F4_电梯_1</ns1:pro_destination>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/24小时（自助）还书处">
+    <ns1:pro_variant_name>还书的地方，还书的机器，24小时（自助）还书处，还书处</ns1:pro_variant_name>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区一层_一"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+    <ns1:pro_position_describe>东门南侧</ns1:pro_position_describe>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F4_人工复制处_5">
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_position_describe>西南侧</ns1:pro_position_describe>
+    <ns1:pro_variant_name>复制处，打印处，复制的地方，打印的地方，人工复制处，总馆北区复制处，总馆北区复制区</ns1:pro_variant_name>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区四层_四"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/古籍馆_F3_书库1_3">
+    <ns1:pro_variant_name>古籍馆书库，书库</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/古籍馆文津楼"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/古籍馆三层"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/文津楼二层"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区一层_一">
+    <ns1:pro_variant_name>一层，北一层，一楼，总馆北区一楼，北一楼，北馆，北楼，北区大楼，总馆北区一层</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/floor"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F1_标志位_2">
+    <ns1:pro_nei_dis>400米，500米，</ns1:pro_nei_dis>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区一层_一"/>
+    <ns1:pro_neighbor>总馆北区_F1_标志位_1，总馆北区_F1_标志位_4</ns1:pro_neighbor>
+    <ns1:pro_neighbor_dir>北，东</ns1:pro_neighbor_dir>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_variant_name>总馆北区_F1_标志位_2</ns1:pro_variant_name>
+    <ns1:pro_stairs_dis>30米</ns1:pro_stairs_dis>
+    <ns1:pro_stairs_dir>东南</ns1:pro_stairs_dir>
+    <ns1:pro_des_dis>0米，0米，0米，200米，450米，50，50米，350米，550，100米，70米，600米，200，70米，</ns1:pro_des_dis>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_destination_dir>西，东，南，南，东，西北，东，东南，南，东，东南</ns1:pro_destination_dir>
+    <ns1:pro_destination>总馆北区_F1_中文图书借阅区，总馆北区_F1_工具书区_2，总馆北区_F1_中文图书阅览区_1，研讨室，总馆北区_F1_卫生间_1，总馆北区_F1_综合咨询台_3，稽古厅，总馆北区_F1_少年儿童馆_1，总馆北区_F1_自助复制处_1，总馆北区_F1_存包处_1，总馆北区_F1_电梯_1</ns1:pro_destination>
+    <ns1:pro_position_describe>工具书区西南角</ns1:pro_position_describe>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F2_电梯_1">
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_variant_name>电梯，升降梯，自动楼梯</ns1:pro_variant_name>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区二层_二"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/临琼楼一层">
+    <ns1:rel_upstairs rdf:resource="http://www.libot.org/文津楼一层"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/古籍馆临琼楼"/>
+    <ns1:pro_variant_name>古籍楼一层，古籍馆一层，古籍楼一楼，古籍馆一楼，临琼楼一层，临琼楼</ns1:pro_variant_name>
+    <ns1:rel_upstairs rdf:resource="http://www.libot.org/古籍馆二层"/>
+    <rdf:type rdf:resource="http://www.libot.org/floor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/古籍馆文津楼_F2_办证处_3">
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/古籍馆二层"/>
+    <ns1:pro_variant_name>办证的地方，办证服务台，办证处</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/古籍馆文津楼"/>
+    <ns1:pro_position_describe>文津楼一层东侧</ns1:pro_position_describe>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/文津楼一层"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F3_标志位C_3">
+    <ns1:pro_stairs_dir>东南</ns1:pro_stairs_dir>
+    <ns1:pro_destination>总馆北区_F3_综合咨询台_1，总馆北区_F3_中文图书阅览区_3，总馆北区_F3_电梯_1</ns1:pro_destination>
+    <ns1:pro_nei_dis>500米，500米，</ns1:pro_nei_dis>
+    <ns1:pro_des_dis>10米，0米，50米，</ns1:pro_des_dis>
+    <ns1:pro_stairs_dis>70米，</ns1:pro_stairs_dis>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_neighbor>总馆北区_F3_标志位B_3，总馆北区_F3_标志位D_3</ns1:pro_neighbor>
+    <ns1:pro_destination_dir>南，南，南</ns1:pro_destination_dir>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区三层_三"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_neighbor_dir>北，西</ns1:pro_neighbor_dir>
+    <ns1:pro_position_describe>中心活动室东南角</ns1:pro_position_describe>
+    <ns1:pro_variant_name>总馆北区_F3_标志位C_3</ns1:pro_variant_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/古籍馆_F1_卫生间_4">
+    <ns1:pro_variant_name>卫生间，古籍馆卫生间，厕所，茅房，古籍馆厕所，古籍馆茅厕，古籍馆茅房，茅厕</ns1:pro_variant_name>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/古籍馆一层"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/临琼楼一层"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/古籍馆临琼楼"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F3_标志位B_3">
+    <ns1:pro_neighbor_dir>西，南</ns1:pro_neighbor_dir>
+    <ns1:pro_destination>总馆北区_F3_综合咨询台_1，总馆北区_F3_中文图书阅览区_3，总馆北区_F3_电梯_1</ns1:pro_destination>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区三层_三"/>
+    <ns1:pro_stairs_dir>东北</ns1:pro_stairs_dir>
+    <ns1:pro_des_dis>10米，0米，50米，</ns1:pro_des_dis>
+    <ns1:pro_neighbor>总馆北区_F3_标志位A_3，总馆北区_F3_标志位C_3</ns1:pro_neighbor>
+    <ns1:pro_nei_dis>500米，500米，</ns1:pro_nei_dis>
+    <ns1:pro_position_describe>中心活动室东北角</ns1:pro_position_describe>
+    <ns1:pro_destination_dir>北，北，北</ns1:pro_destination_dir>
+    <ns1:pro_stairs_dis>70米，</ns1:pro_stairs_dis>
+    <ns1:pro_variant_name>总馆北区_F3_标志位B_3</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/科学技术咨询室">
+    <ns1:pro_position_describe>D204</ns1:pro_position_describe>
+    <ns1:pro_variant_name>科学技术咨询室，科技咨询处，科技咨询室，科技咨询中心</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区二层_二"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/少年儿童馆亲子阅览区">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_position_describe>一层东南角</ns1:pro_position_describe>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区_F1_少年儿童馆_1"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区一层_一"/>
+    <ns1:pro_variant_name>亲子区，少年儿童馆亲子阅览区</ns1:pro_variant_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/古籍馆临琼楼">
+    <ns1:pro_destination_dir>向北，向南</ns1:pro_destination_dir>
+    <ns1:pro_variant_name>古籍馆临琼楼，古籍馆，临琼楼</ns1:pro_variant_name>
+    <ns1:pro_destination>总馆北区，总馆南区</ns1:pro_destination>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_position_describe>文津街</ns1:pro_position_describe>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F1_标志位_4">
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_neighbor>总馆北区_F1_标志位_2，总馆北区_F1_标志位_3，总馆北区_F1_标志位_5</ns1:pro_neighbor>
+    <ns1:pro_destination_dir>北，西，西，西南，南，东，西南，西南，东，南</ns1:pro_destination_dir>
+    <ns1:pro_destination>稽古厅，总馆北区_F1_中文图书阅览区_1，总馆北区_F1_工具书区_2，总馆北区_F1_综合咨询台_3，总馆北区_F1_少年儿童馆_1，总馆北区_F1_卫生间_1，总馆北区_F1_自助复制处_1，研讨室，总馆北区_F1_存包处_1，总馆北区_F4_电梯_1</ns1:pro_destination>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_position_describe>稽古厅东南角</ns1:pro_position_describe>
+    <ns1:pro_nei_dis>500米，400米，50，70米，</ns1:pro_nei_dis>
+    <ns1:pro_stairs_dis>10米</ns1:pro_stairs_dis>
+    <ns1:pro_x>0；420；300；；；；147，147；188，188</ns1:pro_x>
+    <ns1:pro_y>0；401；401；；；；401，430；401，500</ns1:pro_y>
+    <ns1:pro_neighbor_dir>西，北，东北</ns1:pro_neighbor_dir>
+    <ns1:pro_des_dis>0米，80米，250米，50，50米，150米，50米，550，50米，550，80米，80米，70米，</ns1:pro_des_dis>
+    <ns1:pro_stairs_dir>南</ns1:pro_stairs_dir>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区一层_一"/>
+    <ns1:pro_variant_name>总馆北区_F1_标志位_4</ns1:pro_variant_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/文津楼二层">
+    <ns1:rel_downstairs rdf:resource="http://www.libot.org/文津楼一层"/>
+    <ns1:pro_variant_name>古籍楼三层，古籍馆三层，文津楼二楼，古籍楼三楼，古籍馆文津楼二楼，古籍馆文津楼二层，文津楼二层</ns1:pro_variant_name>
+    <ns1:rel_downstairs rdf:resource="http://www.libot.org/古籍馆二层"/>
+    <rdf:type rdf:resource="http://www.libot.org/floor"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/古籍馆文津楼"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F2_大厅_2">
+    <ns1:pro_neighbor>总馆北区_F2_标志位B_2，总馆北区_F2_标志位D_2</ns1:pro_neighbor>
+    <ns1:pro_destination_dir>北，北，北，东，南，南，北西，北西</ns1:pro_destination_dir>
+    <ns1:pro_des_dis>10米，100米，200米，0米，150米，450米，200，50米，250，100米，</ns1:pro_des_dis>
+    <ns1:pro_destination>印象数图，总馆北区_F2_目录查询区_1，读者辅导区，总馆北区_F2_办证处_1，总馆北区_F2_综合咨询台_1，总馆北区_F2_少年儿童馆_2，总馆北区_F2_电梯_1，总馆北区_F2_卫生间_2</ns1:pro_destination>
+    <ns1:pro_neighbor_dir>北西，南西</ns1:pro_neighbor_dir>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区二层_二"/>
+    <ns1:pro_variant_name>总馆北区_F2_大厅_2</ns1:pro_variant_name>
+    <ns1:pro_stairs_dir>南</ns1:pro_stairs_dir>
+    <ns1:pro_nei_dis>300，100米，500，100米，</ns1:pro_nei_dis>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_position_describe>大厅办证处</ns1:pro_position_describe>
+    <ns1:pro_stairs_dis>200米，</ns1:pro_stairs_dis>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/少年儿童馆数字共享空间">
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区一层_一"/>
+    <ns1:pro_variant_name>少年儿童馆数字共享空间，少儿数字共享</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_position_describe>一层东南角</ns1:pro_position_describe>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区_F1_少年儿童馆_1"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F4_卫生间_1">
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区四层_四"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_variant_name>茅房，洗手间，厕所，男厕所，女厕所，wc</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F1_标志位_5">
+    <ns1:pro_variant_name>总馆北区_F1_标志位_5</ns1:pro_variant_name>
+    <ns1:pro_position_describe>总馆北区一层大厅</ns1:pro_position_describe>
+    <ns1:pro_neighbor_dir>北，南</ns1:pro_neighbor_dir>
+    <ns1:pro_stairs_dis>30米</ns1:pro_stairs_dis>
+    <ns1:pro_sy>335.0</ns1:pro_sy>
+    <ns1:pro_nei_x>502；502</ns1:pro_nei_x>
+    <ns1:pro_destination>稽古厅，总馆北区_F1_少年儿童馆_1，总馆北区_F1_卫生间_1，总馆北区_F1_存包处_1，总馆北区_F4_电梯_1</ns1:pro_destination>
+    <ns1:pro_nei_y>181；401</ns1:pro_nei_y>
+    <ns1:pro_des_dis>50米，400米，30米，80，50米，350，80米，</ns1:pro_des_dis>
+    <ns1:pro_y>335；502；383；335，370；425，425</ns1:pro_y>
+    <ns1:pro_nei_dis>300米，100米，</ns1:pro_nei_dis>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_destination_dir>东，南，南，东南，南西</ns1:pro_destination_dir>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_sx>502.0</ns1:pro_sx>
+    <ns1:pro_neighbor>总馆北区_F1_标志位_3，总馆北区_F1_标志位_4</ns1:pro_neighbor>
+    <ns1:pro_x>480；502；502；590，590；502，444</ns1:pro_x>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区一层_一"/>
+    <ns1:pro_stairs_dir>西南</ns1:pro_stairs_dir>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F2_标志位D_2">
+    <ns1:pro_stairs_dir>南</ns1:pro_stairs_dir>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区二层_二"/>
+    <ns1:pro_stairs_dis>10米，</ns1:pro_stairs_dis>
+    <ns1:pro_destination>总馆北区_F2_自助复制处_2，总馆北区_F2_中文图书阅览区_2，总馆北区_F2_综合咨询台_1，印象数图，总馆北区_F2_目录查询区_1，读者辅导区，总馆北区_F2_办证处_1，总馆北区_F2_少年儿童馆_2，总馆北区_F2_工具书区_3，总馆北区_F2_电梯_1，总馆北区_F2_卫生间_2</ns1:pro_destination>
+    <ns1:pro_neighbor_dir>北，西，</ns1:pro_neighbor_dir>
+    <ns1:pro_destination_dir>西，南，南，东北，东北，东北，东北，东，北，南，南</ns1:pro_destination_dir>
+    <ns1:pro_des_dis>500米，0米，10米，100，700米，100，600米，100，500米，100，400米，80米，0米，10米，70米，</ns1:pro_des_dis>
+    <ns1:pro_variant_name>总馆北区_F2_标志位D_2</ns1:pro_variant_name>
+    <ns1:pro_nei_dis>500米，500米，</ns1:pro_nei_dis>
+    <ns1:pro_position_describe>工具书区东南角</ns1:pro_position_describe>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_neighbor>总馆北区_F2_标志位B_2，总馆北区_F2_标志位C_2</ns1:pro_neighbor>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F3_咨询台_4">
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区三层_三"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_variant_name>服务台，人工台，问询服务处，咨询台</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F3_中文图书阅览区_3">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区三层_三"/>
+    <ns1:pro_variant_name>中文图书阅览区，总馆北区中文图书区，中文书阅览室，中文图书阅览室</ns1:pro_variant_name>
+    <ns1:pro_position_describe>外环</ns1:pro_position_describe>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆南区_F2_自助复制处_7">
+    <ns1:pro_variant_name>复制处，打印处，复制的地方，打印的地方，自助复制处，总馆南区复制处，总馆南区复制区</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区二层_二"/>
+    <ns1:pro_position_describe>各文献阅览室</ns1:pro_position_describe>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/古籍馆_F3_书库2_4">
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/古籍馆文津楼"/>
+    <ns1:pro_variant_name>古籍馆书库，书库</ns1:pro_variant_name>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/文津楼二层"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/古籍馆三层"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F1_标志位_1">
+    <ns1:pro_neighbor>总馆北区_F1_标志位_2，总馆北区_F1_标志位_3</ns1:pro_neighbor>
+    <ns1:pro_des_dis>0米，0米，600，100米，100米，600，50米，450米，480米，550米，450米，</ns1:pro_des_dis>
+    <ns1:pro_destination>总馆北区_F1_中文图书借阅区，总馆北区_F1_工具书区_2，总馆北区_F1_卫生间_1，总馆北区_F1_综合咨询台_3，研讨室，稽古厅，总馆北区_F1_电梯_1，总馆北区_F1_自助复制处_1，总馆北区_F1_中文图书阅览区</ns1:pro_destination>
+    <ns1:pro_stairs_dir>东北</ns1:pro_stairs_dir>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区一层_一"/>
+    <ns1:pro_nei_dis>400米，500米，</ns1:pro_nei_dis>
+    <ns1:pro_position_describe>工具书区西北角</ns1:pro_position_describe>
+    <ns1:pro_destination_dir>西，东，东北，北，南西，东，东，南，南</ns1:pro_destination_dir>
+    <ns1:pro_stairs_dis>30米</ns1:pro_stairs_dis>
+    <ns1:pro_variant_name>总馆北区_F1_标志位_1</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_neighbor_dir>南，东</ns1:pro_neighbor_dir>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F3_标志位D_3">
+    <ns1:pro_position_describe>中心活动室西南角</ns1:pro_position_describe>
+    <ns1:pro_neighbor>总馆北区_F3_标志位A_3，总馆北区_F3_标志位C_3</ns1:pro_neighbor>
+    <ns1:pro_variant_name>总馆北区_F3_标志位D_3</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_neighbor_dir>北，东</ns1:pro_neighbor_dir>
+    <ns1:pro_destination_dir>西，东，东南</ns1:pro_destination_dir>
+    <ns1:pro_stairs_dir>东</ns1:pro_stairs_dir>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区三层_三"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_stairs_dis>350米，</ns1:pro_stairs_dis>
+    <ns1:pro_des_dis>0米，500米，500，50米，</ns1:pro_des_dis>
+    <ns1:pro_destination>总馆北区_F3_中文图书阅览区_3，总馆北区_F3_综合咨询台_1，总馆北区_F3_电梯_1</ns1:pro_destination>
+    <ns1:pro_nei_dis>500米，500米，</ns1:pro_nei_dis>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F4_电梯_1">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_variant_name>电梯，升降梯，自动楼梯</ns1:pro_variant_name>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区四层_四"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/古籍馆一层">
+    <ns1:rel_upstairs rdf:resource="http://www.libot.org/文津楼一层"/>
+    <ns1:pro_variant_name>临琼楼，古籍楼，古籍馆，古籍馆临琼楼，古籍楼一层，古籍馆一层，古籍楼一楼，古籍馆一楼</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/floor"/>
+    <ns1:rel_upstairs rdf:resource="http://www.libot.org/古籍馆二层"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/古籍馆临琼楼"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F4_卫生间_3">
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区四层_四"/>
+    <ns1:pro_variant_name>总馆北区卫生间，厕所，茅房，卫生间，总馆北区厕所，总馆北区茅厕，总馆北区茅房，茅厕</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/台港澳文献阅览室">
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区二层_二"/>
+    <ns1:pro_variant_name>港澳台阅览室，台港澳文献阅览室</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+    <ns1:pro_position_describe>F203</ns1:pro_position_describe>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/古籍馆_F2_书库1_1">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_variant_name>古籍馆书库，书库</ns1:pro_variant_name>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/文津楼一层"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/古籍馆二层"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/古籍馆文津楼"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F4_中心活动室_4">
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区四层_四"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_variant_name>中心活动室</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_position_describe>总馆北区四层</ns1:pro_position_describe>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F4_标志位D_4">
+    <ns1:pro_nei_dis>500米，500米，</ns1:pro_nei_dis>
+    <ns1:pro_des_dis>0米，70米，70，100米，100米，450，100米，550米，350米，250米，</ns1:pro_des_dis>
+    <ns1:pro_stairs_dis>450米，</ns1:pro_stairs_dis>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_variant_name>总馆北区_F4_标志位D_4</ns1:pro_variant_name>
+    <ns1:pro_neighbor>总馆北区_F4_标志位A_4，总馆北区_F4_标志位C_4</ns1:pro_neighbor>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_destination_dir>西，东，东南，南，东南，东，北，东</ns1:pro_destination_dir>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区四层_四"/>
+    <ns1:pro_position_describe>学位论文阅览室南区</ns1:pro_position_describe>
+    <ns1:pro_neighbor_dir>北，东</ns1:pro_neighbor_dir>
+    <ns1:pro_destination>学位论文阅览室，总馆北区_F4_卫生间_1，总馆北区_F4_综合咨询台_1，中文报纸区，中文期刊区，中国少数民族语文文献阅览室，总馆北区_F4_自助复制处_4，总馆北区_F4_电梯_1</ns1:pro_destination>
+    <ns1:pro_stairs_dir>东</ns1:pro_stairs_dir>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/古籍馆_F2_存包处_3">
+    <ns1:pro_variant_name>存包处，古籍馆存包处，古籍馆二楼存包处，古籍馆二层存包处</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/古籍馆文津楼"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/文津楼一层"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/古籍馆二层"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/旧方志阅览室">
+    <ns1:pro_position_describe>北侧</ns1:pro_position_describe>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/临琼楼一层"/>
+    <ns1:pro_variant_name>旧方志阅览室，旧方志区</ns1:pro_variant_name>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/古籍馆一层"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/古籍馆临琼楼"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F1_卫生间_1">
+    <ns1:pro_variant_name>卫生间，总馆北区卫生间，厕所，茅房，总馆北区厕所，总馆北区茅厕，总馆北区茅房，茅厕</ns1:pro_variant_name>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区一层_一"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/缩微文献阅览室">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+    <ns1:pro_variant_name>微缩阅览区，缩微阅览室，缩微文献阅览室</ns1:pro_variant_name>
+    <ns1:pro_position_describe>D401</ns1:pro_position_describe>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区四层_四"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆南区五层_五">
+    <ns1:pro_variant_name>五层，南五层，五楼，总馆南区五楼，南五楼，总馆南区五层</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/floor"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆南区_F1_办证处_2">
+    <ns1:pro_position_describe>东侧</ns1:pro_position_describe>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区一层_一"/>
+    <ns1:pro_variant_name>办证的地方，办证服务台，办证处</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/右文厅">
+    <ns1:pro_variant_name>右文厅</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区负一层_B1"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/印象数图">
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区二层_二"/>
+    <ns1:pro_variant_name>印象数图</ns1:pro_variant_name>
+    <ns1:pro_position_describe>北侧</ns1:pro_position_describe>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆南区_F2_集中复制处_6">
+    <ns1:pro_position_describe>大厅北侧</ns1:pro_position_describe>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区二层_二"/>
+    <ns1:pro_variant_name>复制处，打印处，复制的地方，打印的地方，集中复制处，总馆南区复制处，总馆南区复制区</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F2_综合咨询台_1">
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区二层_二"/>
+    <ns1:pro_variant_name>服务台，人工台，问询服务处，综合咨询台，咨询台</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_position_describe>东门二层大厅</ns1:pro_position_describe>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/古籍馆三层">
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/古籍馆文津楼"/>
+    <rdf:type rdf:resource="http://www.libot.org/floor"/>
+    <ns1:rel_downstairs rdf:resource="http://www.libot.org/古籍馆二层"/>
+    <ns1:pro_variant_name>文津楼二层，古籍楼三层，文津楼二楼，古籍楼三楼，古籍馆三楼，古籍馆文津楼二楼</ns1:pro_variant_name>
+    <ns1:rel_downstairs rdf:resource="http://www.libot.org/文津楼一层"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/少年儿童馆数字资源体验区">
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区_F1_少年儿童馆_1"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_position_describe>一层东南角</ns1:pro_position_describe>
+    <ns1:pro_variant_name>少年儿童馆数字资源体验区，少儿数字资源</ns1:pro_variant_name>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区一层_一"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/步行梯_2">
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/古籍馆三层"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_variant_name>步行梯</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/古籍馆文津楼"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/文津楼二层"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/F2步行梯">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区二层_二"/>
+    <ns1:pro_variant_name>步行梯，楼梯</ns1:pro_variant_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/国际组织与外国政府出版物阅览室">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_variant_name>国际组织与外国政府出版物阅览室</ns1:pro_variant_name>
+    <ns1:pro_position_describe>F403</ns1:pro_position_describe>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区四层_四"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F3_标志位A_3">
+    <ns1:pro_destination>总馆北区_F3_中文图书阅览区_3，总馆北区_F3_综合咨询台_1，总馆北区_F3_电梯_1</ns1:pro_destination>
+    <ns1:pro_stairs_dir>东</ns1:pro_stairs_dir>
+    <ns1:pro_position_describe>中心活动室西北角</ns1:pro_position_describe>
+    <ns1:pro_neighbor>总馆北区_F3_标志位B_3，总馆北区_F3_标志位D_3</ns1:pro_neighbor>
+    <ns1:pro_neighbor_dir>东，南</ns1:pro_neighbor_dir>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区三层_三"/>
+    <ns1:pro_variant_name>总馆北区_F3_标志位A_3</ns1:pro_variant_name>
+    <ns1:pro_destination_dir>西，东，东北</ns1:pro_destination_dir>
+    <ns1:pro_nei_dis>500米，500米，</ns1:pro_nei_dis>
+    <ns1:pro_des_dis>0米，500米，500，50米，</ns1:pro_des_dis>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_stairs_dis>350米，</ns1:pro_stairs_dis>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_B1_工具书区_1">
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区负一层_B1"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_variant_name>工具书，工具书阅览室，工具书区</ns1:pro_variant_name>
+    <ns1:pro_destination>右文厅，B1步行梯</ns1:pro_destination>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_position_describe>中厅负一层</ns1:pro_position_describe>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/古籍馆文津楼">
+    <ns1:pro_destination>总馆北区，总馆南区</ns1:pro_destination>
+    <ns1:pro_position_describe>文津街</ns1:pro_position_describe>
+    <ns1:pro_variant_name>古籍馆文津楼，古籍馆，文津楼</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_destination_dir>向北，向南</ns1:pro_destination_dir>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆南区_F2_外文文献第二阅览室_2">
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+    <ns1:pro_position_describe>E2-3</ns1:pro_position_describe>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区二层_二"/>
+    <ns1:pro_variant_name>英文阅览室，外语阅览室，外文文献第二阅览室</ns1:pro_variant_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/普通古籍阅览室">
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/古籍馆文津楼"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/古籍馆三层"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/文津楼二层"/>
+    <ns1:pro_variant_name>普通古籍阅览室，古籍阅览室</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_position_describe>A301</ns1:pro_position_describe>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/少年儿童馆青少年阅览区">
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区二层_二"/>
+    <ns1:pro_position_describe>二层东南角</ns1:pro_position_describe>
+    <ns1:pro_variant_name>青少年区，少年儿童馆青少年阅览区</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区_F2_少年儿童馆_2"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区二层_二">
+    <rdf:type rdf:resource="http://www.libot.org/floor"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_variant_name>二层，北二层，二楼，总馆北区二楼，北二楼，总馆北区二层</ns1:pro_variant_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/善本特藏阅览室">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+    <ns1:pro_position_describe>G219</ns1:pro_position_describe>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区二层_二"/>
+    <ns1:pro_variant_name>善本特藏阅览室</ns1:pro_variant_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F2_办证处_1">
+    <ns1:pro_position_describe>东北侧</ns1:pro_position_describe>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区二层_二"/>
+    <ns1:pro_variant_name>办证的地方，办证服务台，办证处</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F2_自助复制处_2">
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区二层_二"/>
+    <ns1:pro_variant_name>复制处，打印处，复制的地方，打印的地方，总馆北区复制处，总馆北区复制区，自助复制处</ns1:pro_variant_name>
+    <ns1:pro_position_describe>南侧</ns1:pro_position_describe>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/古籍馆_F2_卫生间_5">
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/文津楼一层"/>
+    <ns1:pro_variant_name>卫生间，古籍馆卫生间，厕所，茅房，古籍馆厕所，古籍馆茅厕，古籍馆茅房，茅厕</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/古籍馆文津楼"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/古籍馆二层"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆南区一层_一">
+    <rdf:type rdf:resource="http://www.libot.org/floor"/>
+    <ns1:pro_variant_name>一层，南一层，一楼，总馆南区一楼，南一楼，南馆，南区大楼，南楼，总馆南区一层</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/古籍馆_F2_书库2_2">
+    <ns1:pro_variant_name>古籍馆书库，书库</ns1:pro_variant_name>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/文津楼一层"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/古籍馆文津楼"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/古籍馆二层"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F1_自助复制处_1">
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_position_describe>南侧</ns1:pro_position_describe>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区一层_一"/>
+    <ns1:pro_variant_name>复制处，打印处，复制的地方，打印的地方，自助复制处，总馆北区复制处，总馆北区复制区</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/古籍馆_F2_学术活动厅1_1">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/古籍馆二层"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/文津楼一层"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/古籍馆文津楼"/>
+    <ns1:pro_variant_name>学术活动厅，古籍馆学术活动厅，古籍馆二楼学术活动厅，学术报告厅</ns1:pro_variant_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆南区四层_四">
+    <ns1:pro_variant_name>四层，南四层，四楼，总馆南区四楼，南四楼，总馆南区四层</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+    <rdf:type rdf:resource="http://www.libot.org/floor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F2_标志位A_2">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_stairs_dis>450米，</ns1:pro_stairs_dis>
+    <ns1:pro_nei_dis>500米，500米，</ns1:pro_nei_dis>
+    <ns1:pro_neighbor_dir>东，南</ns1:pro_neighbor_dir>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_neighbor>总馆北区_F2_标志位B_2，总馆北区_F2_标志位C_2</ns1:pro_neighbor>
+    <ns1:pro_position_describe>工具书区西北角</ns1:pro_position_describe>
+    <ns1:pro_destination_dir>北，西，南，东，东，东，东，东北，东</ns1:pro_destination_dir>
+    <ns1:pro_destination>总馆北区_F2_综合咨询台_1，总馆北区_F2_中文图书阅览区_2，总馆北区_F2_自助复制处_2，总馆北区_F2_工具书区_3，印象数图，总馆北区_F2_目录查询区_1，读者辅导区，总馆北区_F2_卫生间_2，总馆北区_F2_电梯_1</ns1:pro_destination>
+    <ns1:pro_variant_name>总馆北区_F2_标志位A_2</ns1:pro_variant_name>
+    <ns1:pro_stairs_dir>东</ns1:pro_stairs_dir>
+    <ns1:pro_des_dis>10米，0米，500米，0米，600米，600米，600米，500，50米，250米，</ns1:pro_des_dis>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区二层_二"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/F1无障碍专用通道">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_variant_name>无障碍专用通道</ns1:pro_variant_name>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区一层_一"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F4_标志位C_4">
+    <ns1:pro_stairs_dis>10米，</ns1:pro_stairs_dis>
+    <ns1:pro_position_describe>中国少数民族语文文献阅览室北区</ns1:pro_position_describe>
+    <ns1:pro_neighbor>总馆北区_F4_标志位B_4，总馆北区_F4_标志位D_4</ns1:pro_neighbor>
+    <ns1:pro_destination_dir>西南，南，西，东，西，北，西南，南</ns1:pro_destination_dir>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_neighbor_dir>北，西</ns1:pro_neighbor_dir>
+    <ns1:pro_variant_name>总馆北区_F4_标志位C_4</ns1:pro_variant_name>
+    <ns1:pro_nei_dis>500米，500米，</ns1:pro_nei_dis>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_stairs_dir>北</ns1:pro_stairs_dir>
+    <ns1:pro_des_dis>70，80米，80米，70米，0米，500米，400米，450，70米，10米，</ns1:pro_des_dis>
+    <ns1:pro_destination>中文期刊区，总馆北区_F4_综合咨询台_1，总馆北区_F4_卫生间_1，中国少数民族语文文献阅览室，学位论文阅览室，数字共享空间，中文报纸区，总馆北区_F4_电梯_1</ns1:pro_destination>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区四层_四"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F3_电梯_1">
+    <ns1:pro_variant_name>电梯，升降梯，自动楼梯</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区三层_三"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F2_少年儿童馆_2">
+    <ns1:pro_position_describe>二层东南角单独入口</ns1:pro_position_describe>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区二层_二"/>
+    <ns1:pro_variant_name>少年儿童馆，少儿馆，小儿馆，小孩馆，儿童少儿馆，儿童少年馆，少年馆，儿童馆</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F4_标志位B_4">
+    <ns1:pro_variant_name>总馆北区_F4_标志位B_4</ns1:pro_variant_name>
+    <ns1:pro_position_describe>数字共享空间</ns1:pro_position_describe>
+    <ns1:pro_neighbor>总馆北区_F4_标志位A_4，总馆北区_F4_标志位C_4</ns1:pro_neighbor>
+    <ns1:pro_des_dis>70米，80米，80米，0米，500米，500米，10米，</ns1:pro_des_dis>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区四层_四"/>
+    <ns1:pro_stairs_dis>10米，</ns1:pro_stairs_dis>
+    <ns1:pro_neighbor_dir>西，南</ns1:pro_neighbor_dir>
+    <ns1:pro_stairs_dir>南</ns1:pro_stairs_dir>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_destination_dir>西，北，北，东，南，东，北</ns1:pro_destination_dir>
+    <ns1:pro_nei_dis>500米，500米，</ns1:pro_nei_dis>
+    <ns1:pro_destination>总馆北区_F4_卫生间_1，视听阅览区，总馆北区_F4_综合咨询台_1，数字共享空间，中国少数民族语文文献阅览室，学位论文阅览室，总馆北区_F4_电梯_1</ns1:pro_destination>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/少年儿童馆主题活动区">
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区_F1_少年儿童馆_1"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区一层_一"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_position_describe>一层东南角</ns1:pro_position_describe>
+    <ns1:pro_variant_name>少年儿童馆主题活动区，少儿主题活动区</ns1:pro_variant_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/文津楼一层">
+    <ns1:rel_upstairs rdf:resource="http://www.libot.org/文津楼二层"/>
+    <ns1:pro_variant_name>古籍楼二层，古籍馆二层，文津楼一楼，古籍楼二楼，古籍馆二楼，古籍馆文津楼一楼，古籍馆文津楼一层，文津楼一层</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/floor"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/古籍馆文津楼"/>
+    <ns1:rel_upstairs rdf:resource="http://www.libot.org/古籍馆三层"/>
+    <ns1:rel_downstairs rdf:resource="http://www.libot.org/古籍馆一层"/>
+    <ns1:rel_downstairs rdf:resource="http://www.libot.org/临琼楼一层"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/研讨室">
+    <ns1:pro_variant_name>研讨室</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区一层_一"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/读者辅导区">
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区二层_二"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_variant_name>读者辅导区</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/古籍馆_F1_存包处_2">
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/古籍馆一层"/>
+    <ns1:pro_variant_name>存包处，古籍馆存包处</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/古籍馆临琼楼"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/临琼楼一层"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆南区二层_二">
+    <ns1:pro_variant_name>二层，南二层，二楼，总馆南区二楼，南二楼，总馆南区二层</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/floor"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/古籍馆二层">
+    <ns1:rel_downstairs rdf:resource="http://www.libot.org/临琼楼一层"/>
+    <ns1:rel_upstairs rdf:resource="http://www.libot.org/文津楼二层"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/古籍馆文津楼"/>
+    <ns1:rel_upstairs rdf:resource="http://www.libot.org/古籍馆三层"/>
+    <ns1:rel_downstairs rdf:resource="http://www.libot.org/古籍馆一层"/>
+    <rdf:type rdf:resource="http://www.libot.org/floor"/>
+    <ns1:pro_variant_name>文津楼一层，古籍楼二层，文津楼一楼，古籍楼二楼，古籍馆二楼，古籍馆文津楼一楼，古籍馆文津楼一楼，文津楼</ns1:pro_variant_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/古籍馆_F3_卫生间_6">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/文津楼二层"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/古籍馆文津楼"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/古籍馆三层"/>
+    <ns1:pro_variant_name>古籍馆卫生间，卫生间，厕所，茅房，古籍馆厕所，古籍馆茅厕，古籍馆茅房，茅厕</ns1:pro_variant_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/中国少数民族语文文献阅览室">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_variant_name>少数民族有关的文献，中国少数民族语文文献阅览室，民族阅览室，民族文献阅览室，少数民族阅览室</ns1:pro_variant_name>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区四层_四"/>
+    <ns1:pro_position_describe>东南角4-23</ns1:pro_position_describe>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/家谱阅览室">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/临琼楼一层"/>
+    <ns1:pro_position_describe>北侧</ns1:pro_position_describe>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/古籍馆一层"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/古籍馆临琼楼"/>
+    <ns1:pro_variant_name>家谱阅览室，家谱区</ns1:pro_variant_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆南区六层_六">
+    <ns1:pro_variant_name>六层，南六层，六楼，总馆南区六楼，南六楼，总馆南区六层</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+    <rdf:type rdf:resource="http://www.libot.org/floor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/古籍馆_F2_学术活动厅2_2">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/文津楼一层"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/古籍馆二层"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/古籍馆文津楼"/>
+    <ns1:pro_variant_name>学术活动厅，古籍馆学术活动厅，古籍馆二楼学术活动厅，学术报告厅</ns1:pro_variant_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/步行梯_1">
+    <ns1:pro_variant_name>步行梯</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/古籍馆文津楼"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/古籍馆二层"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/文津楼一层"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F4_咨询台_5">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区四层_四"/>
+    <ns1:pro_variant_name>服务台，人工台，问询服务处，咨询台</ns1:pro_variant_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F1_存包处_1">
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区一层_一"/>
+    <ns1:pro_variant_name>存包处</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F2_卫生间_2">
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区二层_二"/>
+    <ns1:pro_variant_name>卫生间，总馆北区卫生间，厕所，茅房，总馆北区厕所，总馆北区茅厕，总馆北区茅房，茅厕</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/科技查新中心">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_variant_name>科技查新中心，科技中心，科技查询，科技查新</ns1:pro_variant_name>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区二层_二"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+    <ns1:pro_position_describe>D204</ns1:pro_position_describe>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/年鉴阅览室">
+    <ns1:pro_position_describe>E5-3</ns1:pro_position_describe>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区五层_五"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_variant_name>年鉴阅览室，年鉴区</ns1:pro_variant_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区负一层_B1">
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <rdf:type rdf:resource="http://www.libot.org/floor"/>
+    <ns1:pro_variant_name>地下层，北区地下层，负一层，总馆北区负一层</ns1:pro_variant_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F1_中文图书阅览区_1">
+    <ns1:pro_variant_name>中文书阅览室，中文图书阅览室，中文图书阅览区，总馆北区中文图书区</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区一层_一"/>
+    <ns1:pro_position_describe>南侧</ns1:pro_position_describe>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F1_电梯_1">
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区一层_一"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_variant_name>电梯，升降梯，自动楼梯</ns1:pro_variant_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F4_综合咨询台_1">
+    <ns1:pro_variant_name>服务台，人工台，问询服务处，综合咨询台，咨询台</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区四层_四"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/F3步行梯">
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区三层_三"/>
+    <ns1:pro_variant_name>步行梯</ns1:pro_variant_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆南区_F4_外文文献第三阅览室_3">
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_variant_name>英文阅览室，外语阅览室，外文文献第三阅览室</ns1:pro_variant_name>
+    <ns1:pro_position_describe>D427</ns1:pro_position_describe>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区四层_四"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/学位论文阅览室">
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_variant_name>学位论文阅览室，论文阅览室，学位论文区</ns1:pro_variant_name>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区四层_四"/>
+    <ns1:pro_position_describe>西侧</ns1:pro_position_describe>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F2_工具书区_3">
+    <ns1:pro_variant_name>工具书，工具书阅览室，工具书区</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_position_describe>中厅二层</ns1:pro_position_describe>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区二层_二"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/门厅_1">
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/古籍馆二层"/>
+    <ns1:pro_variant_name>门厅，古籍馆门厅</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/古籍馆文津楼"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/文津楼一层"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F2_标志位C_2">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_destination_dir>北，南，西，东，东，东，东北</ns1:pro_destination_dir>
+    <ns1:pro_nei_dis>500米，500米，</ns1:pro_nei_dis>
+    <ns1:pro_stairs_dis>500米，</ns1:pro_stairs_dis>
+    <ns1:pro_destination>总馆北区_F2_综合咨询台_1，总馆北区_F2_自助复制处_2，总馆北区_F2_中文图书阅览区_2，总馆北区_F2_工具书区_3，总馆北区_F2_电梯_1，总馆北区_F2_少年儿童馆_2，总馆北区_F2_卫生间_2</ns1:pro_destination>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_neighbor_dir>北，东</ns1:pro_neighbor_dir>
+    <ns1:pro_position_describe>工具书区西南角</ns1:pro_position_describe>
+    <ns1:pro_variant_name>总馆北区_F2_标志位C_2</ns1:pro_variant_name>
+    <ns1:pro_stairs_dir>东</ns1:pro_stairs_dir>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区二层_二"/>
+    <ns1:pro_des_dis>200米，10米，0米，0米，250米，600米，500，80米，</ns1:pro_des_dis>
+    <ns1:pro_neighbor>总馆北区_F2_标志位A_2，总馆北区_F2_标志位D_2</ns1:pro_neighbor>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆南区_F4_国家典藏博物馆_2">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+    <ns1:pro_variant_name>国家典藏博物馆，典藏馆，典籍博物馆，典籍馆</ns1:pro_variant_name>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区四层_四"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/F4步行梯">
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区四层_四"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_variant_name>步行梯</ns1:pro_variant_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/海外中国问题研究资料中心">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_variant_name>海外中国问题研究资料中心</ns1:pro_variant_name>
+    <ns1:pro_position_describe>E6-3</ns1:pro_position_describe>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区六层_六"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F1_少年儿童馆_1">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_variant_name>少年儿童馆，少儿馆，小儿馆，小孩馆，儿童少儿馆，儿童少年馆，少年馆，儿童馆</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区一层_一"/>
+    <ns1:pro_position_describe>一层东南角单独入口</ns1:pro_position_describe>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆南区_F2_外文文献第一阅览室_1">
+    <ns1:pro_position_describe>D201</ns1:pro_position_describe>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区二层_二"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_variant_name>英文阅览室，外语阅览室，外文文献第一阅览室</ns1:pro_variant_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/社会科学咨询室">
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区二层_二"/>
+    <ns1:pro_position_describe>D205</ns1:pro_position_describe>
+    <ns1:pro_variant_name>社会科学咨询室，社科咨询处，社科咨询室，社科咨询中心</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F1_标志位_3">
+    <ns1:pro_destination>总馆北区_F1_中文图书借阅区，总馆北区_F1_工具书区_2，稽古厅，总馆北区_F1_卫生间_1，总馆北区_F1_综合咨询台_1，总馆北区_F1_存包处_1，总馆北区_F4_电梯_1，总馆北区_F1_少年儿童馆_1</ns1:pro_destination>
+    <ns1:pro_des_dis>100米，100米，0米，200，50米，150，150米，200，50米，50米，700米，</ns1:pro_des_dis>
+    <ns1:pro_stairs_dir>北</ns1:pro_stairs_dir>
+    <ns1:pro_neighbor>总馆北区_F1_标志位_1，总馆北区_F1_标志位_4，总馆北区_F1_标志位_5</ns1:pro_neighbor>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_position_describe>稽古厅东北角</ns1:pro_position_describe>
+    <ns1:pro_neighbor_dir>西，南，东南</ns1:pro_neighbor_dir>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_destination_dir>西，西，南，北东，西北，南东，西，南</ns1:pro_destination_dir>
+    <ns1:pro_nei_dis>400米，400米，50，400米，</ns1:pro_nei_dis>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区一层_一"/>
+    <ns1:pro_stairs_dis>10米</ns1:pro_stairs_dis>
+    <ns1:pro_variant_name>总馆北区_F1_标志位_3</ns1:pro_variant_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F2_中文图书阅览区_2">
+    <ns1:pro_variant_name>中文书阅览室，中文图书阅览室，中文图书阅览区，总馆北区中文图书区</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_position_describe>外环</ns1:pro_position_describe>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区二层_二"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆南区_F2_目录查询区_2">
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_position_describe>大厅</ns1:pro_position_describe>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区二层_二"/>
+    <ns1:pro_variant_name>查目录区，目录查询区</ns1:pro_variant_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/数字共享空间">
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区四层_四"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_variant_name>数字共享空间，数字空间</ns1:pro_variant_name>
+    <ns1:pro_position_describe>东侧</ns1:pro_position_describe>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F1_工具书区_2">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_position_describe>中厅一层</ns1:pro_position_describe>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区一层_一"/>
+    <ns1:pro_variant_name>工具书，工具书阅览室，工具书区</ns1:pro_variant_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/稽古厅">
+    <ns1:pro_variant_name>稽古厅</ns1:pro_variant_name>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区一层_一"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/日本出版物文库阅览室">
+    <ns1:pro_variant_name>日文书阅览室，日本出版物文库阅览室</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+    <ns1:pro_position_describe>D427</ns1:pro_position_describe>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区四层_四"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/步行梯_3">
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/古籍馆一层"/>
+    <ns1:pro_variant_name>步行梯</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/古籍馆临琼楼"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/临琼楼一层"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆南区">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_position_describe>南区</ns1:pro_position_describe>
+    <ns1:pro_variant_name>总馆南区，南区</ns1:pro_variant_name>
+    <ns1:pro_destination>总馆北区，古籍馆文津楼，古籍馆临琼楼</ns1:pro_destination>
+    <ns1:pro_destination_dir>左转向南，向北，向北</ns1:pro_destination_dir>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F3_综合咨询台_1">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_variant_name>服务台，人工台，问询服务处，综合咨询台，咨询台</ns1:pro_variant_name>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区三层_三"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F4_自助复制处_4">
+    <ns1:pro_variant_name>复制处，打印处，复制的地方，打印的地方，自助复制处，总馆北区复制处，总馆北区复制区</ns1:pro_variant_name>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区四层_四"/>
+    <ns1:pro_position_describe>西南侧</ns1:pro_position_describe>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F3_中心活动室_3">
+    <ns1:pro_position_describe>总馆北区三层</ns1:pro_position_describe>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_variant_name>中心活动室</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区三层_三"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/年鉴新方志阅览室">
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_variant_name>年鉴新方志阅览室，年鉴区，新方志区</ns1:pro_variant_name>
+    <ns1:pro_position_describe>E5-3</ns1:pro_position_describe>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区五层_五"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/B1步行梯">
+    <ns1:pro_variant_name>B1步行梯，步行梯</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区负一层_B1"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/企业信息服务中心">
+    <ns1:pro_position_describe>E4-3</ns1:pro_position_describe>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区四层_四"/>
+    <ns1:pro_variant_name>企业信息服务中心，企业中心，企业信息中心，企业服务中心</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区四层_四">
+    <ns1:pro_variant_name>四层，北四层，四楼，总馆北区四楼，北四楼，总馆北区四层</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <rdf:type rdf:resource="http://www.libot.org/floor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/中文报纸区">
+    <ns1:pro_position_describe>南侧</ns1:pro_position_describe>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区四层_四"/>
+    <ns1:pro_variant_name>中文报刊阅览区（报纸），报纸区，中文报刊区，中文报纸区</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/基藏外文图书外借出纳台">
+    <ns1:pro_position_describe>大厅北侧</ns1:pro_position_describe>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_variant_name>基藏外文图书外借出纳台，基藏区</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区二层_二"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区">
+    <ns1:pro_destination>总馆南区，古籍馆文津楼，古籍馆临琼楼</ns1:pro_destination>
+    <ns1:pro_position_describe>北区</ns1:pro_position_describe>
+    <ns1:pro_destination_dir>右转向北，左转向南，左转向南</ns1:pro_destination_dir>
+    <ns1:pro_variant_name>总馆北区，北区</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/新方志阅览室">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+    <ns1:pro_variant_name>新方志阅览室，新方志区</ns1:pro_variant_name>
+    <ns1:pro_position_describe>E5-3</ns1:pro_position_describe>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区五层_五"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/门厅_2">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/古籍馆一层"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/古籍馆临琼楼"/>
+    <ns1:pro_variant_name>门厅，古籍馆门厅</ns1:pro_variant_name>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/临琼楼一层"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/中文期刊区">
+    <ns1:pro_variant_name>中文报刊阅览区（期刊），期刊区，中文报刊区，中文期刊区</ns1:pro_variant_name>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区四层_四"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_position_describe>南侧</ns1:pro_position_describe>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F3_综合咨询台_2">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_variant_name>服务台，人工台，问询服务处，综合咨询台，咨询台</ns1:pro_variant_name>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区三层_三"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F2_目录查询区_1">
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_variant_name>总馆北区目录查询区，目录查询区，目录查找区，查阅目录区</ns1:pro_variant_name>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区二层_二"/>
+    <ns1:pro_position_describe>北侧</ns1:pro_position_describe>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F1_中文图书借阅区">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_position_describe>一层北侧、西侧单独入口</ns1:pro_position_describe>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区一层_一"/>
+    <ns1:pro_variant_name>中文书借阅室，中文图书借书区，中文图书借阅区，中文书借书区，中文借书区，中文书借阅区</ns1:pro_variant_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区_F1_综合咨询台_3">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区一层_一"/>
+    <ns1:pro_variant_name>服务台，人工台，问询服务处，咨询台，综合咨询台</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/综合阅览室">
+    <ns1:pro_position_describe>D227</ns1:pro_position_describe>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区二层_二"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_variant_name>综合阅览室，综合区</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/法律参考阅览室">
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区六层_六"/>
+    <ns1:pro_variant_name>法律参考阅览室，法律相关阅览室，法律阅览室，法律区</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_position_describe>E6-3</ns1:pro_position_describe>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/文献提供中心">
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+    <ns1:pro_position_describe>E4-3</ns1:pro_position_describe>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区四层_四"/>
+    <ns1:pro_variant_name>文献提供中心，文献中心，文献提供</ns1:pro_variant_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆北区三层_三">
+    <ns1:pro_variant_name>三层，北三层，三楼，总馆北区三楼，北三楼，总馆北区三层</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/floor"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆南区_F4_人工复制处_8">
+    <ns1:pro_variant_name>复制处，打印处，复制的地方，打印的地方，人工复制处，总馆南区复制处，总馆南区复制区，总馆南区人工复制处</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_position_describe>大厅北侧</ns1:pro_position_describe>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区四层_四"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/敦煌吐鲁番资料阅览室">
+    <ns1:pro_variant_name>敦煌有关的阅览室，敦煌吐鲁番资料阅览室</ns1:pro_variant_name>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区二层_二"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+    <ns1:pro_position_describe>G220</ns1:pro_position_describe>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/家谱旧方志阅览室">
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/临琼楼一层"/>
+    <ns1:pro_position_describe>北侧</ns1:pro_position_describe>
+    <ns1:pro_variant_name>家谱旧方志阅览室，家谱区，旧方志区</ns1:pro_variant_name>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/古籍馆一层"/>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/古籍馆临琼楼"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/国际赠书阅览室">
+    <ns1:pro_position_describe>D427</ns1:pro_position_describe>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区四层_四"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:pro_variant_name>国际赠书阅览室，国际书阅览室</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/总馆南区_F2_国家典藏博物馆_1">
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆南区"/>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆南区二层_二"/>
+    <ns1:pro_variant_name>国家典藏博物馆，典藏馆，典籍博物馆，典籍馆</ns1:pro_variant_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.libot.org/视听阅览区">
+    <ns1:pro_variant_name>视听服务空间，视听区，看电视的地方，视听阅览区</ns1:pro_variant_name>
+    <ns1:rel_part_of_room rdf:resource="http://www.libot.org/总馆北区"/>
+    <ns1:pro_position_describe>北侧</ns1:pro_position_describe>
+    <rdf:type rdf:resource="http://www.libot.org/room"/>
+    <ns1:rel_part_of_floor rdf:resource="http://www.libot.org/总馆北区四层_四"/>
+  </rdf:Description>
+</rdf:RDF>

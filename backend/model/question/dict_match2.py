@@ -16,6 +16,7 @@ class DictMatch2():
         :return:
         """
         dict_list.sort(key=lambda s:len(s), reverse=True)
+        print(dict_list)
         entity_list = []
         var_list = [ ]
         for dict_item in dict_list:

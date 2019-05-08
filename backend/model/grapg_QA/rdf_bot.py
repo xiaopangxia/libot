@@ -15,6 +15,8 @@ import datetime
 import matplotlib.pyplot as plt
 from skimage import io
 import numpy as np
+
+from queue import Queue
 class rdfBot():
     """
     对应问题模式在知识图谱中查找答案
@@ -69,7 +71,7 @@ class rdfBot():
         elif task == 'task_room_contact':
             answer = cls.answer_room_contact(entity_dict, graph=graph)
         elif task == 'task_room_pos':
-            answer = cls.answer_room_navi(entity_dict, graph,1)
+            answer = cls.answer_room_test(entity_dict,graph)
         elif task == 'task_res_time':
             answer = cls.answer_res_time(entity_dict, graph,"today")
         elif task == 'task_res_time_tomorrow':
@@ -174,6 +176,69 @@ class rdfBot():
             return respons_str
         else:
             return None
+
+
+    @classmethod
+    def answer_room_test(cls,entity_dict, graph):
+
+        start_room = entity_dict['room'][0][0]
+        father_list=[]
+        node_list=[]
+
+        destination_mark = rdfPrepare.rdf_query_relation(start_room, 'rel_neighbor', graph)
+        machine = '拐角'
+        node_list.append(machine)
+        father_list.append(-1)
+        base_index = 0
+        node_index=0
+        flag = False
+        flag_index = True
+        #print("destination_mark",destination_mark)
+        while(1):
+            flag_index = True
+            straight_mark=rdfPrepare.rdf_query_relation(node_list[node_index], 'rel_neighbor', graph)
+            if node_index == 0:
+                base_index = len(straight_mark)
+            print("straight_mark",node_list[node_index],straight_mark,base_index)
+            for sub_mark in straight_mark:
+                if sub_mark not in node_list:
+                    node_list.append(sub_mark)
+                    father_list.append(node_list[node_index])
+                    flag_index = False
+                    #print("sub_mark",sub_mark,node_list,father_list)
+
+                    if sub_mark in destination_mark:
+                        #print("find",node_list,destination_mark)
+                        flag=True
+                        break
+            if flag:
+                break
+            if flag_index and node_index>=base_index:
+                break
+            if node_index<len(node_list)-1:
+                node_index = node_index+1
+
+        if node_list[len(node_list) - 1] not in destination_mark:
+            return "对不起，无法形成路径方案。"
+        count = 0
+        father = father_list[len(node_list) - 1]
+
+        road=[]
+        road.append(node_list[len(node_list)-1])
+        road.append(father)
+        while(1):
+
+
+            print(node_list[len(node_list)-1],father)
+            if father == -1:
+                break
+            node_index=node_list.index(father)
+            father = father_list[node_index]
+            road.append(father)
+            print(node_list,node_index,father_list)
+
+        for i in road[::-1]:
+            print(i)
 
 
 
